@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html style="width:100%; height:100%;">
+<head lang="en">
+    <meta charset="UTF8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title></title>
+    <script src="?op=emb&resource=mobile.js"></script>
+    <script src="?op=resource&resource=/com/fr/web/core/js/VanChartWrapper.js"></script>
+    <script src="?op=resource&resource=/com/fr/mobile/js/appChart.js"></script>
+    <script src="?op=resource&resource=/com/fr/bi/web/js/third/es5-sham.js"></script>
+    <script src="?op=resource&resource=/com/fr/bi/web/js/third/raphael.js"></script>
+    <script src="?op=resource&resource=/com/fr/bi/web/js/third/leaflet.js"></script>
+    <link href="?op=resource&resource=/com/fr/bi/web/css/base/third/leaflet.css" rel="stylesheet">
+
+</head>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<body style="width:100%; height:100%;">
+
+<div id='container' style="position:absolute; right: 0; bottom: 0; left: 0; top: 0;"></div>
+
+<script type="text/javascript">
+
+    FR.serverURL = document.location.href;
+    FR.servletURL = "";
+
+    window.onerror = function (err) {
+        alert('window.onerror: ' + err);
+    };
+
+    //用于创建桥接对象的函数
+    function setupWebViewJavascriptBridge(callback) {
+        //如果桥接对象已存在，则直接调用callback函数
+        if (window.WebViewJavascriptBridge) {
+            return callback(WebViewJavascriptBridge);
+        }
+        if (window.WVJBCallbacks) {
+            return window.WVJBCallbacks.push(callback);
+        }
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(function () {
+            document.documentElement.removeChild(WVJBIframe)
+        }, 0)
+    }
+
+    //页面加载后，立刻调用创建桥接对象的函数
+    setupWebViewJavascriptBridge(function (bridge) {
+        var vanCharts;
+
+        function show(options) {
+            vanCharts = VanCharts.init(document.getElementById('container'));
+            options.plotOptions.click = function (event) {
+                changeJSON(this);
+            };
+            vanCharts.setOptions(options);
+        }
+
+        function changeJSON(point) {
+            if (point) {
+                bridge.callHandler('hyperLinkHandler', {
+                    'seriesName': point.seriesName,
+                    'categoryName': point.category,
+                    'hyperlink': point.hyperlink
+                }, function (response) {
+                });
+            }
+        }
+
+        function refreshData(options) {
+            if (vanCharts) {
+                options.plotOptions.click = function (event) {
+                    changeJSON(this);
+                };
+                vanCharts.setData(options, true);
+            }
+        }
+
+        function convert2ChartData(bridgetData) {
+            return Data.Utils.convertDataToChartData(bridgetData.data, bridgetData.widget);
+        }
+
+        bridge.registerHandler('loadChartHandler', function (data, responseCallback) {
+            try {
+                show(convert2ChartData(data), responseCallback);
+                responseCallback(true);
+            } catch (e) {
+                responseCallback(e);
+                throw (e);
+            }
+        });
+
+        bridge.registerHandler('refreshData', function (data) {
+            refreshData(convert2ChartData(data));
+        });
+
+        bridge.registerHandler('resize', function () {
+            if (vanCharts) {
+                vanCharts.resize();
+            }
+        });
+
+
+        bridge.registerHandler('setChartSize', function (size) {
+            var container = document.getElementById('container');
+            if (size.width) {
+                container.style.width = size.width;
+            }
+            if (size.height) {
+                container.style.height = size.height;
+            }
+            if (size.scale) {
+                document.body.style.zoom = size.scale;
+            }
+        });
+
+        bridge.registerHandler('setPageViewportContent', function (content) {
+            var viewportMeta = document.getElementsByName("viewport")[0];
+            if (viewportMeta) {
+                viewportMeta.content = content;
+            }
+        });
+
+
+    })
+
+</script>
+</body>
+</html>

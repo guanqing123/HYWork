@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="XpssCell" rowHeight="80" id="KGk-i7-Jjw" customClass="XpssCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CRe-xP-ZSp">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="DEB-Cf-jdq"/>
+                            <constraint firstAttribute="width" constant="100" id="bAC-CD-gUW"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MG-bG-xzs">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="gDb-bq-TFe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQC-lg-jCc">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Z-fm-DDY">
+                        <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="tce-QF-5ND"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="5MG-bG-xzs" firstAttribute="top" secondItem="CRe-xP-ZSp" secondAttribute="top" id="1bS-8b-lyr"/>
+                    <constraint firstItem="UQC-lg-jCc" firstAttribute="width" secondItem="5MG-bG-xzs" secondAttribute="width" id="6lx-eT-L0E"/>
+                    <constraint firstItem="CRe-xP-ZSp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DZT-rG-Nb0"/>
+                    <constraint firstAttribute="trailing" secondItem="W1Z-fm-DDY" secondAttribute="trailing" id="EZt-Jy-hxo"/>
+                    <constraint firstItem="W1Z-fm-DDY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Enk-3n-ix5"/>
+                    <constraint firstItem="UQC-lg-jCc" firstAttribute="height" secondItem="5MG-bG-xzs" secondAttribute="height" id="LFv-Um-1ml"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="5MG-bG-xzs" secondAttribute="trailing" constant="10" id="VhX-dW-4YH"/>
+                    <constraint firstItem="UQC-lg-jCc" firstAttribute="leading" secondItem="5MG-bG-xzs" secondAttribute="leading" id="br2-fL-PKj"/>
+                    <constraint firstItem="UQC-lg-jCc" firstAttribute="bottom" secondItem="CRe-xP-ZSp" secondAttribute="bottom" id="eel-wu-T7e"/>
+                    <constraint firstAttribute="bottom" secondItem="W1Z-fm-DDY" secondAttribute="bottom" id="qIW-Ly-Kbm"/>
+                    <constraint firstItem="CRe-xP-ZSp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="tdU-Uh-bqz"/>
+                    <constraint firstItem="5MG-bG-xzs" firstAttribute="leading" secondItem="CRe-xP-ZSp" secondAttribute="trailing" constant="10" id="wjJ-cd-12o"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgView" destination="CRe-xP-ZSp" id="2Sf-ld-0ez"/>
+                <outlet property="nameLabel" destination="5MG-bG-xzs" id="9rK-ZN-44u"/>
+                <outlet property="timeLabel" destination="UQC-lg-jCc" id="riR-1G-Pce"/>
+            </connections>
+            <point key="canvasLocation" x="118" y="223"/>
+        </tableViewCell>
+    </objects>
+</document>

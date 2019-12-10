@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="multiTableViewCellID" selectionStyle="none" indentationWidth="10" reuseIdentifier="multiTableViewCellID" rowHeight="93" id="KGk-i7-Jjw" customClass="WKMultiTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dt8-bW-50A" userLabel="titleLabel">
+                        <rect key="frame" x="26" y="22" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Pn-31-8a0">
+                        <rect key="frame" x="269" y="9.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="VvI-bc-3fx"/>
+                            <constraint firstAttribute="width" constant="25" id="e3o-Hj-Kok"/>
+                        </constraints>
+                        <state key="normal" title="chooseBtn" image="plan_unselect"/>
+                        <connections>
+                            <action selector="select" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iHm-sl-9ec"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wI-pO-yug" userLabel="lineView">
+                        <rect key="frame" x="0.0" y="42.5" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="SP6-Fv-Owt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="2Pn-31-8a0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ova-OD-5fj"/>
+                    <constraint firstItem="6wI-pO-yug" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="OwD-Li-pIx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="2Pn-31-8a0" secondAttribute="trailing" constant="10" id="T3g-OD-MJc"/>
+                    <constraint firstAttribute="trailing" secondItem="6wI-pO-yug" secondAttribute="trailing" id="fF7-JD-2UW"/>
+                    <constraint firstItem="Dt8-bW-50A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="fLN-ZB-gjh"/>
+                    <constraint firstAttribute="bottom" secondItem="6wI-pO-yug" secondAttribute="bottom" id="mBk-bN-eVH"/>
+                    <constraint firstItem="Dt8-bW-50A" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xEa-Jc-Vbs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="chooseBtn" destination="2Pn-31-8a0" id="JED-vD-18q"/>
+                <outlet property="titleLabel" destination="Dt8-bW-50A" id="IBi-Kw-zdt"/>
+            </connections>
+            <point key="canvasLocation" x="-1142.4000000000001" y="236.58170914542731"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="plan_unselect" width="20" height="20"/>
+    </resources>
+</document>

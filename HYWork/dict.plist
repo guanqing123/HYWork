@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>5000</key>
+	<string>服务器内部错误</string>
+	<key>1007</key>
+	<string>文件上传失败</string>
+	<key>1006</key>
+	<string>文件上传错误</string>
+	<key>1005</key>
+	<string>上传文件格式错误</string>
+	<key>1004</key>
+	<string>系统异常</string>
+	<key>1003</key>
+	<string>未找到服务号</string>
+	<key>1021</key>
+	<string>工作计划已经被评分,不可提交</string>
+	<key>1020</key>
+	<string>未获取流程信息</string>
+	<key>0001</key>
+	<string>工号或密码为空</string>
+	<key>0002</key>
+	<string>工号或密码错误</string>
+	<key>0003</key>
+	<string>工号不可用</string>
+	<key>1010</key>
+	<string>工号不能为空</string>
+	<key>1011</key>
+	<string>必要参数不能为空</string>
+	<key>1012</key>
+	<string>分页参数不能为空</string>
+	<key>1013</key>
+	<string>职位获取出错</string>
+	<key>1014</key>
+	<string>上级职位获取出错</string>
+	<key>1015</key>
+	<string>当前设备与当前工号绑定的考勤设备不匹配</string>
+	<key>1016</key>
+	<string>当前设备今日考勤记录与当前工号不匹配</string>
+	<key>1017</key>
+	<string>考勤系统繁忙，请稍后再试</string>
+	<key>1018</key>
+	<string>当前设备已绑定其他工号</string>
+	<key>1019</key>
+	<string>当前工号已绑定其他设备</string>
+	<key>1001</key>
+	<string>请求为空 即 content 为空</string>
+	<key>1002</key>
+	<string>请求格式错误</string>
+</dict>
+</plist>

@@ -1,0 +1,48 @@
+[{
+ "header" : "办公",
+ "r" : "66",
+ "g" : "114",
+ "b" : "215",
+ "items" : [
+            {"title":"OA办公","image":"oa","destVcClass":"OAViewController","order":"0","load":"1"},
+            {"title":"决策分析","image":"juecefenxi","destVcClass":"AppDelegate4OEM","order":"1","load":"1"},
+            {"title":"报销","image":"baoxiao","destVcClass":"BxViewController","order":"2","load":"1"},
+            {"title":"工作计划","image":"gongzuojihua","destVcClass":"GzjhViewController","order":"3","load":"1"},
+            {"title":"在线考勤","image":"zaixiankaoqin","destVcClass":"KqViewController","order":"4","load":"1"},
+            {"title":"企业邮箱","image":"email","destVcClass":"EmailViewController","order":"5","load":"1"},
+            {"title":"会议管理","image":"meeting","destVcClass":"WKMeetingViewController","order":"17","load":"1"}
+            ]
+ },{
+ "header" : "CRM",
+ "r" : "116",
+ "g" : "193",
+ "b" : "102",
+ "items" : [
+            {"title":"拜访足迹","image":"xierizi","destVcClass":"RjhTableViewController","order":"6","load":"1"},
+            {"title":"业务简报","image":"yewujianbao","destVcClass":"YwjbViewController","order":"7","load":"1"},
+            {"title":"客户开发","image":"kehukaifa","destVcClass":"KhkfViewController","order":"8","load":"1"},
+            {"title":"客户回访","image":"kehuhuifang","destVcClass":"KhhfViewController","order":"9","load":"1"},
+            ]
+ },{
+    "header" : "营销",
+    "r" : "230",
+    "g" : "0",
+    "b" : "18",
+    "items" : [
+            {"title":"公司动态","image":"gongsixinwen","destVcClass":"DtsController","order":"10","load":"0"},
+            {"title":"新品上市","image":"xinpinzixun","destVcClass":"XpssViewController","order":"11","load":"0"},
+            {"title":"经典作品","image":"yingxiaohuodong","destVcClass":"JdzpViewController","order":"12","load":"0"},
+            {"title":"产品空间","image":"chanpingkongjian","destVcClass":"WKCPKJViewController","order":"13","load":"1"},
+            ]
+  },{
+ "header" : "服务",
+ "r" : "128",
+ "g" : "88",
+ "b" : "189",
+ "items" : [
+            {"title":"关于鸿雁","image":"guanyuhongyan","destVcClass":"GyhyViewController","order":"14","load":"0"},
+            {"title":"防伪查询","image":"fangweichaxun","destVcClass":"FwcxNewVcViewController","order":"15","load":"0"},
+            {"title":"常见问题","image":"changjianwenti","destVcClass":"CjwtViewController","order":"16","load":"0"}
+            ]
+ }
+]

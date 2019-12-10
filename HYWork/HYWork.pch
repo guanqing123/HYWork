@@ -1,0 +1,117 @@
+//
+//  HYWork.pch
+//  HYWork
+//
+//  Created by information on 16/3/2.
+//  Copyright © 2016年 hongyan. All rights reserved.
+//
+
+#ifndef HYWork_pch
+#define HYWork_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+/************__OBJC__BEGIN************/
+// 里面的所有内容只能用到.m文件中或者.mm
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+
+    #ifdef DEBUG  // 调试阶段
+    #define GQLog(...) NSLog(__VA_ARGS__)
+    #else // 发布阶段
+    #define GQLog(...)
+    #endif
+
+// 正式库
+#define HYURL @"http://218.75.78.166:9106/app/api"
+#define emailURL @"http://218.75.78.166:9106/app"
+#define OAURL @"http://sge.cn:9106/app"
+
+// 测试库
+#define THYURL @"http://218.75.78.166:9105/app/api"
+
+#define DT  @"HYXK00003"
+#define SCROLL @"HYXK00019"
+
+#define LOGIN @"SGE00001"
+#define TXL @"SGE00002"
+#define EmpInfo @"SGE00003"
+
+#define KQ1 @"SGE00006"
+#define KQ2 @"SGE00007"
+
+#define BXLIST @"SGE00009"
+
+#define ZJGX @"SGE00004"
+#define WEEKPLANS @"SGE00005"
+#define WEEKLIST @"SGE00016"
+#define SAVEORCOMMIT @"SGE00017"
+#define PLANSTATE @"SGE00018"
+
+#define signCount @"SGE00031"
+
+#define signSavePage @"SGE00025"
+#define rjhList @"SGE00026"
+
+#define getQzBpc @"SGE00034"
+#define deleteBpc @"SGE00035"
+
+#define bpcSearch @"SGE00028"
+#define rjhDelete @"SGE00029"
+#define saveComment @"SGE00030"
+#define deleteComment @"SGE00033"
+
+//#define khhf @"SGE00037"
+#define khhf @"SGE00039"
+#define workType @"SGE00040"
+#define project @"SGE00041"
+#define getTjz5 @"SGE00043"
+#define saveQdkh @"SGE00044"
+#define getQdkh @"SGE00042"
+
+#define WEAKSELF __weak typeof(self) weakSelf = self;
+
+// 获得RGB颜色
+#define GQColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+// 主题色
+#define themeColor GQColor(0.0f, 157.0f, 133.0f)
+
+/** 屏幕高度 */
+#define SCREEN_WIDTH  ([[UIScreen mainScreen] bounds].size.width)
+/** 屏幕宽度 */
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+/** 状态栏高度 */
+#define HWStatusBarH [[UIApplication sharedApplication] statusBarFrame].size.height
+/** 导航栏高度 */
+#define HWNaviH 44.0f
+/** 顶部Nav高度+指示器 */
+#define HWTopNavH (HWStatusBarH + HWNaviH)
+/** 底部tab高度 */
+#define HWBottomTabH (HWStatusBarH > 20 ? 83 : 49)
+
+#define SearchBarHeight 44.0f
+//#define     NAV_BAR_HEIGHT                   64
+#define     NAV_BAR_HEIGHT                   HWTopNavH
+#define     TAB_BAR_HEIGHT                   49
+
+#define GzjhMenuHeight 45.0f
+
+#import <Masonry.h>
+#import "UIView+SPExtension.h"
+
+#import "WKHttpTool.h"
+
+#endif
+/************__OBJC__END************/
+
+
+#endif /* HYWork_pch */
+
+/**
+ pch文件的作用:
+ 1.存放一些全局的宏(整个项目中都用得上的宏)
+ 2.用来包含一些全部的头文件(整个项目中都用得上的头文件)
+ 3.能自动打开或者关闭日志输出功能
+ */
