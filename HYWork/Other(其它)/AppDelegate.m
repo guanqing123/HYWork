@@ -11,6 +11,7 @@
 
 #import "GzjhViewController.h"
 
+#import "WKPushViewController.h"
 #import "NoticePushViewController.h"
 #import "WKMeetingNoticeViewController.h"
 #import "NavigationController.h"
@@ -195,10 +196,21 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
                         NSLog(@"帐号 绑定 error = %@",res.error);
                     }
                 }];
+                // 提醒
+                [LoginManager remaindMe:@{@"ygbm": emp.ygbm} success:^(id json) {
+                    if ([[[json objectForKey:@"data"] objectForKey:@"flag"] boolValue]) {
+                        NSString *urlStr = [NSString stringWithFormat:@"%@?ygbm=%@", [[json objectForKey:@"data"] objectForKey:@"url"], emp.ygbm];
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            WKPushViewController *noticePush = [[WKPushViewController alloc] initWithUrlPath:urlStr];
+                            noticePush.title = [[json objectForKey:@"data"] objectForKey:@"title"];
+                            NavigationController *pushNav = [[NavigationController alloc] initWithRootViewController:noticePush];
+                            pushNav.modalPresentationStyle = UIModalPresentationFullScreen;
+                            [self.window.rootViewController presentViewController:pushNav animated:YES completion:nil];
+                        });
+                    }
+                } fail:^{}];
             }
-        } fail:^{
-            
-        }];
+        } fail:^{}];
         /*LoadViewController *loadViewController = [LoadViewController shareInstance];
         loadViewController.emp = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
         loadViewController.loading = YES;
@@ -375,18 +387,21 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 WKMeetingNoticeViewController *noticePush = [[WKMeetingNoticeViewController alloc] initWithUrlPath:newUrl];
                 NavigationController *pushNav = [[NavigationController alloc] initWithRootViewController:noticePush];
+                pushNav.modalPresentationStyle = UIModalPresentationFullScreen;
                 [self.window.rootViewController presentViewController:pushNav animated:YES completion:nil];
             });
         }else if(workplan.location != NSNotFound){
             GzjhViewController *workPlanVc = [[GzjhViewController alloc] init];
             [workPlanVc setPop:YES];
             NavigationController *pushNav = [[NavigationController alloc] initWithRootViewController:workPlanVc];
+            pushNav.modalPresentationStyle = UIModalPresentationFullScreen;
             [self.window.rootViewController presentViewController:pushNav animated:YES completion:nil];
         }else{
             newUrl = url;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 NoticePushViewController *noticePush = [[NoticePushViewController alloc] initWithUrlPath:newUrl];
                 NavigationController *pushNav = [[NavigationController alloc] initWithRootViewController:noticePush];
+                pushNav.modalPresentationStyle = UIModalPresentationFullScreen;
                 [self.window.rootViewController presentViewController:pushNav animated:YES completion:nil];
             });
         }
@@ -462,17 +477,20 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 WKMeetingNoticeViewController *noticePush = [[WKMeetingNoticeViewController alloc] initWithUrlPath:newUrl];
                 NavigationController *pushNav = [[NavigationController alloc] initWithRootViewController:noticePush];
+                pushNav.modalPresentationStyle = UIModalPresentationFullScreen;
                 [self.window.rootViewController presentViewController:pushNav animated:YES completion:nil];
             });
         }else if(workplan.location != NSNotFound){
             GzjhViewController *workPlanVc = [[GzjhViewController alloc] init];
             NavigationController *pushNav = [[NavigationController alloc] initWithRootViewController:workPlanVc];
+            pushNav.modalPresentationStyle = UIModalPresentationFullScreen;
             [self.window.rootViewController presentViewController:pushNav animated:YES completion:nil];
         }else{
             newUrl = url;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 NoticePushViewController *noticePush = [[NoticePushViewController alloc] initWithUrlPath:newUrl];
                 NavigationController *pushNav = [[NavigationController alloc] initWithRootViewController:noticePush];
+                pushNav.modalPresentationStyle = UIModalPresentationFullScreen;
                 [self.window.rootViewController presentViewController:pushNav animated:YES completion:nil];
             });
         }

@@ -71,6 +71,7 @@
     HtmlViewController *htmlVc = [[HtmlViewController alloc] init];
     htmlVc.html = self.htmls[indexPath.row];
     NavigationController *nav = [[NavigationController alloc] initWithRootViewController:htmlVc];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 

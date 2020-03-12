@@ -226,7 +226,7 @@
         tempArray = [tempArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
             Item *i1 = obj1;
             Item *i2 = obj2;
-            return [i1.order compare:i2.order];
+            return [@([i1.order integerValue]) compare:@([i2.order integerValue])];
         }];
         _cyArray = [tempArray mutableCopy];
     }else {
@@ -341,7 +341,7 @@
         tempArray = [tempArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
             Item *i1 = obj1;
             Item *i2 = obj2;
-            return [i1.order compare:i2.order];
+            return [@([i1.order integerValue]) compare:@([i2.order integerValue])];
         }];
         _cyArray = [tempArray mutableCopy];
     }else {

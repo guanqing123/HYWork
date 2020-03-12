@@ -317,6 +317,7 @@
 		D610B0291ECD3CBD00650054 /* PlanContentPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D610B0281ECD3CBD00650054 /* PlanContentPhotoView.m */; };
 		D610B02C1ECD3E4C00650054 /* PlanPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = D610B02B1ECD3E4C00650054 /* PlanPhotosView.m */; };
 		D611F4001EF3B63500C02E4E /* YwjbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D611F3FF1EF3B63500C02E4E /* YwjbViewController.m */; };
+		D61270142419FC6D007ADEB2 /* WKYszkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61270132419FC6D007ADEB2 /* WKYszkViewController.m */; };
 		D613AF661ED85D120061D1A8 /* RjhSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D613AF651ED85D120061D1A8 /* RjhSignIn.m */; };
 		D613AF6C1ED85FB30061D1A8 /* NSObject+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D613AF6B1ED85FB30061D1A8 /* NSObject+Extension.m */; };
 		D6140F6620AE5AD70084A3DD /* WKBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D6140F3D20AE5AD70084A3DD /* WKBase.m */; };
@@ -349,6 +350,7 @@
 		D614B9861F1F5A8800F6CFEC /* SDWebImageManager+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = D614B9851F1F5A8800F6CFEC /* SDWebImageManager+MJ.m */; };
 		D6158C091F25B6EF008B84B2 /* KhkfWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6158C081F25B6EF008B84B2 /* KhkfWebViewController.m */; };
 		D615EC521FCE4949004ED981 /* FwcxNewView.m in Sources */ = {isa = PBXBuildFile; fileRef = D615EC511FCE4949004ED981 /* FwcxNewView.m */; };
+		D616A5992418CE7F00EFBA6D /* WKPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D616A5982418CE7F00EFBA6D /* WKPushViewController.m */; };
 		D616CA921F21C9EA008A7180 /* KhkfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D616CA911F21C9EA008A7180 /* KhkfViewController.m */; };
 		D616CA961F21CDCB008A7180 /* KhSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = D616CA951F21CDCB008A7180 /* KhSearchView.m */; };
 		D616CA9A1F21E4FE008A7180 /* KhkfManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D616CA991F21E4FE008A7180 /* KhkfManager.m */; };
@@ -1356,6 +1358,8 @@
 		D610B02B1ECD3E4C00650054 /* PlanPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanPhotosView.m; sourceTree = "<group>"; };
 		D611F3FE1EF3B63500C02E4E /* YwjbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YwjbViewController.h; sourceTree = "<group>"; };
 		D611F3FF1EF3B63500C02E4E /* YwjbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YwjbViewController.m; sourceTree = "<group>"; };
+		D61270122419FC6D007ADEB2 /* WKYszkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKYszkViewController.h; sourceTree = "<group>"; };
+		D61270132419FC6D007ADEB2 /* WKYszkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKYszkViewController.m; sourceTree = "<group>"; };
 		D613AF641ED85D120061D1A8 /* RjhSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RjhSignIn.h; sourceTree = "<group>"; };
 		D613AF651ED85D120061D1A8 /* RjhSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RjhSignIn.m; sourceTree = "<group>"; };
 		D613AF6A1ED85FB30061D1A8 /* NSObject+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Extension.h"; sourceTree = "<group>"; };
@@ -1417,6 +1421,8 @@
 		D6158C081F25B6EF008B84B2 /* KhkfWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KhkfWebViewController.m; sourceTree = "<group>"; };
 		D615EC501FCE4949004ED981 /* FwcxNewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FwcxNewView.h; sourceTree = "<group>"; };
 		D615EC511FCE4949004ED981 /* FwcxNewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FwcxNewView.m; sourceTree = "<group>"; };
+		D616A5972418CE7F00EFBA6D /* WKPushViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKPushViewController.h; sourceTree = "<group>"; };
+		D616A5982418CE7F00EFBA6D /* WKPushViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKPushViewController.m; sourceTree = "<group>"; };
 		D616CA901F21C9EA008A7180 /* KhkfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KhkfViewController.h; sourceTree = "<group>"; };
 		D616CA911F21C9EA008A7180 /* KhkfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KhkfViewController.m; sourceTree = "<group>"; };
 		D616CA941F21CDCB008A7180 /* KhSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KhSearchView.h; sourceTree = "<group>"; };
@@ -3195,6 +3201,23 @@
 			name = YWJB;
 			sourceTree = "<group>";
 		};
+		D61270102419F940007ADEB2 /* 应收管理 */ = {
+			isa = PBXGroup;
+			children = (
+				D61270112419F993007ADEB2 /* Controller */,
+			);
+			path = "应收管理";
+			sourceTree = "<group>";
+		};
+		D61270112419F993007ADEB2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D61270122419FC6D007ADEB2 /* WKYszkViewController.h */,
+				D61270132419FC6D007ADEB2 /* WKYszkViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		D6140F3920AE5AD70084A3DD /* KHHF(客户回访) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3510,6 +3533,8 @@
 				D6AEB1DE1FD93D9300DFF8AE /* NoticePushViewController.m */,
 				D6174D3420AAD3FC0024BE60 /* WKHttpTool.h */,
 				D6174D3520AAD3FC0024BE60 /* WKHttpTool.m */,
+				D616A5972418CE7F00EFBA6D /* WKPushViewController.h */,
+				D616A5982418CE7F00EFBA6D /* WKPushViewController.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -4388,6 +4413,7 @@
 		D6D903601C7FE53E00BAD105 /* GN */ = {
 			isa = PBXGroup;
 			children = (
+				D61270102419F940007ADEB2 /* 应收管理 */,
 				D69737442355BF0700A08856 /* 决策分析 */,
 				D62E43BA22F57DFE008CE89C /* 会议管理 */,
 				D62D1D792244861F0051B5E9 /* CPKJ(产品空间) */,
@@ -4924,7 +4950,7 @@
 					D6032BFE1C7D88B80073E306 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 8Y6S2469TB;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -5289,6 +5315,7 @@
 				D6F50CC01CE46BE100F96320 /* BxFooterView.m in Sources */,
 				D60D29C81E8A52920051B33F /* ZXReedSolomonDecoder.m in Sources */,
 				D6140F7220AE5AD70084A3DD /* WKKhhfTableResult.m in Sources */,
+				D616A5992418CE7F00EFBA6D /* WKPushViewController.m in Sources */,
 				D6032C1E1C7DA9B60073E306 /* NavigationController.m in Sources */,
 				D60D2A691E8A52930051B33F /* ZXQRCodeWriter.m in Sources */,
 				D6FB3C661CF53DA20042D0BF /* WeekPlan.m in Sources */,
@@ -5446,6 +5473,7 @@
 				D6174D4D20AAE01D0024BE60 /* WKBaseResult.m in Sources */,
 				D6D50EC91C8D506C000424EF /* DtDetailController.m in Sources */,
 				D60D2A191E8A52930051B33F /* ZXRSSDataCharacter.m in Sources */,
+				D61270142419FC6D007ADEB2 /* WKYszkViewController.m in Sources */,
 				D60416B91ED947440040355F /* RjhManager.m in Sources */,
 				D60D29B81E8A52920051B33F /* ZXURIResultParser.m in Sources */,
 				D6D442C71C8678AC00134D2A /* UIImage+Extension.m in Sources */,
@@ -5768,9 +5796,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HYWork/HYWork.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8Y6S2469TB;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5805,7 +5833,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hongyan.HYWork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = hy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -5817,10 +5845,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HYWork/HYWork.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 8Y6S2469TB;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5854,7 +5882,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hongyan.HYWork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = hy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};

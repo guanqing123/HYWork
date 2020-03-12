@@ -7,6 +7,7 @@
 //
 
 #import "LoginManager.h"
+#import "WKHttpTool.h"
 
 @implementation LoginManager
 
@@ -44,6 +45,18 @@
     } failure:^(NSError *error) {
         fail();
     }];
+}
+
++ (void)remaindMe:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)())fail {
+    
+    NSString *urlStr = @"http://dev.sge.cn/hyapp/yszk/isShow";
+    
+    [WKHttpTool postWithUrl:urlStr param:params success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        fail();
+    }];
+    
 }
 
 @end
