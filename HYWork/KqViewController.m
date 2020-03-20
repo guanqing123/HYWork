@@ -316,7 +316,7 @@
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     
     // 设置允许在后台定位
-    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+    [self.locationManager setAllowsBackgroundLocationUpdates:NO];
 }
 
 #pragma mark - 初始化 导航 tableView
