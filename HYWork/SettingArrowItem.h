@@ -14,7 +14,7 @@
  */
 @property (nonatomic, assign) Class destVcClass;
 
-+ (instancetype)itemWithIcon:(NSString *)icon title:(NSString *)title destVcClass:(Class)destVcClass;
++ (instancetype)itemWithIcon:(NSString *)icon title:(NSString *)title destVcClass:(Class)destVcClass loaded:(BOOL)loaded;
 + (instancetype)itemWithTitle:(NSString *)title destVcClass:(Class)destVcClass;
 
 @end

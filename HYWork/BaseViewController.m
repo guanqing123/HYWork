@@ -11,6 +11,7 @@
 #import "SettingArrowItem.h"
 #import "SettingSwitchItem.h"
 #import "SettingCell.h"
+#import "LoadViewController.h"
 
 @implementation BaseViewController
 
@@ -64,9 +65,17 @@
     SettingGroup *group = self.data[indexPath.section];
     SettingItem *item = group.items[indexPath.row];
     
+    //判断登陆
+    if (item.loaded && ![LoadViewController shareInstance].isLoaded) {
+        LoadViewController *loadVc = [LoadViewController shareInstance];
+        loadVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:loadVc animated:YES];
+        return;
+    }
+    
     if (item.option) { // block有值(点击这个cell,有特定的操作
         item.option();
-    }else if ([item isKindOfClass:[SettingArrowItem class]]) { // 箭头
+    } else if ([item isKindOfClass:[SettingArrowItem class]]) { // 箭头
         SettingArrowItem *arrowItem = (SettingArrowItem *)item;
         
         // 如果没有需要跳转的控制器

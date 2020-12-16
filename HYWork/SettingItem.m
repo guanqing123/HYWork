@@ -10,11 +10,16 @@
 
 @implementation SettingItem
 
-+ (instancetype)itemWithIcon:(NSString *)icon title:(NSString *)title {
++ (instancetype)itemWithIcon:(NSString *)icon title:(NSString *)title loaded:(BOOL)loaded {
     SettingItem *item = [[self alloc] init];
     item.icon = icon;
     item.title = title;
+    item.loaded = loaded;
     return item;
+}
+
++ (instancetype)itemWithIcon:(NSString *)icon title:(NSString *)title {
+    return [self itemWithIcon:icon title:title loaded:NO];
 }
 
 + (instancetype)itemWithTitle:(NSString *)title {

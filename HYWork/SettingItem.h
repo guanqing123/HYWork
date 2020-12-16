@@ -29,6 +29,12 @@ typedef void (^SettingItemOption)();
  */
 @property (nonatomic, copy) SettingItemOption option;
 
+/**
+ 是否需要登录
+ */
+@property (nonatomic, assign) BOOL loaded;
+
++ (instancetype)itemWithIcon:(NSString *)icon title:(NSString *)title loaded:(BOOL)loaded;
 + (instancetype)itemWithIcon:(NSString *)icon title:(NSString *)title;
 + (instancetype)itemWithTitle:(NSString *)title;
 @end

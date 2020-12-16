@@ -8,7 +8,9 @@
 
 #import "TabBarController.h"
 #import "ViewController.h"
-#import "TxlViewController.h"
+#import "WKLearnViewController.h"
+//#import "TxlViewController.h"
+#import "WKHyShopViewController.h"
 #import "GNViewController.h"
 #import "MyViewController.h"
 #import "NavigationController.h"
@@ -26,7 +28,9 @@
     [super viewDidLoad];
     _tabs = [NSMutableArray array];
     [self initIndexNavigation];
-    [self initTxlNavigation];
+    [self initLearnNavigation];
+//    [self initTxlNavigation];
+    [self initHyShop];
     [self initGnNavigation];
     [self initMyNavigation];
     self.viewControllers = _tabs;
@@ -53,16 +57,38 @@
      */
     [_tabs addObject:indexNav];
     indexNav.tabBarItem.title = @"首 页";
+    indexNav.tabBarItem.tag = TabBarItemTypeIndex;
 }
 
-- (void)initTxlNavigation{
+- (void)initLearnNavigation{
+    _learnVc = [[WKLearnViewController alloc] init];
+    _learnVc.view.backgroundColor = [UIColor whiteColor];
+    _learnVc.navigationItem.title = @"学习";
+    NavigationController *learnNav = [[NavigationController alloc] initWithRootViewController:_learnVc];
+    learnNav.tabBarItem.title = @"学习";
+    learnNav.tabBarItem.tag = TabBarItemTypeLearning;
+    [_tabs addObject:learnNav];
+}
+
+- (void)initHyShop {
+    _hyshopVc = [[WKHyShopViewController alloc] init];
+    _hyshopVc.view.backgroundColor = [UIColor whiteColor];
+    _hyshopVc.navigationItem.title = @"鸿雁商城";
+    NavigationController *hyshopNav = [[NavigationController alloc] initWithRootViewController:_hyshopVc];
+    hyshopNav.tabBarItem.title = @"鸿雁商城";
+    hyshopNav.tabBarItem.tag = TabBarItemTypeHyshop;
+    [_tabs addObject:hyshopNav];
+}
+
+/*- (void)initTxlNavigation{
     _txlController = [[TxlViewController alloc] init];
     _txlController.view.backgroundColor = [UIColor whiteColor];
     _txlController.navigationItem.title = @"通讯录";
     NavigationController *txlNav = [[NavigationController alloc] initWithRootViewController:_txlController];
     txlNav.tabBarItem.title = @"通讯录";
+    txlNav.tabBarItem.tag = TabBarItemTypeAddressList;
     [_tabs addObject:txlNav];
-}
+}*/
 
 /**
  *  初始化功能Nav
@@ -73,6 +99,7 @@
     _gnViewController.navigationItem.title = @"功 能";
     NavigationController *funcNav = [[NavigationController alloc] initWithRootViewController:_gnViewController];
     funcNav.tabBarItem.title = @"功 能";
+    funcNav.tabBarItem.tag = TabBarItemTypeFunction;
     [_tabs addObject:funcNav];
 }
 
@@ -85,6 +112,7 @@
     _myViewController.navigationItem.title = @"我 的";
     NavigationController *myNav = [[NavigationController alloc] initWithRootViewController:_myViewController];
     myNav.tabBarItem.title = @"我 的";
+    myNav.tabBarItem.tag = TabBarItemTypeMe;
     [_tabs addObject:myNav];
     //[self addChildViewController:myNav];
 }
@@ -109,7 +137,7 @@
     }
     
     //ios12.1 适配
-    [self.tabBar setTranslucent:NO];
+//    [self.tabBar setTranslucent:NO];
     
     // 有消息显示的小红点
 //    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - self.view.frame.size.width * 1/ 8, 0.5f, 10, 10)];

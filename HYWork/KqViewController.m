@@ -213,7 +213,7 @@
 
 - (void)setVisiableMapRect:(CLLocationCoordinate2D)coordinate {
     
-    MACircle *visiable = [MACircle circleWithCenterCoordinate:coordinate radius:150];
+    MACircle *visiable = [MACircle circleWithCenterCoordinate:coordinate radius:250];
     [self.mapView setVisibleMapRect:visiable.boundingMapRect];
     
     //指北针
@@ -255,7 +255,7 @@
     __weak typeof(self) weakSelf = self;
     [manager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
         [weakSelf didSomeThingWithReGeocode:regeocode Error:error];
-        MACircle *circle = [MACircle circleWithCenterCoordinate:location.coordinate radius:150];
+        MACircle *circle = [MACircle circleWithCenterCoordinate:location.coordinate radius:250];
         [weakSelf.mapView setVisibleMapRect:circle.boundingMapRect];
     }];
 }
@@ -297,7 +297,7 @@
         CGSize size = self.mapView.frame.size;
         CGPoint point = [self.mapView convertCoordinate:userLocation.coordinate toPointToView:self.mapView];
         if ((point.x <=0 || point.y <=0 || point.x >=size.width || point.y >=size.height) && _click) {
-            MACircle *visiable = [MACircle circleWithCenterCoordinate:userLocation.coordinate radius:150];
+            MACircle *visiable = [MACircle circleWithCenterCoordinate:userLocation.coordinate radius:250];
             [self.mapView setVisibleMapRect:visiable.boundingMapRect];
         }
     }

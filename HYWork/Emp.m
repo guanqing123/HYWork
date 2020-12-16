@@ -28,6 +28,7 @@
     [coder encodeObject:self.xzzj forKey:@"xzzj"];
     [coder encodeObject:self.frdz forKey:@"frdz"];
     [coder encodeObject:self.mm forKey:@"mm"];
+    [coder encodeObject:self.token forKey:@"token"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -48,6 +49,7 @@
         self.xzzj = [aDecoder decodeObjectForKey:@"xzzj"];
         self.frdz = [aDecoder decodeObjectForKey:@"frdz"];
         self.mm = [aDecoder decodeObjectForKey:@"mm"];
+        self.token = [aDecoder decodeObjectForKey:@"token"];
     }
     return self;
 }

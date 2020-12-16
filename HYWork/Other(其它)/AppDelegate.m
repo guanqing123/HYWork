@@ -18,24 +18,32 @@
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
-
 // 腾讯开始平台(对应QQ和QQ空间) SDK头文件
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TencentOpenAPI/QQApiInterface.h>
-
 // 微信SDK头文件
 #import "WXApi.h"
-
 // 新浪微博SDK头文件
 #import "WeiboSDK.h"
 // 新浪微博SDK需要在项目Build Setting中的Other Linker Flag添加"-ObjC"
 
+// app更新
 #import "ATAppUpdater.h"
+
+// 高德
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import "APIKey.h"
 
 // 阿里Push
 #import <CloudPushSDK/CloudPushSDK.h>
 // iOS 10 notification
 #import <UserNotifications/UserNotifications.h>
+
+// token
+#import "MJExtension.h"
+
+// 加密
+#import "DES3EncryptUtil.h"
 
 static NSString *const aliyunPushAppKey = @"24706589";
 static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576";
@@ -51,7 +59,7 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     //这里我判断的是当前点击的tabBarItem的标题
-    LoadViewController *loadController = [LoadViewController shareInstance];
+    /*LoadViewController *loadController = [LoadViewController shareInstance];
     if ([viewController.tabBarItem.title isEqualToString:@"通讯录"]) {
         if (loadController.isLoaded) {
             return YES;
@@ -62,7 +70,37 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
         }
     }else{
         return YES;
+    }*/
+    //这里我判断的是当前点击的tabBarItem的tag
+    BOOL pass = YES;
+    LoadViewController *loadVc = [LoadViewController shareInstance];
+    switch (viewController.tabBarItem.tag) {
+        case TabBarItemTypeHyshop: {
+            if (loadVc.isLoaded) {
+                pass = YES;
+            } else {
+                loadVc.hidesBottomBarWhenPushed = YES;
+                [((UINavigationController *)tabBarController.selectedViewController) pushViewController:loadVc animated:YES];
+                pass = NO;
+            }
+            break;
+        }
+        case TabBarItemTypeLearning: {
+            if (loadVc.isLoaded) {
+                pass = YES;
+            } else {
+                loadVc.hidesBottomBarWhenPushed = YES;
+                [((UINavigationController *)tabBarController.selectedViewController) pushViewController:loadVc animated:YES];
+                pass = NO;
+            }
+            break;
+        }
+        default: {
+            pass = YES;
+            break;
+        }
     }
+    return pass;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -106,15 +144,15 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
  *  app启动完毕就会调用
  */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    [AMapServices sharedServices].apiKey = (NSString *)APIKey;
+    
     [[ATAppUpdater sharedUpdater] showUpdateWithConfirmation];
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     _tabBarViewController = [[TabBarController alloc] init];
     _tabBarViewController.delegate = self;
     self.window.rootViewController = _tabBarViewController;
-    [self.window makeKeyAndVisible];
-    
+    [self.window makeKeyAndVisible];*/
     
 //    NSLog(@"%@",[[NSBundle mainBundle] pathForResource:@"friends" ofType:@"plist"]);
 //    NSLog(@"%@",[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]);
@@ -125,7 +163,7 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
      *  在此事件中写入连接代码。第四个参数则为配置本地社交平台时触发，根据返回的平台类型来配置平台信息。
      *  如果您使用的时服务端托管平台信息时，第二、四项参数可以传入nil，第三项参数则根据服务端托管平台来决定要连接的社交SDK。
      */
-    [ShareSDK registerApp:@"14208624a6e82" activePlatforms:@[@(SSDKPlatformTypeSinaWeibo),@(SSDKPlatformTypeWechat),@(SSDKPlatformTypeQQ)] onImport:^(SSDKPlatformType platformType) {
+    /*[ShareSDK registerApp:@"14208624a6e82" activePlatforms:@[@(SSDKPlatformTypeSinaWeibo),@(SSDKPlatformTypeWechat),@(SSDKPlatformTypeQQ)] onImport:^(SSDKPlatformType platformType) {
         switch (platformType) {
             case SSDKPlatformTypeWechat:
                 [ShareSDKConnector connectWeChat:[WXApi class]];
@@ -156,6 +194,17 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
             default:
                 break;
         }
+    }];*/
+    [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
+        //QQ
+        [platformsRegister setupQQWithAppId:@"1105429415" appkey:@"o5wTZLPEJkrUfLap" enableUniversalLink:YES universalLink:@"https://xocgr.share2dlink.com/qq_conn/1105429415"];
+        
+        //更新到4.3.3或者以上版本，微信初始化需要使用以下初始化
+        [platformsRegister setupWeChatWithAppId:@"wx56856a3367e14212" appSecret:@"24fcde9de9caaa524ada50fd58b97ca9" universalLink:@"https://xocgr.share2dlink.com/"];
+        
+        // https://www.jianshu.com/p/bd5667979eaa
+        //新浪
+        [platformsRegister setupSinaWeiboWithAppkey:@"3002122402" appSecret:@"9f9359d8ebf438a14bf11f1901f24a1e" redirectUrl:@"https://api.weibo.com/oauth2/default.html"];
     }];
     
     // aliyun push
@@ -177,18 +226,26 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
     // 初始化用户的登录状态
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSData *userData = [userDefault objectForKey:@"emp"];
+    LoadViewController *loadVc = [LoadViewController shareInstance];
     if (userData) {
         Emp *emp = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+        loadVc.emp = emp;
         if (emp.mm == nil)
             return YES;
         [LoginManager postJSONWithUrl:HYURL gh:emp.ygbm mm:emp.mm success:^(id json) {
             NSDictionary *header = [json objectForKey:@"header"];
             if ([[header objectForKey:@"succflag"] intValue] == 1) {
-                LoadViewController *loadViewController = [LoadViewController shareInstance];
-                loadViewController.emp = emp;
-                loadViewController.loading = YES;
-                NSString *temp = loadViewController.emp.ecologyid;
-                NSString *ecologyid = [NSString stringWithFormat:@"%@",temp];
+                NSDictionary *data = [json objectForKey:@"data"];
+                Emp *newEmp = [Emp mj_objectWithKeyValues:data];
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                BOOL  flag = [userDefaults boolForKey:@"自动登录"];
+                if (flag) {
+                    NSData *empData = [NSKeyedArchiver archivedDataWithRootObject:newEmp];
+                    [userDefaults setObject:empData forKey:@"emp"];
+                }
+                loadVc.emp = newEmp;
+                loadVc.loading = YES;
+                NSString *ecologyid = [NSString stringWithFormat:@"%@",loadVc.emp.ecologyid];
                 [CloudPushSDK bindAccount:ecologyid withCallback:^(CloudPushCallbackResult *res) {
                     if (res.success) {
                         NSLog(@"帐号%@绑定成功...",ecologyid);
@@ -224,6 +281,12 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
             }
         }];*/
     }
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    _tabBarViewController = [[TabBarController alloc] init];
+    _tabBarViewController.delegate = self;
+    self.window.rootViewController = _tabBarViewController;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

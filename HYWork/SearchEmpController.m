@@ -174,7 +174,8 @@
             NSArray *emps = [_citiesDic valueForKey:key];
             for (NSDictionary *dict in emps) {
                 NSRange titleResult = [dict[@"pinyinlastname"] rangeOfString:searchText options:NSCaseInsensitiveSearch];
-                if (titleResult.length > 0) {
+                NSRange telResult = [dict[@"mobile"] rangeOfString:searchText options:NSCaseInsensitiveSearch];
+                if (titleResult.length > 0 || telResult.length > 0) {
                     [self.searchResults addObject:dict];
                 }
             }

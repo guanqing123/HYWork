@@ -77,4 +77,9 @@
  */
 @property (nonatomic, copy) NSString *mm;
 
+/**
+ token
+ */
+@property (nonatomic, copy) NSString *token;
+
 @end

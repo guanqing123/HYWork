@@ -292,15 +292,15 @@
 #pragma mark - FineReport
 - (void)invokeFRRootVc:(Item *)item emp:(Emp *)emp{
     
-    NSString *url = emp.frdz;
+//    NSString *url = emp.frdz;
     NSString *username = emp.ygbm;
     NSString *password = emp.oamm;
     
-    if (@available(iOS 13.0, *)) {
+    //if (@available(iOS 13.0, *)) {
         WKJCFXViewController *jcfxVc = [[WKJCFXViewController alloc] initWithUserName:username password:password];
         jcfxVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:jcfxVc animated:YES];
-    } else {
+    /*} else {
     
         [indicator startAnimation];  //开始转动
         
@@ -323,7 +323,7 @@
             [alert show];
         }];
         
-    }
+    }*/
 }
 
 #pragma mark - addItemController delegate

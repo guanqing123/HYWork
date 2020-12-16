@@ -17,7 +17,7 @@
         self.tintColor = GQColor(41, 108, 254);
         
         self.textAlignment = NSTextAlignmentLeft;
-        self.placeholder = @"输入员工姓名查询";
+        self.placeholder = @"姓名中文/首字母、部门名称、手机号";
         self.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         

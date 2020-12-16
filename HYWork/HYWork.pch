@@ -29,6 +29,19 @@
 #define emailURL @"http://218.75.78.166:9106/app"
 #define OAURL @"http://sge.cn:9106/app"
 
+// 任务点检
+#define RenWuURL @"http://dev.sge.cn/hywork/gwork/gwork.html?ygbm=%@"
+
+//H5基础路径
+#define H5URL @"http://dev.sge.cn/hywork"
+
+#define LNURL @"http://kms.sge.cn?mobile=%@"
+
+//售后反馈
+#define AfterSale @"/gsaleservice/gserviceList.html"
+//园区
+#define ParkLife @"/gpark/gordering/gordering.html"
+
 // 测试库
 #define THYURL @"http://218.75.78.166:9105/app/api"
 

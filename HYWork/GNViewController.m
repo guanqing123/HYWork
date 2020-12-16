@@ -207,15 +207,15 @@
 #pragma mark - FineReport
 - (void)invokeFRRootVc:(Item *)item {
     
-    NSString *url = _loadViewController.emp.frdz;
+//    NSString *url = _loadViewController.emp.frdz;
     NSString *username = _loadViewController.emp.ygbm;
     NSString *password = _loadViewController.emp.oamm;
     
-    if (@available(iOS 13.0, *)) {
+    //if (@available(iOS 13.0, *)) {
         WKJCFXViewController *jcfxVc = [[WKJCFXViewController alloc] initWithUserName:username password:password];
         jcfxVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:jcfxVc animated:YES];
-    } else {
+    /*} else {
     
         [indicator startAnimation];  //开始转动
         
@@ -237,7 +237,7 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:msg delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
             [alert show];
         }];
-    }
+    }*/
 }
 
 #pragma mark -屏幕横竖屏设置

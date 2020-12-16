@@ -111,7 +111,7 @@
 - (void)loadControllers {
     
     _viewControllers = [[NSMutableArray alloc] init];
-    if ([self.xzzj intValue] > 2) {
+    if ([self.xzzj intValue] > 2) { // 三级以上经理
         _weekVC = [[WeekPlanController alloc] init];
         _wkmonthVC = [[WKMonthViewController alloc] init];
         

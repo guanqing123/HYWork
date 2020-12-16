@@ -41,9 +41,10 @@
  "g" : "88",
  "b" : "189",
  "items" : [
-            {"title":"关于鸿雁","image":"guanyuhongyan","destVcClass":"GyhyViewController","order":"16","load":"0"},
-            {"title":"防伪查询","image":"fangweichaxun","destVcClass":"FwcxNewVcViewController","order":"17","load":"0"},
-            {"title":"常见问题","image":"changjianwenti","destVcClass":"CjwtViewController","order":"18","load":"0"}
-            ]
+            {"title":"售后服务","image":"shouhoufankui","destVcClass":"WKAfterSaleViewController","order":"17","load":"1"},
+            {"title":"关于鸿雁","image":"guanyuhongyan","destVcClass":"GyhyViewController","order":"18","load":"0"},
+            {"title":"防伪查询","image":"fangweichaxun","destVcClass":"FwcxNewVcViewController","order":"19","load":"0"},
+            {"title":"常见问题","image":"changjianwenti","destVcClass":"CjwtViewController","order":"20","load":"0"}
+        ]
  }
 ]

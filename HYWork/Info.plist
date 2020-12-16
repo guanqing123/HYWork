@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
+	<key>CFBundleDisplayName</key>
+	<string>鸿雁云商</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -35,7 +37,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>QQ41E46510</string>
+				<string>QQ41E383A7</string>
 			</array>
 		</dict>
 		<dict>
@@ -64,6 +66,7 @@
 		<string>weibosdk2.5</string>
 		<string>wechat</string>
 		<string>weixin</string>
+		<string>weixinULAPI</string>
 		<string>mqzoneopensdk</string>
 		<string>mqzoneopensdkapi</string>
 		<string>mqzoneopensdkapi19</string>
@@ -76,9 +79,15 @@
 		<string>mqqwpa</string>
 		<string>mqzone</string>
 		<string>mqq</string>
+		<string>mqqopensdkapiV4</string>
+		<string>mqqopensdkminiapp</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MOBAppKey</key>
+	<string>14208624a6e82</string>
+	<key>MOBAppSecret</key>
+	<string>cabb0fd18b10536165b3e72ea97ca710</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GNViewController : UICollectionViewController
+@interface  GNViewController : UICollectionViewController
 
 @end

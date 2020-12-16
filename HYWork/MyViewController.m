@@ -12,6 +12,14 @@
 #import "SettingSwitchItem.h"
 #import "SettingGroup.h"
 #import "LoadViewController.h"
+
+// 任务点检
+#import "WKRenwuViewController.h"
+// 园区
+#import "WKParkViewController.h"
+// 通讯录
+#import "WKAddressListViewController.h"
+
 #import "HelpViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "LoadViewController.h"
@@ -223,6 +231,7 @@
         _loginMsg = @"未登录";
         _btnTitle = @"登录";
         _btnColor = GQColor(0.0f, 157.0f, 133.0f);
+        [self.tableView reloadData];
     }
 }
 
@@ -230,8 +239,20 @@
  *  初始化数据
  */
 - (void)initData {
+    // 目标任务点检
+    SettingItem *renwu = [SettingArrowItem itemWithIcon:@"renwu" title:@"目标任务点检" destVcClass:[WKRenwuViewController class] loaded:YES];
+    // 园区生活
+    SettingItem *park = [SettingArrowItem itemWithIcon:@"park" title:@"园区生活" destVcClass:[WKParkViewController class] loaded:YES];
+    // 通讯录
+    SettingItem *concats = [SettingArrowItem itemWithIcon:@"concats" title:@"通讯录" destVcClass:[WKAddressListViewController class] loaded:YES];
+    
+    SettingGroup *group0 = [[SettingGroup alloc] init];
+    group0.items = @[renwu, park, concats];
+    [self.data addObject:group0];
+    
+    
     //帮助
-    SettingItem *help = [SettingArrowItem itemWithIcon:@"help" title:@"帮助" destVcClass:[HelpViewController class]];
+    SettingItem *help = [SettingArrowItem itemWithIcon:@"help" title:@"帮助" destVcClass:[HelpViewController class] loaded:NO];
     
     //自动登陆
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -240,12 +261,8 @@
     
     SettingItem *autoLogin = [SettingSwitchItem itemWithIcon:@"zidongdenglu" title:@"自动登录"];
     
-    SettingGroup *group0 = [[SettingGroup alloc] init];
-    group0.items = @[help, autoLogin];
-    [self.data addObject:group0];
-    
     //分享
-    SettingItem *share = [SettingArrowItem itemWithIcon:@"fenxiang" title:@"分享" destVcClass:nil];
+    SettingItem *share = [SettingArrowItem itemWithIcon:@"fenxiang" title:@"分享" destVcClass:nil loaded:NO];
     share.option = ^{
         // 1.创建分享参数
         NSArray *imageArray = @[[UIImage imageNamed:@"shareImg"]];
@@ -253,7 +270,7 @@
             NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
             [shareParams SSDKSetupShareParamsByText:@"鸿雁云商是一款针对于鸿雁内部服务的客户端,欢迎下载:http://sge.cn:9106/appdownload" images:imageArray url:[NSURL URLWithString:@"http://sge.cn:9106/appdownload"] title:@"鸿雁云商APP下载" type:SSDKContentTypeAuto];
         // 2.分享(可以弹出我们的分享菜单和编辑界面)
-            [ShareSDK showShareActionSheet:nil //要显示菜单的视图, iPad版中此参数作为弹出菜单的参照视图，只有传这个才可以弹出我们的分享菜单，可以传分享的按钮对象或者自己创建小的view 对象，iPhone可以传nil不会影响
+            /*[ShareSDK showShareActionSheet:nil //要显示菜单的视图, iPad版中此参数作为弹出菜单的参照视图，只有传这个才可以弹出我们的分享菜单，可以传分享的按钮对象或者自己创建小的view 对象，iPhone可以传nil不会影响
                                      items:nil shareParams:shareParams onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
                                          switch (state) {
                                              case SSDKResponseStateSuccess:
@@ -271,22 +288,43 @@
                                              default:
                                                  break;
                                          }
-                                     }];
+                                     }];*/
+            [ShareSDK showShareActionSheet:nil //(第一个参数要显示菜单的视图, iPad版中此参数作为弹出菜单的参照视图，在ipad中要想弹出我们的分享菜单，这个参数必须要传值，可以传自己分享按钮的对象，或者可以创建一个小的view对象去传，传值与否不影响iphone显示)
+                               customItems:nil
+                               shareParams:shareParams
+                        sheetConfiguration:nil
+                            onStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                switch (state) {
+                    case SSDKResponseStateSuccess:
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                        [alertView show];
+                        break;
+                    }
+                    case SSDKResponseStateFail:{
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败" message:[NSString stringWithFormat:@"%@",error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                        [alert show];
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            }];
         }
     };
     
     //检查新版本
-    SettingItem *detection = [SettingArrowItem itemWithIcon:@"detection" title:@"检查新版本" destVcClass:nil];
+    SettingItem *detection = [SettingArrowItem itemWithIcon:@"detection" title:@"检查新版本" destVcClass:nil loaded:NO];
     __weak typeof(self) selfVc = self;
     detection.option = ^{
         [selfVc detection];
     };
     
     //关于
-    SettingItem *about = [SettingArrowItem itemWithIcon:@"guanyu" title:@"关于" destVcClass:[AboutViewController class]];
+    SettingItem *about = [SettingArrowItem itemWithIcon:@"guanyu" title:@"关于" destVcClass:[AboutViewController class] loaded:NO];
     
     SettingGroup *group1 = [[SettingGroup alloc] init];
-    group1.items = @[share,about];
+    group1.items = @[help,autoLogin, share,about];
     [self.data addObject:group1];
 }
 

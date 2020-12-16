@@ -7,42 +7,107 @@ PODS:
   - AlicloudUtils (1.2.2):
     - AlicloudUT
     - AlicloudUTDID
+  - AMap3DMap (6.5.0):
+    - AMapFoundation (~> 1.5)
+  - AMapFoundation (1.5.5)
+  - AMapLocation (2.6.1):
+    - AMapFoundation (~> 1.4)
+  - AMapSearch (6.5.0):
+    - AMapFoundation (~> 1.4)
   - DGActivityIndicatorView (2.1.1)
   - IQKeyboardManager (6.0.4)
   - Masonry (1.1.0)
   - MJExtension (3.0.15)
+  - mob_sharesdk (4.3.13.1):
+    - mob_sharesdk/ShareSDK (= 4.3.13.1)
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDK (4.3.13.1):
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKExtension (4.3.13.1):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKPlatforms/QQ (4.3.13.1):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKPlatforms/SinaWeibo (4.3.13.1):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKPlatforms/WeChat (4.3.13.1):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKUI (4.3.13.1):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - MOBFoundation (3.2.21)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - SSZipArchive (2.1.4)
   - TZImagePickerController (3.1.4)
-  - XLPhotoBrowser+CoderXL (1.2.0):
+  - "XLPhotoBrowser+CoderXL (1.2.0)":
     - SDWebImage (~> 4.0.0)
 
 DEPENDENCIES:
   - AlicloudPush (~> 1.9.2)
+  - AMap3DMap
+  - AMapLocation
+  - AMapSearch
   - DGActivityIndicatorView (~> 2.1.1)
   - IQKeyboardManager
   - Masonry
   - MJExtension (~> 3.0.13)
+  - mob_sharesdk
+  - mob_sharesdk/ShareSDKExtension
+  - mob_sharesdk/ShareSDKPlatforms/QQ
+  - mob_sharesdk/ShareSDKPlatforms/SinaWeibo
+  - mob_sharesdk/ShareSDKPlatforms/WeChat
+  - mob_sharesdk/ShareSDKUI
   - SSZipArchive
   - TZImagePickerController
-  - XLPhotoBrowser+CoderXL
+  - "XLPhotoBrowser+CoderXL"
+
+SPEC REPOS:
+  https://github.com/aliyun/aliyun-specs.git:
+    - AlicloudPush
+    - AlicloudUT
+    - AlicloudUTDID
+    - AlicloudUtils
+  https://github.com/CocoaPods/Specs.git:
+    - AMap3DMap
+    - AMapFoundation
+    - AMapLocation
+    - AMapSearch
+    - DGActivityIndicatorView
+    - IQKeyboardManager
+    - Masonry
+    - MJExtension
+    - mob_sharesdk
+    - MOBFoundation
+    - SDWebImage
+    - SSZipArchive
+    - TZImagePickerController
+    - "XLPhotoBrowser+CoderXL"
 
 SPEC CHECKSUMS:
-  AlicloudPush: 40e0dacad5dd3113a3478917f1fc4ad9374c2943
-  AlicloudUT: 9f20dcfd2753de09261b6c279245da1650a34932
-  AlicloudUTDID: f5a7bc1420c5f83e3bd40296e5ab2e5a804a12f8
-  AlicloudUtils: 2437ae7fd2b39343539e8f48aa1f7bf6f5a6cff1
+  AlicloudPush: 3b25754782bee47d2445a92ef7daff8792b01575
+  AlicloudUT: 22ffa6acef01c409e91f2c403da0f58651781533
+  AlicloudUTDID: 7640837a1f6dd3529be33f8c77b7818cd88129f9
+  AlicloudUtils: 6e75332b8954a7fd48c2de3711a7c71fada3520b
+  AMap3DMap: cbe10cc4302ac3f2817ef4221e1259d7e18d1c2f
+  AMapFoundation: 652bd70ba579f48a98bdf0c74d6e62a89a06ca58
+  AMapLocation: cf024b53dc03663efb4ea4bcce27d4cce58bb97a
+  AMapSearch: c22d8c98e04aad30615834e567781ec1367c4f36
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   IQKeyboardManager: 29514134ef0334a6fa33cf4eee11c36c064baeaf
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 3f039575db1b135a20699ad298713b26acec1528
+  mob_sharesdk: a83dd0b129a3f954c9a639d5c33fd3d2cd41e887
+  MOBFoundation: 7b690d8d42c2c08e33bb3e4d38411bf761bf9f5f
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   TZImagePickerController: c5d08f4f79ef3a4aa5af70c199009f59dac978a3
-  XLPhotoBrowser+CoderXL: 2bf4036e2af4611b24bde1681e24c64ed01fbe98
+  "XLPhotoBrowser+CoderXL": 2bf4036e2af4611b24bde1681e24c64ed01fbe98
 
-PODFILE CHECKSUM: edda9ec9c517f1cc8ee679ca7ebdecdebae8fcfe
+PODFILE CHECKSUM: ad97877f2738bc6756aabc0e6016c4a7f4059a95
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.9.3
