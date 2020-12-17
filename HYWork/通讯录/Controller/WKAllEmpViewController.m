@@ -201,12 +201,17 @@
 
 #pragma mark - 设置 flotage
 - (void)setupFlotageLabel {
-    self.flotageLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 64)/2, (_tableView.frame.size.height - 64) / 2, 64, 64)];
+    self.flotageLabel = [[UILabel alloc] init];
     self.flotageLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"flotageBackgroud"]];
     self.flotageLabel.hidden = YES;
     self.flotageLabel.textAlignment = NSTextAlignmentCenter;
     self.flotageLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:self.flotageLabel];
+    
+    [_flotageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(64, 64));
+    }];
 }
 
 #pragma mark - 获取数据
