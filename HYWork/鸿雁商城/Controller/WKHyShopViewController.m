@@ -11,8 +11,9 @@
 #import "LoadViewController.h"
 #import <WebKit/WebKit.h>
 
-#import "MBProgressHUD+MJ.h"
 #import "WKHyShopTool.h"
+
+#import "LYConstans.h"
 
 @interface WKHyShopViewController ()<WKUIDelegate, WKNavigationDelegate>
 
@@ -53,6 +54,14 @@
     
     // 2.webView
     [self setWebView];
+    
+    // 3.监听通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doLoginOutAction) name:loginOutNotification object:nil];
+}
+
+#pragma mark - doLoginOutAction
+- (void)doLoginOutAction {
+    _reload = NO;
 }
 
 #pragma mark - init
@@ -183,16 +192,16 @@
 
 #pragma mark - 请求数据
 - (void)getHyShop {
-    [MBProgressHUD showMessage:@"loading..." toView:self.view];
+    [SVProgressHUD show];
     WEAKSELF
     [WKHyShopTool getHyShopAddress:[NSDictionary dictionaryWithObject:[LoadViewController shareInstance].emp.mobile forKey:@"telephone"] success:^(id  _Nonnull json) {
+        [SVProgressHUD dismiss];
         _reload = YES;
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [weakSelf.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[json objectForKey:@"data"]]]];
     } failure:^(NSError * _Nonnull error) {
+        [SVProgressHUD dismiss];
         _reload = NO;
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [MBProgressHUD showError:@"网络异常,请稍候再试"];
+        [SVProgressHUD showErrorWithStatus:@"请求失败,请刷新"];
     }];
 }
 
@@ -261,6 +270,8 @@
 {
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
     [self.webView removeObserver:self forKeyPath:@"title"];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - 屏幕横竖屏设置

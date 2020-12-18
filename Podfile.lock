@@ -43,6 +43,7 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - SSZipArchive (2.1.4)
+  - SVProgressHUD (2.2.5)
   - TZImagePickerController (3.1.4)
   - "XLPhotoBrowser+CoderXL (1.2.0)":
     - SDWebImage (~> 4.0.0)
@@ -63,6 +64,7 @@ DEPENDENCIES:
   - mob_sharesdk/ShareSDKPlatforms/WeChat
   - mob_sharesdk/ShareSDKUI
   - SSZipArchive
+  - SVProgressHUD
   - TZImagePickerController
   - "XLPhotoBrowser+CoderXL"
 
@@ -85,6 +87,7 @@ SPEC REPOS:
     - MOBFoundation
     - SDWebImage
     - SSZipArchive
+    - SVProgressHUD
     - TZImagePickerController
     - "XLPhotoBrowser+CoderXL"
 
@@ -105,9 +108,10 @@ SPEC CHECKSUMS:
   MOBFoundation: 7b690d8d42c2c08e33bb3e4d38411bf761bf9f5f
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TZImagePickerController: c5d08f4f79ef3a4aa5af70c199009f59dac978a3
   "XLPhotoBrowser+CoderXL": 2bf4036e2af4611b24bde1681e24c64ed01fbe98
 
-PODFILE CHECKSUM: ad97877f2738bc6756aabc0e6016c4a7f4059a95
+PODFILE CHECKSUM: 885a9c3c164dd8c55ce0d454bfb8b62f39804dbd
 
 COCOAPODS: 1.9.3

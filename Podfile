@@ -19,6 +19,9 @@ pod 'MJExtension', '~> 3.0.13'
 
 pod 'SSZipArchive'
 
+#loading
+pod 'SVProgressHUD'
+
 # 高德
 pod 'AMap3DMap' #3D地图SDK
 pod 'AMapSearch' #地图SDK搜索功能

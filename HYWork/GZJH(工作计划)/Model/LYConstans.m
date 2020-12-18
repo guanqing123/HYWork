@@ -25,6 +25,8 @@ NSString *rjhBrowseCellClick = @"rjhBrowseCellClick";
 
 NSString *rjhBrowseCellAddCommon = @"rjhBrowseCellAddCommon";
 
+NSString *loginOutNotification = @"loginOutNotification";
+
 
 
 

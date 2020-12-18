@@ -12,6 +12,8 @@
 #import <WebKit/WebKit.h>
 // 加密
 #import "DES3EncryptUtil.h"
+// 通知
+#import "LYConstans.h"
 
 @interface WKLearnViewController ()<WKUIDelegate, WKNavigationDelegate>
 
@@ -34,7 +36,7 @@
     
     if (!_reload) {
         LoadViewController *loadVc = [LoadViewController shareInstance];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:LNURL, [DES3EncryptUtil encrypt:loadVc.emp.ygbm]]]]];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:LNURL, [[DES3EncryptUtil encrypt:loadVc.emp.ygbm] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"'();:@&=+$,/?%#[]"].invertedSet]]]]];
         _reload = YES;
     }
 }
@@ -54,6 +56,14 @@
     
     // 2.webView
     [self setWebView];
+    
+    // 3.监听通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doLoginOutAction) name:loginOutNotification object:nil];
+}
+
+#pragma mark - notification
+- (void)doLoginOutAction {
+    _reload = NO;
 }
 
 #pragma mark - init
@@ -246,6 +256,8 @@
 {
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
     [self.webView removeObserver:self forKeyPath:@"title"];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - 屏幕横竖屏设置

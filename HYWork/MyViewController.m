@@ -12,6 +12,7 @@
 #import "SettingSwitchItem.h"
 #import "SettingGroup.h"
 #import "LoadViewController.h"
+#import "LYConstans.h"
 
 // 任务点检
 #import "WKRenwuViewController.h"
@@ -166,6 +167,8 @@
             }
         }];
         
+       [[NSNotificationCenter defaultCenter] postNotificationName:loginOutNotification object:nil userInfo:nil];
+        
     }else{
         _loadController.title = @"登录";
         _loadController.hidesBottomBarWhenPushed = YES;
@@ -239,6 +242,9 @@
  *  初始化数据
  */
 - (void)initData {
+    // tableView
+    self.tableView.showsVerticalScrollIndicator = NO;
+    
     // 目标任务点检
     SettingItem *renwu = [SettingArrowItem itemWithIcon:@"renwu" title:@"目标任务点检" destVcClass:[WKRenwuViewController class] loaded:YES];
     // 园区生活

@@ -31,3 +31,5 @@ extern NSString *kZjxsCheckCellClick;
 extern NSString *rjhBrowseCellClick;
 
 extern NSString *rjhBrowseCellAddCommon;
+
+extern NSString *loginOutNotification; // 退出登录
