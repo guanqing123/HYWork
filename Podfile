@@ -12,7 +12,9 @@ pod 'Masonry'
 pod 'IQKeyboardManager'
 
 pod 'TZImagePickerController'
-pod 'XLPhotoBrowser+CoderXL'
+#图片浏览器替换 2021.1.8
+#pod 'XLPhotoBrowser+CoderXL'
+pod 'YBImageBrowser'
 
 pod 'DGActivityIndicatorView', '~> 2.1.1'
 pod 'MJExtension', '~> 3.0.13'
@@ -36,9 +38,12 @@ pod 'mob_sharesdk/ShareSDKUI'
 # 平台SDK模块(对照一下平台，需要的加上。如果只需要QQ、微信、新浪微博，只需要以下3行)
 pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
 pod 'mob_sharesdk/ShareSDKPlatforms/SinaWeibo'
-pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'   #（微信sdk不带支付的命令）
+pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'  #（微信sdk不带支付的命令）
 
 # 扩展模块（在调用可以弹出我们UI分享方法的时候是必需的）
 pod 'mob_sharesdk/ShareSDKExtension'
+
+#无线轮播 2021.1.8
+pod 'SDCycleScrollView','>= 1.82'
 
 end

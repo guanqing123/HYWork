@@ -131,9 +131,9 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
  */
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application{
     // 停止下载所有图片
-    [[SDWebImageManager sharedManager] cancelAll];
+//    [[SDWebImageManager sharedManager] cancelAll];
     // 清除内存中的图片
-    [[SDWebImageManager sharedManager].imageCache clearMemory];
+//    [[SDWebImageManager sharedManager].imageCache clearMemory];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -204,7 +204,7 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
         
         // https://www.jianshu.com/p/bd5667979eaa
         //新浪
-        [platformsRegister setupSinaWeiboWithAppkey:@"3002122402" appSecret:@"9f9359d8ebf438a14bf11f1901f24a1e" redirectUrl:@"https://api.weibo.com/oauth2/default.html"];
+        [platformsRegister setupSinaWeiboWithAppkey:@"3002122402" appSecret:@"9f9359d8ebf438a14bf11f1901f24a1e" redirectUrl:@"https://api.weibo.com/oauth2/default.html" universalLink:@"https://xocgr.share2dlink.com/"];
     }];
     
     // aliyun push

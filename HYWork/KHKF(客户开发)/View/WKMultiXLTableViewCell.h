@@ -18,7 +18,7 @@
 
  @param tableViewCell 当前Cell
  */
-- (void)multiXlTableViewCell:(WKMultiXLTableViewCell *)tableViewCell;
+- (void)multiXlTableViewCell:(WKMultiXLTableViewCell *_Nullable)tableViewCell;
 
 @end
 

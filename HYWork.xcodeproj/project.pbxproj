@@ -509,7 +509,6 @@
 		D6D457DA1CB62E89006D8C93 /* SettingArrowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D457D91CB62E89006D8C93 /* SettingArrowItem.m */; };
 		D6D457DD1CB6305E006D8C93 /* SettingSwitchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D457DC1CB6305E006D8C93 /* SettingSwitchItem.m */; };
 		D6D4AFA81CB762210018C190 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6D4AFA71CB762210018C190 /* bg.jpg */; };
-		D6D4BFC21CACC83500059447 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6D4BFC11CACC83500059447 /* AMap.bundle */; };
 		D6D4BFC41CACC8C600059447 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D4BFC31CACC8C600059447 /* CoreGraphics.framework */; };
 		D6D4BFC61CACC8D300059447 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D4BFC51CACC8D300059447 /* QuartzCore.framework */; };
 		D6D4BFCC1CACC94D00059447 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D4BFCB1CACC94D00059447 /* Security.framework */; };
@@ -5082,7 +5081,6 @@
 				D60FFB671ED0403600FF77CC /* timeline_card_bottom_background.png in Resources */,
 				D6F591851D1CFA8200CE7279 /* help.html in Resources */,
 				D614B97B1F1F59EF00F6CFEC /* MJPhotoBrowser.bundle in Resources */,
-				D6D4BFC21CACC83500059447 /* AMap.bundle in Resources */,
 				D6F6E1A01D2DEE6400CEA50E /* FwcxViewController.xib in Resources */,
 				D6E171FA1D18D8DB0077A59C /* AboutHeaderView.xib in Resources */,
 				D6F6E1BC1D2E5E5A00CEA50E /* CjwtCell.xib in Resources */,
@@ -5162,9 +5160,9 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HYWork/Pods-HYWork-resources.sh",
 				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
-				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
+				"${PODS_ROOT}/YBImageBrowser/YBImageBrowser/YBImageBrowser.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/mob_sharesdk/ShareSDK.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/mob_sharesdk/ShareSDK_JS_QQ.bundle",
 				"${PODS_ROOT}/mob_sharesdk/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle",
@@ -5175,9 +5173,9 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YBImageBrowser.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDK_JS_QQ.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WeiboSDK.bundle",

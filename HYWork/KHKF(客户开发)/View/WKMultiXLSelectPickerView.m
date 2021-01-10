@@ -11,7 +11,7 @@
 #import "KhkfManager.h"
 #import "MBProgressHUD+MJ.h"
 
-@interface WKMultiXLSelectPickerView () <UITableViewDataSource,UITextFieldDelegate,WKMultiXLTableViewCellDelegate>
+@interface WKMultiXLSelectPickerView () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,WKMultiXLTableViewCellDelegate>
 
 @property (nonatomic, weak) UITableView  *tableView;
 

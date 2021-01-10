@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,7 +31,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Vlr-eL-SIs"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -48,7 +45,6 @@
                 </button>
                 <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="上级经销商客户名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rVd-q0-XSd">
                     <rect key="frame" x="15" y="45" width="360" height="44"/>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -77,7 +73,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="wdy-XK-pdr"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -102,7 +97,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="0Tg-0N-3JR"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -127,7 +121,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="fwn-yG-DHi"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <connections>
@@ -152,7 +145,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="ZQD-Ai-GtQ"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -183,7 +175,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="CcD-E9-Gu6"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -214,7 +205,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="kUt-3A-r8e"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <connections>
@@ -239,7 +229,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Er3-Lg-U7e"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -270,7 +259,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="U2J-yt-D2v"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                     <connections>
@@ -306,7 +294,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="G9H-2z-G3e"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -331,7 +318,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="2Po-WR-1ip"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -353,7 +339,6 @@
                 </view>
                 <textField opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*街道*小区*单元*室" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MDE-tt-oiX">
                     <rect key="frame" x="15" y="540" width="360" height="44"/>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -378,7 +363,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Fs8-1p-csI"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -563,7 +547,7 @@
                 <outlet property="xlTF" destination="bG7-rm-D8B" id="05G-pL-aVP"/>
                 <outlet property="xsdTF" destination="DNE-Ip-16J" id="D8b-zx-aHF"/>
             </connections>
-            <point key="canvasLocation" x="-7580" y="-682"/>
+            <point key="canvasLocation" x="-7674" y="-708"/>
         </collectionReusableView>
     </objects>
     <resources>

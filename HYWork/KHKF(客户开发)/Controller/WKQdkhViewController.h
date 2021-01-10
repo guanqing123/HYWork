@@ -17,7 +17,7 @@
 
  @param qdkhVc 渠道客户新增控制器
  */
-- (void)qdkhViewControllerFinishSave:(WKQdkhViewController *)qdkhVc;
+- (void)qdkhViewControllerFinishSave:(WKQdkhViewController *_Nullable)qdkhVc;
 
 @end
 

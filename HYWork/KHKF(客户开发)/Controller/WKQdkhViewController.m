@@ -21,14 +21,14 @@
 #import <Photos/Photos.h>
 #import "TZImageManager.h"
 #import "TZImagePickerController.h"
-#import "XLPhotoBrowser.h"
+#import "YBImageBrowser.h"
 
 #import "RXAddressiOS9.h"
 #import "RXAddressiOS10.h"
 #define SYSTEMVERSION   [UIDevice currentDevice].systemVersion
 #define iOS9OrLater ([SYSTEMVERSION floatValue] >= 9.0)
 
-@interface WKQdkhViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WKQdkhHeaderViewDelegate,RjhBpcSearchViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate,XLPhotoBrowserDelegate> {
+@interface WKQdkhViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WKQdkhHeaderViewDelegate,RjhBpcSearchViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate,YBImageBrowserDataSource> {
     CGFloat _itemWH;
     CGFloat _margin;
     
@@ -45,6 +45,7 @@
 
 @property (nonatomic, strong)  NSMutableArray *outSelectedPhotos;
 @property (nonatomic, strong)  NSMutableArray *inSelectedPhotos;
+@property (nonatomic, strong)  NSMutableArray *showPhotos;
 
 @end
 
@@ -385,13 +386,11 @@
         UIImage *image = self.outSelectedPhotos[sourceIndexPath.item];
         [self.outSelectedPhotos removeObjectAtIndex:sourceIndexPath.item];
         [self.outSelectedPhotos insertObject:image atIndex:destinationIndexPath.item];
-        
         [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:sourceIndexPath.section]];
     }else if (sourceIndexPath.section == 1) {
         UIImage *image = self.inSelectedPhotos[sourceIndexPath.item];
         [self.inSelectedPhotos removeObjectAtIndex:sourceIndexPath.item];
         [self.inSelectedPhotos insertObject:image atIndex:destinationIndexPath.item];
-        
         [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:sourceIndexPath.section]];
     }
 }
@@ -438,12 +437,10 @@
             }
             [self presentViewController:alertVc animated:YES completion:nil];
         }else{
-            //预览照片
-            XLPhotoBrowser *browser = [XLPhotoBrowser showPhotoBrowserWithImages:_outSelectedPhotos currentImageIndex:indexPath.row];
-            browser.browserStyle = XLPhotoBrowserStyleIndexLabel;
-            
-            //设置长按手势弹出的地步ActionSheet数据,不实现此方法则没有长按手势
-            [browser setActionSheetWithTitle:@"请选择您的操作" delegate:self cancelButtonTitle:@"取消" deleteButtonTitle:nil otherButtonTitles:@"保存", nil];
+            self.showPhotos = self.outSelectedPhotos;
+            YBImageBrowser *browser = [YBImageBrowser new];
+            browser.dataSource = self;
+            [browser show];
         }
         
     }else if (indexPath.section == 1){ // in
@@ -477,28 +474,26 @@
             [self presentViewController:alertVc animated:YES completion:nil];
             
         }else{
-            //预览照片
-            XLPhotoBrowser *browser = [XLPhotoBrowser showPhotoBrowserWithImages:self.inSelectedPhotos currentImageIndex:indexPath.row];
-            browser.browserStyle = XLPhotoBrowserStyleIndexLabel;
-            
-            //设置长按手势弹出的地步ActionSheet数据,不实现此方法则没有长按手势
-            [browser setActionSheetWithTitle:@"请选择您的操作" delegate:self cancelButtonTitle:@"取消" deleteButtonTitle:nil otherButtonTitles:@"保存", nil];
+            self.showPhotos = self.inSelectedPhotos;
+            YBImageBrowser *browser = [YBImageBrowser new];
+            browser.dataSource = self;
+            [browser show];
         }
     }
 }
 
-#pragma mark - XLPhotoBrowserDelegate 保存图片
-- (void)photoBrowser:(XLPhotoBrowser *)browser clickActionSheetIndex:(NSInteger)actionSheetindex currentImageIndex:(NSInteger)currentImageIndex {
-    switch (actionSheetindex) {
-        case 0: // 保存
-        {
-            [browser saveCurrentShowImage];
-        }
-            break;
-            
-        default:
-            break;
-    }
+#pragma mark - <YBImageBrowserDataSource>
+- (NSInteger)yb_numberOfCellsInImageBrowser:(YBImageBrowser *)imageBrowser {
+    return self.showPhotos.count;
+}
+
+- (id<YBIBDataProtocol>)yb_imageBrowser:(YBImageBrowser *)imageBrowser dataForCellAtIndex:(NSInteger)index {
+    UIImage *image = (UIImage *)self.showPhotos[index];
+    YBIBImageData *data = [YBIBImageData new];
+    data.image = ^UIImage * _Nullable{
+        return image;
+    };
+    return data;
 }
 
 #pragma mark - 照片相关
