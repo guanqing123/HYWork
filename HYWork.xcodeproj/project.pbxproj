@@ -463,6 +463,25 @@
 		D666630F230F6E9600974EBB /* WKMonthFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D666630E230F6E9600974EBB /* WKMonthFooterView.m */; };
 		D6695F0121A657FE00805314 /* WKTJZ5Param.m in Sources */ = {isa = PBXBuildFile; fileRef = D6695F0021A657FE00805314 /* WKTJZ5Param.m */; };
 		D6696A83249B021900A10346 /* WKKQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6696A82249B021900A10346 /* WKKQViewController.m */; };
+		D669D87F25AA92FD00775723 /* WKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D87E25AA92FD00775723 /* WKHomeViewController.m */; };
+		D669D88225AA973000775723 /* WKSliderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D88125AA973000775723 /* WKSliderHeaderView.m */; };
+		D669D88625AA9F7800775723 /* WKHomeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D88525AA9F7800775723 /* WKHomeTool.m */; };
+		D669D88925AAA20400775723 /* WKHomeSliderResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D88825AAA20400775723 /* WKHomeSliderResult.m */; };
+		D669D88C25AAA2CC00775723 /* WKHomeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D88B25AAA2CC00775723 /* WKHomeSlider.m */; };
+		D669D88F25AAA3C500775723 /* WKHomeSliderParam.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D88E25AAA3C400775723 /* WKHomeSliderParam.m */; };
+		D669D8A025AB0FE800775723 /* WKSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D89F25AB0FE800775723 /* WKSliderViewController.m */; };
+		D669D8A625AB101700775723 /* WKSliderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D8A525AB101700775723 /* WKSliderListViewController.m */; };
+		D669D8AA25AB183800775723 /* WKSliderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D8A825AB183800775723 /* WKSliderDetailViewController.m */; };
+		D669D8AB25AB183800775723 /* WKSliderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D669D8A925AB183800775723 /* WKSliderDetailViewController.xib */; };
+		D669D8AE25AB1F3100775723 /* WKSliderTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D8AD25AB1F3100775723 /* WKSliderTool.m */; };
+		D669D8B125AB1F6B00775723 /* WKSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D8B025AB1F6B00775723 /* WKSlider.m */; };
+		D669D8B425AB221E00775723 /* WKSliderResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D8B325AB221E00775723 /* WKSliderResult.m */; };
+		D669D8BA25AB306300775723 /* WKSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D8B825AB306300775723 /* WKSearchBar.m */; };
+		D669D8BD25AB320E00775723 /* WKSliderListParam.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D8BC25AB320E00775723 /* WKSliderListParam.m */; };
+		D669D8C025AB325300775723 /* WKSliderListResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D8BF25AB325300775723 /* WKSliderListResult.m */; };
+		D669D8C325AB32A100775723 /* WKSliderList.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D8C225AB32A100775723 /* WKSliderList.m */; };
+		D669D8C725AB381300775723 /* WKSliderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D669D8C425AB381300775723 /* WKSliderTableViewCell.xib */; };
+		D669D8C825AB381400775723 /* WKSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D8C525AB381300775723 /* WKSliderTableViewCell.m */; };
 		D66AC4042578CD510052F6C0 /* WKBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66AC4032578CD510052F6C0 /* WKBaseWebViewController.m */; };
 		D66AC4092578D4F70052F6C0 /* WKAfterSaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66AC4082578D4F70052F6C0 /* WKAfterSaleViewController.m */; };
 		D670B518258A1570002428CD /* WKEmpDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D670B517258A1570002428CD /* WKEmpDetailViewController.m */; };
@@ -1647,6 +1666,42 @@
 		D6695F0021A657FE00805314 /* WKTJZ5Param.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKTJZ5Param.m; sourceTree = "<group>"; };
 		D6696A81249B021900A10346 /* WKKQViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKKQViewController.h; sourceTree = "<group>"; };
 		D6696A82249B021900A10346 /* WKKQViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKKQViewController.m; sourceTree = "<group>"; };
+		D669D87D25AA92FC00775723 /* WKHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKHomeViewController.h; sourceTree = "<group>"; };
+		D669D87E25AA92FD00775723 /* WKHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKHomeViewController.m; sourceTree = "<group>"; };
+		D669D88025AA973000775723 /* WKSliderHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKSliderHeaderView.h; sourceTree = "<group>"; };
+		D669D88125AA973000775723 /* WKSliderHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKSliderHeaderView.m; sourceTree = "<group>"; };
+		D669D88425AA9F7800775723 /* WKHomeTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKHomeTool.h; sourceTree = "<group>"; };
+		D669D88525AA9F7800775723 /* WKHomeTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKHomeTool.m; sourceTree = "<group>"; };
+		D669D88725AAA20400775723 /* WKHomeSliderResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKHomeSliderResult.h; sourceTree = "<group>"; };
+		D669D88825AAA20400775723 /* WKHomeSliderResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKHomeSliderResult.m; sourceTree = "<group>"; };
+		D669D88A25AAA2CC00775723 /* WKHomeSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKHomeSlider.h; sourceTree = "<group>"; };
+		D669D88B25AAA2CC00775723 /* WKHomeSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKHomeSlider.m; sourceTree = "<group>"; };
+		D669D88D25AAA3C400775723 /* WKHomeSliderParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKHomeSliderParam.h; sourceTree = "<group>"; };
+		D669D88E25AAA3C400775723 /* WKHomeSliderParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKHomeSliderParam.m; sourceTree = "<group>"; };
+		D669D89E25AB0FE800775723 /* WKSliderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKSliderViewController.h; sourceTree = "<group>"; };
+		D669D89F25AB0FE800775723 /* WKSliderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKSliderViewController.m; sourceTree = "<group>"; };
+		D669D8A425AB101700775723 /* WKSliderListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKSliderListViewController.h; sourceTree = "<group>"; };
+		D669D8A525AB101700775723 /* WKSliderListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKSliderListViewController.m; sourceTree = "<group>"; };
+		D669D8A725AB183800775723 /* WKSliderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKSliderDetailViewController.h; sourceTree = "<group>"; };
+		D669D8A825AB183800775723 /* WKSliderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKSliderDetailViewController.m; sourceTree = "<group>"; };
+		D669D8A925AB183800775723 /* WKSliderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WKSliderDetailViewController.xib; sourceTree = "<group>"; };
+		D669D8AC25AB1F3100775723 /* WKSliderTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKSliderTool.h; sourceTree = "<group>"; };
+		D669D8AD25AB1F3100775723 /* WKSliderTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKSliderTool.m; sourceTree = "<group>"; };
+		D669D8AF25AB1F6A00775723 /* WKSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKSlider.h; sourceTree = "<group>"; };
+		D669D8B025AB1F6B00775723 /* WKSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKSlider.m; sourceTree = "<group>"; };
+		D669D8B225AB221E00775723 /* WKSliderResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKSliderResult.h; sourceTree = "<group>"; };
+		D669D8B325AB221E00775723 /* WKSliderResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKSliderResult.m; sourceTree = "<group>"; };
+		D669D8B825AB306300775723 /* WKSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSearchBar.m; sourceTree = "<group>"; };
+		D669D8B925AB306300775723 /* WKSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSearchBar.h; sourceTree = "<group>"; };
+		D669D8BB25AB320E00775723 /* WKSliderListParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKSliderListParam.h; sourceTree = "<group>"; };
+		D669D8BC25AB320E00775723 /* WKSliderListParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKSliderListParam.m; sourceTree = "<group>"; };
+		D669D8BE25AB325300775723 /* WKSliderListResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKSliderListResult.h; sourceTree = "<group>"; };
+		D669D8BF25AB325300775723 /* WKSliderListResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKSliderListResult.m; sourceTree = "<group>"; };
+		D669D8C125AB32A100775723 /* WKSliderList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKSliderList.h; sourceTree = "<group>"; };
+		D669D8C225AB32A100775723 /* WKSliderList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKSliderList.m; sourceTree = "<group>"; };
+		D669D8C425AB381300775723 /* WKSliderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSliderTableViewCell.xib; sourceTree = "<group>"; };
+		D669D8C525AB381300775723 /* WKSliderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSliderTableViewCell.m; sourceTree = "<group>"; };
+		D669D8C625AB381300775723 /* WKSliderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSliderTableViewCell.h; sourceTree = "<group>"; };
 		D66AC4022578CD510052F6C0 /* WKBaseWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKBaseWebViewController.h; sourceTree = "<group>"; };
 		D66AC4032578CD510052F6C0 /* WKBaseWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKBaseWebViewController.m; sourceTree = "<group>"; };
 		D66AC4072578D4F70052F6C0 /* WKAfterSaleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKAfterSaleViewController.h; sourceTree = "<group>"; };
@@ -4070,6 +4125,121 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		D669D87925AA92E000775723 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				D669D89925AB007200775723 /* 轮播 */,
+				D669D87B25AA92E000775723 /* Model */,
+				D669D87C25AA92E000775723 /* View */,
+				D669D88325AA9F6200775723 /* Tool */,
+				D669D87A25AA92E000775723 /* Controller */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
+		D669D87A25AA92E000775723 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D669D87D25AA92FC00775723 /* WKHomeViewController.h */,
+				D669D87E25AA92FD00775723 /* WKHomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D669D87B25AA92E000775723 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D669D88725AAA20400775723 /* WKHomeSliderResult.h */,
+				D669D88825AAA20400775723 /* WKHomeSliderResult.m */,
+				D669D88A25AAA2CC00775723 /* WKHomeSlider.h */,
+				D669D88B25AAA2CC00775723 /* WKHomeSlider.m */,
+				D669D88D25AAA3C400775723 /* WKHomeSliderParam.h */,
+				D669D88E25AAA3C400775723 /* WKHomeSliderParam.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D669D87C25AA92E000775723 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D669D88025AA973000775723 /* WKSliderHeaderView.h */,
+				D669D88125AA973000775723 /* WKSliderHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D669D88325AA9F6200775723 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				D669D88425AA9F7800775723 /* WKHomeTool.h */,
+				D669D88525AA9F7800775723 /* WKHomeTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		D669D89925AB007200775723 /* 轮播 */ = {
+			isa = PBXGroup;
+			children = (
+				D669D89B25AB007200775723 /* Model */,
+				D669D89C25AB007200775723 /* View */,
+				D669D89D25AB007200775723 /* Tool */,
+				D669D89A25AB007200775723 /* Controller */,
+			);
+			path = "轮播";
+			sourceTree = "<group>";
+		};
+		D669D89A25AB007200775723 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D669D89E25AB0FE800775723 /* WKSliderViewController.h */,
+				D669D89F25AB0FE800775723 /* WKSliderViewController.m */,
+				D669D8A725AB183800775723 /* WKSliderDetailViewController.h */,
+				D669D8A825AB183800775723 /* WKSliderDetailViewController.m */,
+				D669D8A925AB183800775723 /* WKSliderDetailViewController.xib */,
+				D669D8A425AB101700775723 /* WKSliderListViewController.h */,
+				D669D8A525AB101700775723 /* WKSliderListViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D669D89B25AB007200775723 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D669D8AF25AB1F6A00775723 /* WKSlider.h */,
+				D669D8B025AB1F6B00775723 /* WKSlider.m */,
+				D669D8B225AB221E00775723 /* WKSliderResult.h */,
+				D669D8B325AB221E00775723 /* WKSliderResult.m */,
+				D669D8BB25AB320E00775723 /* WKSliderListParam.h */,
+				D669D8BC25AB320E00775723 /* WKSliderListParam.m */,
+				D669D8BE25AB325300775723 /* WKSliderListResult.h */,
+				D669D8BF25AB325300775723 /* WKSliderListResult.m */,
+				D669D8C125AB32A100775723 /* WKSliderList.h */,
+				D669D8C225AB32A100775723 /* WKSliderList.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D669D89C25AB007200775723 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D669D8C625AB381300775723 /* WKSliderTableViewCell.h */,
+				D669D8C525AB381300775723 /* WKSliderTableViewCell.m */,
+				D669D8C425AB381300775723 /* WKSliderTableViewCell.xib */,
+				D669D8B925AB306300775723 /* WKSearchBar.h */,
+				D669D8B825AB306300775723 /* WKSearchBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D669D89D25AB007200775723 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				D669D8AC25AB1F3100775723 /* WKSliderTool.h */,
+				D669D8AD25AB1F3100775723 /* WKSliderTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		D66AC4002578CCC80052F6C0 /* Common(通用) */ = {
 			isa = PBXGroup;
 			children = (
@@ -4567,6 +4737,7 @@
 			children = (
 				D6174D3120AAD0790024BE60 /* Main(主要) */,
 				D6174D3020AACFD90024BE60 /* Other(其它) */,
+				D669D87925AA92E000775723 /* 首页 */,
 				D6D629DC1C87DC2C00B90B6E /* SF */,
 				D6D442BB1C86760300134D2A /* Category */,
 				D6D9035E1C7FE4B300BAD105 /* SY */,
@@ -5093,6 +5264,7 @@
 				D60D2A6D1E8A52930051B33F /* ScanResultViewController.xib in Resources */,
 				D6F591971D1D171400CE7279 /* ys.jpeg in Resources */,
 				D6F591991D1D171400CE7279 /* dw.jpeg in Resources */,
+				D669D8AB25AB183800775723 /* WKSliderDetailViewController.xib in Resources */,
 				D60D297F1E8A52920051B33F /* CodeScan.bundle in Resources */,
 				D6032C0F1C7D88B80073E306 /* Images.xcassets in Resources */,
 				D6F591731D1CD64300CE7279 /* 2.png in Resources */,
@@ -5120,6 +5292,7 @@
 				D6656EEA21A4FE2B001D6318 /* WKQdkh2HeaderView.xib in Resources */,
 				D60C22B51FCD4B6400FC59DF /* FwcxNewView.xib in Resources */,
 				D6F5918A1D1D05EB00CE7279 /* rule.css in Resources */,
+				D669D8C725AB381300775723 /* WKSliderTableViewCell.xib in Resources */,
 				D6D4AFA81CB762210018C190 /* bg.jpg in Resources */,
 				D6F591751D1CD64300CE7279 /* 4.png in Resources */,
 				D60CF29E20D3A2C3000BC197 /* WKClassifyChooseTableViewCell.xib in Resources */,
@@ -5235,6 +5408,7 @@
 				D60D2A5F1E8A52930051B33F /* ZXQRCodeFinderPatternInfo.m in Sources */,
 				D6F6F17D1CE5D5CD008807D5 /* MJRefreshNormalHeader.m in Sources */,
 				D60D29B91E8A52920051B33F /* ZXURLTOResultParser.m in Sources */,
+				D669D8AE25AB1F3100775723 /* WKSliderTool.m in Sources */,
 				D60D298C1E8A52920051B33F /* LBXZXCapture.m in Sources */,
 				D6140F7320AE5AD70084A3DD /* WKKhhfTool.m in Sources */,
 				D67568272589EEDB000056FA /* WKAddressListViewController.m in Sources */,
@@ -5249,6 +5423,7 @@
 				D6656EE921A4FE2B001D6318 /* WKQdkh2HeaderView.m in Sources */,
 				D60D29BE1E8A52920051B33F /* ZXWifiParsedResult.m in Sources */,
 				D60D298D1E8A52920051B33F /* ZXingWrapper.m in Sources */,
+				D669D8C325AB32A100775723 /* WKSliderList.m in Sources */,
 				D60D2A571E8A52930051B33F /* ZXQRCodeFormatInformation.m in Sources */,
 				D6D7B2621CC0AEEC00C7C1F1 /* SectionHeaderView.m in Sources */,
 				D6062F9D1EE7E67400EF0CF2 /* BpcSearchHeaderView.m in Sources */,
@@ -5258,6 +5433,7 @@
 				D60D297D1E8A52920051B33F /* LBXSlider.m in Sources */,
 				D60D29B21E8A52920051B33F /* ZXSMSTOMMSTOResultParser.m in Sources */,
 				D6591477224868DE00142D4F /* UIProgressView+AFNetworking.m in Sources */,
+				D669D87F25AA92FD00775723 /* WKHomeViewController.m in Sources */,
 				D61823B620B05525007F53D0 /* WKBrowseTableViewCell.m in Sources */,
 				D60D2A681E8A52930051B33F /* ZXQRCodeReader.m in Sources */,
 				D6F9A1011D002A76009251E4 /* WeekPlanListFooterView.m in Sources */,
@@ -5334,6 +5510,7 @@
 				D640981723308B67001C1FD7 /* WKMonthPlanHeaderView.m in Sources */,
 				D61823A620B01E1E007F53D0 /* WKBrowseViewController.m in Sources */,
 				D65914612248682500142D4F /* AFHTTPRequestOperation.m in Sources */,
+				D669D8C825AB381400775723 /* WKSliderTableViewCell.m in Sources */,
 				D60D2A2F1E8A52930051B33F /* ZXUPCAReader.m in Sources */,
 				D6E24603230D45F400328378 /* WKRankRelationshipResult.m in Sources */,
 				D65D3D2021A3E2EC005AFB2C /* WKZlkhViewController.m in Sources */,
@@ -5350,6 +5527,7 @@
 				D60700F81EEA3061007F0EA5 /* RjhOperatorSearchViewController.m in Sources */,
 				D62BA2B721A281D800BC9D8D /* WKProjectResult.m in Sources */,
 				D6F7BA731D52C75800EA833F /* FjViewController.m in Sources */,
+				D669D88625AA9F7800775723 /* WKHomeTool.m in Sources */,
 				D6D442D61C86E8AA00134D2A /* RequestData.m in Sources */,
 				D659147A224868DE00142D4F /* UIImageView+AFNetworking.m in Sources */,
 				D60D2A121E8A52930051B33F /* ZXRSSExpandedGeneralAppIdDecoder.m in Sources */,
@@ -5429,6 +5607,7 @@
 				D60D2A3D1E8A52930051B33F /* ZXPDF417Codeword.m in Sources */,
 				D60D29CF1E8A52930051B33F /* ZXCharacterSetECI.m in Sources */,
 				D60D29B71E8A52920051B33F /* ZXURIParsedResult.m in Sources */,
+				D669D8BA25AB306300775723 /* WKSearchBar.m in Sources */,
 				D60D2A501E8A52930051B33F /* ZXQRCodeBitMatrixParser.m in Sources */,
 				D60D29C91E8A52920051B33F /* ZXReedSolomonEncoder.m in Sources */,
 				D60D2A4F1E8A52930051B33F /* ZXPDF417Writer.m in Sources */,
@@ -5473,6 +5652,7 @@
 				D6140F6920AE5AD70084A3DD /* WKProvince.m in Sources */,
 				D60D29B11E8A52920051B33F /* ZXSMSParsedResult.m in Sources */,
 				D6F74CAF1CE1E8D10052D870 /* WebViewJavascriptBridgeBase.m in Sources */,
+				D669D8AA25AB183800775723 /* WKSliderDetailViewController.m in Sources */,
 				D60D2A5E1E8A52930051B33F /* ZXQRCodeFinderPatternFinder.m in Sources */,
 				D6F6F1691CE5D59A008807D5 /* MJRefreshAutoNormalFooter.m in Sources */,
 				D60D29CA1E8A52920051B33F /* ZXBitArray.m in Sources */,
@@ -5487,12 +5667,15 @@
 				D6F6F17E1CE5D5CD008807D5 /* MJRefreshStateHeader.m in Sources */,
 				D60D29A91E8A52920051B33F /* ZXGeoResultParser.m in Sources */,
 				D6140F7520AE5AD70084A3DD /* KhhfSearchView.m in Sources */,
+				D669D88225AA973000775723 /* WKSliderHeaderView.m in Sources */,
 				D60D29D11E8A52930051B33F /* ZXDefaultGridSampler.m in Sources */,
 				D60D29E11E8A52930051B33F /* ZXLuminanceSource.m in Sources */,
 				D60D29AD1E8A52920051B33F /* ZXProductParsedResult.m in Sources */,
 				D6D457D41CB6277A006D8C93 /* SettingCell.m in Sources */,
+				D669D8A025AB0FE800775723 /* WKSliderViewController.m in Sources */,
 				D6F74CAD1CE1E8D10052D870 /* WebViewJavascriptBridge.m in Sources */,
 				D60D29EE1E8A52930051B33F /* ZXDataMatrixC40Encoder.m in Sources */,
+				D669D8B125AB1F6B00775723 /* WKSlider.m in Sources */,
 				D6FABC071D2CD4C300F094B1 /* QygkViewController.m in Sources */,
 				D618E60E236BBBF300A36150 /* WKJCFXTool.m in Sources */,
 				D62FF93C2195749D00D7D983 /* WKWorkTypeParam.m in Sources */,
@@ -5506,6 +5689,7 @@
 				D60AEABD1EE8545B00E20613 /* RXAddressiOS9.m in Sources */,
 				D60D29D31E8A52930051B33F /* ZXGlobalHistogramBinarizer.m in Sources */,
 				D6F6E1A71D2E246400CEA50E /* FwcxManager.m in Sources */,
+				D669D8B425AB221E00775723 /* WKSliderResult.m in Sources */,
 				D6158C091F25B6EF008B84B2 /* KhkfWebViewController.m in Sources */,
 				D6FABC171D2CE83400F094B1 /* QyryViewController.m in Sources */,
 				D60D2A6B1E8A52930051B33F /* ZXMultiFormatWriter.m in Sources */,
@@ -5543,12 +5727,14 @@
 				D6F3F69A1CF445F0004D163F /* NSDate+Extension.m in Sources */,
 				D6F43D171D07BF9800A63632 /* WeekFromMonthFooterView.m in Sources */,
 				D63C47A21CEAA91E007A25F6 /* WeekPlanController.m in Sources */,
+				D669D8C025AB325300775723 /* WKSliderListResult.m in Sources */,
 				D659145D2248682500142D4F /* AFURLConnectionOperation.m in Sources */,
 				D614B9801F1F59EF00F6CFEC /* MJPhotoView.m in Sources */,
 				D6D5B46C1CC5D2FD00689F27 /* EmpDetail.m in Sources */,
 				D60D2A111E8A52930051B33F /* ZXRSSExpandedFieldParser.m in Sources */,
 				D6D541F11CB37E7D00C1DAD4 /* KqReqData.m in Sources */,
 				D60D29971E8A52920051B33F /* ZXAztecState.m in Sources */,
+				D669D8BD25AB320E00775723 /* WKSliderListParam.m in Sources */,
 				D60D29881E8A52920051B33F /* LBXScanView.m in Sources */,
 				D6D442CA1C86805900134D2A /* NSString+Extension.m in Sources */,
 				D6F325DF1D24000100CDAAC6 /* JdzpViewController.m in Sources */,
@@ -5575,6 +5761,7 @@
 				D60D29851E8A52920051B33F /* LBXScanNetAnimation.m in Sources */,
 				D6D7593A1C8B1A1A006FC3B7 /* AddItemController.m in Sources */,
 				D63694B221994B9A009F0672 /* WKWork.m in Sources */,
+				D669D88925AAA20400775723 /* WKHomeSliderResult.m in Sources */,
 				D6F75AE91D05460500F8ACAC /* MonthPlanDetailCell.m in Sources */,
 				D6174D4D20AAE01D0024BE60 /* WKBaseResult.m in Sources */,
 				D6D50EC91C8D506C000424EF /* DtDetailController.m in Sources */,
@@ -5618,6 +5805,7 @@
 				D60D2A491E8A52930051B33F /* ZXPDF417Dimensions.m in Sources */,
 				D61823AD20B0425D007F53D0 /* WKBrowseAllViewController.m in Sources */,
 				D6140F7420AE5AD70084A3DD /* KhhfHeaderFooterView.m in Sources */,
+				D669D88F25AAA3C500775723 /* WKHomeSliderParam.m in Sources */,
 				D60D2A621E8A52930051B33F /* ZXQRCodeEncoder.m in Sources */,
 				D60D2A341E8A52930051B33F /* ZXUPCEANReader.m in Sources */,
 				D6032C071C7D88B80073E306 /* AppDelegate.m in Sources */,
@@ -5710,6 +5898,7 @@
 				D6F6E1AB1D2E39DF00CEA50E /* CjwtViewController.m in Sources */,
 				D60D29E41E8A52930051B33F /* ZXResultPoint.m in Sources */,
 				D6D457DA1CB62E89006D8C93 /* SettingArrowItem.m in Sources */,
+				D669D88C25AAA2CC00775723 /* WKHomeSlider.m in Sources */,
 				D60D2A471E8A52930051B33F /* ZXPDF417BarcodeMatrix.m in Sources */,
 				D60F38131F27280D0006BC8D /* RJHConstans.m in Sources */,
 				D6D8F05A1C9F9D8800C0AAE1 /* GNViewController.m in Sources */,
@@ -5754,6 +5943,7 @@
 				D6F6E1B71D2E4CF400CEA50E /* CjwtHeaderView.m in Sources */,
 				D6D72F611CC10BCF007AB3F1 /* TxlCell.m in Sources */,
 				D6F7B5591CFD35840098DD91 /* BrowseCell.m in Sources */,
+				D669D8A625AB101700775723 /* WKSliderListViewController.m in Sources */,
 				D60AFE491EEEDA550050F173 /* RjhCommentViewController.m in Sources */,
 				D60D29EA1E8A52930051B33F /* ZXDataMatrixVersion.m in Sources */,
 				D6F6E3561D3CB493005C7207 /* KqViewController.m in Sources */,

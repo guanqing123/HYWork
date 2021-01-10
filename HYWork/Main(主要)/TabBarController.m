@@ -7,7 +7,8 @@
 //
 
 #import "TabBarController.h"
-#import "ViewController.h"
+#import "WKHomeViewController.h"
+//#import "ViewController.h"
 #import "WKLearnViewController.h"
 //#import "TxlViewController.h"
 #import "WKHyShopViewController.h"
@@ -41,13 +42,13 @@
  *  初始化首页Nav
  */
 - (void)initIndexNavigation{
-    _viewController = [[ViewController alloc] init];
-    _viewController.view.backgroundColor = [UIColor whiteColor];
+    _homeVc = [[WKHomeViewController alloc] init];
+    _homeVc.view.backgroundColor = [UIColor whiteColor];
     //_viewController.title = @"HONYAR 鸿雁";
     UIImage *image = [UIImage imageNamed:@"honyar_logo"];
     UIImageView *new = [[UIImageView alloc] initWithImage:image];
-    _viewController.navigationItem.titleView = new;
-    NavigationController *indexNav = [[NavigationController alloc] initWithRootViewController:_viewController];
+    _homeVc.navigationItem.titleView = new;
+    NavigationController *indexNav = [[NavigationController alloc] initWithRootViewController:_homeVc];
 
     /** 单独设置每个导航的属性
     indexNav.navigationBar.tintColor = [UIColor whiteColor];

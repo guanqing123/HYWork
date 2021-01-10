@@ -91,6 +91,18 @@
 // 主题色
 #define themeColor GQColor(0.0f, 157.0f, 133.0f)
 
+#define PFR [[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0 ? @"PingFangSC-Regular" : @"PingFang SC"
+
+#define PFR20Font [UIFont fontWithName:PFR size:20];
+#define PFR18Font [UIFont fontWithName:PFR size:18];
+#define PFR16Font [UIFont fontWithName:PFR size:16];
+#define PFR15Font [UIFont fontWithName:PFR size:15];
+#define PFR14Font [UIFont fontWithName:PFR size:14];
+#define PFR13Font [UIFont fontWithName:PFR size:13];
+#define PFR12Font [UIFont fontWithName:PFR size:12];
+#define PFR11Font [UIFont fontWithName:PFR size:11];
+#define PFR10Font [UIFont fontWithName:PFR size:10];
+
 /** 屏幕高度 */
 #define SCREEN_WIDTH  ([[UIScreen mainScreen] bounds].size.width)
 /** 屏幕宽度 */
@@ -108,6 +120,8 @@
 //#define     NAV_BAR_HEIGHT                   64
 #define     NAV_BAR_HEIGHT                   HWTopNavH
 #define     TAB_BAR_HEIGHT                   49
+
+#define WKMargin 10
 
 #define GzjhMenuHeight 45.0f
 

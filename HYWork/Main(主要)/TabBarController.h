@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ViewController,WKLearnViewController,WKHyShopViewController,GNViewController,MyViewController;
+@class WKHomeViewController,WKLearnViewController,WKHyShopViewController,GNViewController,MyViewController;
 
 typedef enum {
   TabBarItemTypeIndex = 0,  //首页
@@ -18,7 +18,7 @@ typedef enum {
 } TabBarItemType;
 
 @interface TabBarController : UITabBarController
-@property (strong, nonatomic)  ViewController *viewController;
+@property (strong, nonatomic)  WKHomeViewController *homeVc;
 @property (nonatomic, strong)  WKLearnViewController *learnVc;
 @property (strong, nonatomic)  WKHyShopViewController *hyshopVc;
 @property (strong, nonatomic)  GNViewController *gnViewController;

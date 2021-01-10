@@ -12,4 +12,6 @@
 
 + (NSMutableDictionary *)getDict;
 
++ (BOOL)isIPhoneX;
+
 @end
