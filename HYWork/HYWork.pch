@@ -122,6 +122,7 @@
 #define     TAB_BAR_HEIGHT                   49
 
 #define WKMargin 10
+#define bigScreen (SCREEN_WIDTH > 375)
 
 #define GzjhMenuHeight 45.0f
 

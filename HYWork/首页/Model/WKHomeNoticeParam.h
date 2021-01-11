@@ -1,5 +1,5 @@
 //
-//  WKHomeSliderParam.h
+//  WKHomeNoticeParam.h
 //  HYWork
 //
 //  Created by information on 2021/1/10.
@@ -10,9 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WKHomeSliderParam : NSObject
-
-@property (nonatomic, assign) NSInteger isTop;
+@interface WKHomeNoticeParam : NSObject
 
 @property (nonatomic, assign) NSInteger limit;
 

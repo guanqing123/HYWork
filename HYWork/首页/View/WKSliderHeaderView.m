@@ -126,9 +126,9 @@
     }];
     
     WKHomeSliderParam *param = [[WKHomeSliderParam alloc] init];
-    param.isTop = @"1";
-    param.limit = @"5";
-    param.page = @"0";
+    param.isTop = 1;
+    param.limit = 5;
+    param.page = 0;
     [WKHomeTool getHomeSliders:param success:^(WKHomeSliderResult * _Nonnull result) {
         [weakSelf.indicatorView stopAnimating];
         if (result.code != 200) {

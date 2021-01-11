@@ -96,7 +96,7 @@
     [self.tableView.mj_header beginRefreshing];
     self.pageNum = 1;
     self.pageSize = 10;
-    // 电力
+    // 大脑
     
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         [[make leading] trailing].equalTo([self view]);
@@ -130,7 +130,7 @@
         } else {
             [self.sliderList removeAllObjects];
             [self.sliderList addObjectsFromArray:result.data];
-            int pages = (int)(result.code / self.pageNum);
+            int pages = (int)(result.count / self.pageNum);
             if (pages > 1) {
                 _pageNum ++;
                 [self setupFooterRefreshing];
@@ -165,7 +165,7 @@
             [self.sliderList addObjectsFromArray:result.data];
             [self.tableView reloadData];
             _pageNum ++;
-            int pages = (int)(result.code / self.pageNum);
+            int pages = (int)(result.count / self.pageNum);
             if (_pageNum > pages) {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             } else {

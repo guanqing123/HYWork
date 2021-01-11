@@ -32,6 +32,12 @@
     [self.tabBarController.tabBar setHidden:YES];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.tabBarController.tabBar setHidden:NO];
+}
+
 #pragma mark - lifeCicle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -90,6 +96,7 @@
                             //http://dev.sge.cn/hykj/ghome/ghome.html
     LoadViewController *loadVC = [LoadViewController shareInstance];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.desUrl]]];
+    NSLog(@"desUrl=%@",self.desUrl);
     [self.view addSubview:webView];
     [self.view addSubview:self.myProgressView];
     
