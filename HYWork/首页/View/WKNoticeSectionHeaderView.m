@@ -10,13 +10,13 @@
 #import "WKHomeTool.h"
 
 // 跑马灯
-#import <JhtMarquee/JhtVerticalMarquee.h>
+#import "WKNumberScrollView.h"
 
-@interface WKNoticeSectionHeaderView()
+@interface WKNoticeSectionHeaderView()<WKNumberScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *marqueeF;
 
-@property (nonatomic, strong)  JhtVerticalMarquee *verticalMarquee;
+@property (nonatomic, strong)  WKNumberScrollView *numberScrollView;
 
 @property (nonatomic, strong)  NSArray *notices;
 
@@ -35,31 +35,23 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self.marqueeF addSubview:self.verticalMarquee];
+    [self.marqueeF addSubview:self.numberScrollView];
+    
     [self loadData];
 }
 
-- (JhtVerticalMarquee *)verticalMarquee {
-    if (!_verticalMarquee) {
-        _verticalMarquee = [[JhtVerticalMarquee alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 44, self.marqueeF.dc_height)];
-        _verticalMarquee.textColor = GQColor(110, 110, 110);
-        _verticalMarquee.textAlignment = NSTextAlignmentLeft;
-        _verticalMarquee.scrollDuration = 1.5f;
-        _verticalMarquee.scrollDelay = 4.0f;
-        _verticalMarquee.numberOfLines = 1;
-        
-        // 添加点击手势
-        UITapGestureRecognizer *htap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(marqueeTapGes:)];
-        [_verticalMarquee addGestureRecognizer:htap];
+- (WKNumberScrollView *)numberScrollView {
+    if (!_numberScrollView) {
+        _numberScrollView = [WKNumberScrollView scrollView];
+        _numberScrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH - 44, self.marqueeF.dc_height);
+        _numberScrollView.delegate = self;
     }
-    return _verticalMarquee;
+    return _numberScrollView;
 }
 
-- (void)marqueeTapGes:(UITapGestureRecognizer *)ges {
-    [self stop];
-    WKHomeNotice *notice = [self.notices objectAtIndex:self.verticalMarquee.currentIndex];
-    if ([self.delegate respondsToSelector:@selector(headerViewDidClick:currentNoticeId:)]) {
-        [self.delegate headerViewDidClick:self currentNoticeId:notice.noticeId];
+- (void)numberScrollViewDidButtonClick:(WKNumberScrollView *)numberScrollView {
+    if ([self.delegate respondsToSelector:@selector(headerViewDidClick:)]) {
+        [self.delegate headerViewDidClick:self];
     }
 }
 
@@ -77,30 +69,11 @@
                 WKHomeNotice *notice = obj;
                 [titleArray addObject:notice.title];
             }];
-            self.verticalMarquee.sourceArray = titleArray;
-            _loaded = YES;
-            [self zstart];
+            [self.numberScrollView setScrollArray:titleArray];
         }
     } failure:^(NSError * _Nonnull error) {
          [SVProgressHUD showErrorWithStatus:@"请求失败,稍微再试"];
     }];
-}
-
-- (void)zstart {
-    [self.verticalMarquee marqueeOfSettingWithState:MarqueeStart_V];
-    _pauseV = NO;
-}
-
-- (void)start {
-    if (_loaded && _pauseV) {
-        [self.verticalMarquee marqueeOfSettingWithState:MarqueeStart_V];
-        _pauseV = NO;
-    }
-}
-
-- (void)stop {
-    [self.verticalMarquee marqueeOfSettingWithState:MarqueePause_V];
-    _pauseV = YES;
 }
 
 @end

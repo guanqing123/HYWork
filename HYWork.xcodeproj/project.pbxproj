@@ -457,6 +457,15 @@
 		D6656EF921A559CD001D6318 /* WKMultiXLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6656EF721A559CD001D6318 /* WKMultiXLTableViewCell.m */; };
 		D6656EFA21A559CD001D6318 /* WKMultiXLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6656EF821A559CD001D6318 /* WKMultiXLTableViewCell.xib */; };
 		D666630F230F6E9600974EBB /* WKMonthFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D666630E230F6E9600974EBB /* WKMonthFooterView.m */; };
+		D66815FD25AE011200CFAB70 /* WKBbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66815FC25AE011200CFAB70 /* WKBbsViewController.m */; };
+		D668160625AE01CB00CFAB70 /* WKFunsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D668160025AE01CB00CFAB70 /* WKFunsViewController.m */; };
+		D668160725AE01CB00CFAB70 /* WKFunsItemHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D668160325AE01CB00CFAB70 /* WKFunsItemHeaderView.m */; };
+		D668160B25AE02C300CFAB70 /* WKFunsItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D668160A25AE02C300CFAB70 /* WKFunsItemCell.m */; };
+		D668160E25AE02DA00CFAB70 /* WKFunsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D668160D25AE02DA00CFAB70 /* WKFunsItem.m */; };
+		D668161125AE03CE00CFAB70 /* WKFunsItemGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D668161025AE03CE00CFAB70 /* WKFunsItemGroup.m */; };
+		D668161425AE047600CFAB70 /* WKNumberScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D668161225AE047600CFAB70 /* WKNumberScrollView.m */; };
+		D668161B25AE0BB700CFAB70 /* WKDefineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D668161925AE0BB700CFAB70 /* WKDefineTableViewCell.m */; };
+		D668161C25AE0BB700CFAB70 /* WKDefineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D668161A25AE0BB700CFAB70 /* WKDefineTableViewCell.xib */; };
 		D6695F0121A657FE00805314 /* WKTJZ5Param.m in Sources */ = {isa = PBXBuildFile; fileRef = D6695F0021A657FE00805314 /* WKTJZ5Param.m */; };
 		D6696A83249B021900A10346 /* WKKQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6696A82249B021900A10346 /* WKKQViewController.m */; };
 		D669D87F25AA92FD00775723 /* WKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D669D87E25AA92FD00775723 /* WKHomeViewController.m */; };
@@ -1672,6 +1681,23 @@
 		D6656EF821A559CD001D6318 /* WKMultiXLTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WKMultiXLTableViewCell.xib; sourceTree = "<group>"; };
 		D666630D230F6E9600974EBB /* WKMonthFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKMonthFooterView.h; sourceTree = "<group>"; };
 		D666630E230F6E9600974EBB /* WKMonthFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKMonthFooterView.m; sourceTree = "<group>"; };
+		D66815FB25AE011200CFAB70 /* WKBbsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKBbsViewController.h; sourceTree = "<group>"; };
+		D66815FC25AE011200CFAB70 /* WKBbsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKBbsViewController.m; sourceTree = "<group>"; };
+		D668160025AE01CB00CFAB70 /* WKFunsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKFunsViewController.m; sourceTree = "<group>"; };
+		D668160125AE01CB00CFAB70 /* WKFunsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKFunsViewController.h; sourceTree = "<group>"; };
+		D668160325AE01CB00CFAB70 /* WKFunsItemHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKFunsItemHeaderView.m; sourceTree = "<group>"; };
+		D668160425AE01CB00CFAB70 /* WKFunsItemHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKFunsItemHeaderView.h; sourceTree = "<group>"; };
+		D668160925AE02C300CFAB70 /* WKFunsItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKFunsItemCell.h; sourceTree = "<group>"; };
+		D668160A25AE02C300CFAB70 /* WKFunsItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKFunsItemCell.m; sourceTree = "<group>"; };
+		D668160C25AE02DA00CFAB70 /* WKFunsItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKFunsItem.h; sourceTree = "<group>"; };
+		D668160D25AE02DA00CFAB70 /* WKFunsItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKFunsItem.m; sourceTree = "<group>"; };
+		D668160F25AE03CE00CFAB70 /* WKFunsItemGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKFunsItemGroup.h; sourceTree = "<group>"; };
+		D668161025AE03CE00CFAB70 /* WKFunsItemGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKFunsItemGroup.m; sourceTree = "<group>"; };
+		D668161225AE047600CFAB70 /* WKNumberScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKNumberScrollView.m; sourceTree = "<group>"; };
+		D668161325AE047600CFAB70 /* WKNumberScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKNumberScrollView.h; sourceTree = "<group>"; };
+		D668161825AE0BB700CFAB70 /* WKDefineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKDefineTableViewCell.h; sourceTree = "<group>"; };
+		D668161925AE0BB700CFAB70 /* WKDefineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKDefineTableViewCell.m; sourceTree = "<group>"; };
+		D668161A25AE0BB700CFAB70 /* WKDefineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WKDefineTableViewCell.xib; sourceTree = "<group>"; };
 		D6695EFF21A657FE00805314 /* WKTJZ5Param.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKTJZ5Param.h; sourceTree = "<group>"; };
 		D6695F0021A657FE00805314 /* WKTJZ5Param.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKTJZ5Param.m; sourceTree = "<group>"; };
 		D6696A81249B021900A10346 /* WKKQViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKKQViewController.h; sourceTree = "<group>"; };
@@ -4156,6 +4182,55 @@
 			path = "TakePhoto(照片上传)";
 			sourceTree = "<group>";
 		};
+		D66815FE25AE01CB00CFAB70 /* 应用管理 */ = {
+			isa = PBXGroup;
+			children = (
+				D668160825AE023E00CFAB70 /* Model */,
+				D668160225AE01CB00CFAB70 /* View */,
+				D668160525AE01CB00CFAB70 /* Tool */,
+				D66815FF25AE01CB00CFAB70 /* Controller */,
+			);
+			path = "应用管理";
+			sourceTree = "<group>";
+		};
+		D66815FF25AE01CB00CFAB70 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D668160125AE01CB00CFAB70 /* WKFunsViewController.h */,
+				D668160025AE01CB00CFAB70 /* WKFunsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D668160225AE01CB00CFAB70 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D668160925AE02C300CFAB70 /* WKFunsItemCell.h */,
+				D668160A25AE02C300CFAB70 /* WKFunsItemCell.m */,
+				D668160325AE01CB00CFAB70 /* WKFunsItemHeaderView.m */,
+				D668160425AE01CB00CFAB70 /* WKFunsItemHeaderView.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D668160525AE01CB00CFAB70 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		D668160825AE023E00CFAB70 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D668160F25AE03CE00CFAB70 /* WKFunsItemGroup.h */,
+				D668161025AE03CE00CFAB70 /* WKFunsItemGroup.m */,
+				D668160C25AE02DA00CFAB70 /* WKFunsItem.h */,
+				D668160D25AE02DA00CFAB70 /* WKFunsItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D6696A7F249AF9B900A10346 /* 新版考勤 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4176,6 +4251,7 @@
 		D669D87925AA92E000775723 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				D66815FE25AE01CB00CFAB70 /* 应用管理 */,
 				D66DF58125AC35E800D88FD4 /* 通知 */,
 				D669D89925AB007200775723 /* 轮播 */,
 				D669D87B25AA92E000775723 /* Model */,
@@ -4219,6 +4295,8 @@
 		D669D87C25AA92E000775723 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D668161325AE047600CFAB70 /* WKNumberScrollView.h */,
+				D668161225AE047600CFAB70 /* WKNumberScrollView.m */,
 				D669D88025AA973000775723 /* WKSliderHeaderView.h */,
 				D669D88125AA973000775723 /* WKSliderHeaderView.m */,
 				D669D8CC25AB473500775723 /* WKNoticeSectionHeaderView.h */,
@@ -4233,6 +4311,9 @@
 				D66C777425AC913A00B530B0 /* WKCommonTableViewCell.h */,
 				D66C777525AC913A00B530B0 /* WKCommonTableViewCell.m */,
 				D66C777625AC913A00B530B0 /* WKCommonTableViewCell.xib */,
+				D668161825AE0BB700CFAB70 /* WKDefineTableViewCell.h */,
+				D668161925AE0BB700CFAB70 /* WKDefineTableViewCell.m */,
+				D668161A25AE0BB700CFAB70 /* WKDefineTableViewCell.xib */,
 				D66C774925AC72FD00B530B0 /* WKWorkCollectionViewCell.h */,
 				D66C774A25AC72FD00B530B0 /* WKWorkCollectionViewCell.m */,
 			);
@@ -4526,6 +4607,8 @@
 		D67EC54225874F6B00BF86CF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D66815FB25AE011200CFAB70 /* WKBbsViewController.h */,
+				D66815FC25AE011200CFAB70 /* WKBbsViewController.m */,
 				D67EC54325874FC400BF86CF /* WKLearnViewController.h */,
 				D67EC54425874FC400BF86CF /* WKLearnViewController.m */,
 			);
@@ -5432,6 +5515,7 @@
 				D6F591761D1CD64300CE7279 /* 5.png in Resources */,
 				D6F6F1801CE5D5D9008807D5 /* MJRefresh.bundle in Resources */,
 				D66DF57A25AC1E6D00D88FD4 /* WKLineFooterView.xib in Resources */,
+				D668161C25AE0BB700CFAB70 /* WKDefineTableViewCell.xib in Resources */,
 				D6D6DB161CAED13E00CC2B3C /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5502,6 +5586,7 @@
 			files = (
 				D6F5D2CA1CE98BE9004CE129 /* GzjhViewController.m in Sources */,
 				D60D29F01E8A52930051B33F /* ZXDataMatrixEdifactEncoder.m in Sources */,
+				D668160E25AE02DA00CFAB70 /* WKFunsItem.m in Sources */,
 				D60D2A3F1E8A52930051B33F /* ZXPDF417DecodedBitStreamParser.m in Sources */,
 				D6F325E31D2401EF00CDAAC6 /* JdzpManager.m in Sources */,
 				D62ACFBA21A42B1E00F17622 /* WKQdkhViewController.m in Sources */,
@@ -5558,6 +5643,7 @@
 				D615EC521FCE4949004ED981 /* FwcxNewView.m in Sources */,
 				D6F6F16A1CE5D59A008807D5 /* MJRefreshAutoStateFooter.m in Sources */,
 				D6656EE921A4FE2B001D6318 /* WKQdkh2HeaderView.m in Sources */,
+				D66815FD25AE011200CFAB70 /* WKBbsViewController.m in Sources */,
 				D60D29BE1E8A52920051B33F /* ZXWifiParsedResult.m in Sources */,
 				D60D298D1E8A52920051B33F /* ZXingWrapper.m in Sources */,
 				D669D8C325AB32A100775723 /* WKSliderList.m in Sources */,
@@ -5631,6 +5717,7 @@
 				D60D29F11E8A52930051B33F /* ZXDataMatrixEncoderContext.m in Sources */,
 				D60D29831E8A52920051B33F /* LBXScanLineAnimation.m in Sources */,
 				D60700FB1EEA5019007F0EA5 /* OperatorSearchTableCell.m in Sources */,
+				D668160625AE01CB00CFAB70 /* WKFunsViewController.m in Sources */,
 				D62FF9332195288500D7D983 /* HYButton.m in Sources */,
 				D62FB4DB230E655600684B54 /* WKMonthPlanResult.m in Sources */,
 				D60D29A41E8A52920051B33F /* ZXEmailAddressResultParser.m in Sources */,
@@ -5669,11 +5756,13 @@
 				D60D2A121E8A52930051B33F /* ZXRSSExpandedGeneralAppIdDecoder.m in Sources */,
 				D6104FE91EEE5B1F00CA2841 /* RjhRemark.m in Sources */,
 				D60D2A0C1E8A52930051B33F /* ZXRSSExpandedCurrentParsingState.m in Sources */,
+				D668160725AE01CB00CFAB70 /* WKFunsItemHeaderView.m in Sources */,
 				D6DAF0121CA0DBDC008B728F /* GNCell.m in Sources */,
 				D66C776B25AC809200B530B0 /* UIColor+DCColorChange.m in Sources */,
 				D60D2A6A1E8A52930051B33F /* ZXMultiFormatReader.m in Sources */,
 				D60D29A61E8A52920051B33F /* ZXExpandedProductParsedResult.m in Sources */,
 				D60D2A311E8A52930051B33F /* ZXUPCEANExtension2Support.m in Sources */,
+				D668161B25AE0BB700CFAB70 /* WKDefineTableViewCell.m in Sources */,
 				D6D44C2D1CB4B6D300416157 /* SFHFKeychainUtils.m in Sources */,
 				D675682D2589F269000056FA /* WKAllEmpViewController.m in Sources */,
 				D60D2A241E8A52930051B33F /* ZXEAN13Reader.m in Sources */,
@@ -5902,6 +5991,7 @@
 				D60D29851E8A52920051B33F /* LBXScanNetAnimation.m in Sources */,
 				D6D7593A1C8B1A1A006FC3B7 /* AddItemController.m in Sources */,
 				D63694B221994B9A009F0672 /* WKWork.m in Sources */,
+				D668161425AE047600CFAB70 /* WKNumberScrollView.m in Sources */,
 				D669D88925AAA20400775723 /* WKHomeSliderResult.m in Sources */,
 				D6F75AE91D05460500F8ACAC /* MonthPlanDetailCell.m in Sources */,
 				D6174D4D20AAE01D0024BE60 /* WKBaseResult.m in Sources */,
@@ -5957,6 +6047,7 @@
 				D60D29A81E8A52920051B33F /* ZXGeoParsedResult.m in Sources */,
 				D60D2A251E8A52930051B33F /* ZXEAN13Writer.m in Sources */,
 				D63694AC2199489D009F0672 /* WKWorkTypeResult.m in Sources */,
+				D668160B25AE02C300CFAB70 /* WKFunsItemCell.m in Sources */,
 				D60D2A2D1E8A52930051B33F /* ZXOneDimensionalCodeWriter.m in Sources */,
 				D60D2A6C1E8A52930051B33F /* ScanResultViewController.m in Sources */,
 				D6D629FF1C8806D500B90B6E /* DtCellModel.m in Sources */,
@@ -6087,6 +6178,7 @@
 				D6F6E1B71D2E4CF400CEA50E /* CjwtHeaderView.m in Sources */,
 				D6D72F611CC10BCF007AB3F1 /* TxlCell.m in Sources */,
 				D6F7B5591CFD35840098DD91 /* BrowseCell.m in Sources */,
+				D668161125AE03CE00CFAB70 /* WKFunsItemGroup.m in Sources */,
 				D669D8A625AB101700775723 /* WKSliderListViewController.m in Sources */,
 				D60AFE491EEEDA550050F173 /* RjhCommentViewController.m in Sources */,
 				D60D29EA1E8A52930051B33F /* ZXDataMatrixVersion.m in Sources */,

@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5Q-G9-xef" userLabel="topView">
-                        <rect key="frame" x="0.0" y="0.0" width="355" height="30"/>
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="35"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="常用" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WkF-gq-5sQ">
-                                <rect key="frame" x="20" y="0.0" width="31" height="30"/>
+                                <rect key="frame" x="20" y="0.0" width="31" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -30,7 +30,7 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="WkF-gq-5sQ" secondAttribute="bottom" id="Eff-Lf-4v9"/>
                             <constraint firstItem="WkF-gq-5sQ" firstAttribute="top" secondItem="z5Q-G9-xef" secondAttribute="top" id="L3T-AR-0ei"/>
-                            <constraint firstAttribute="height" constant="30" id="PoQ-RD-ltX"/>
+                            <constraint firstAttribute="height" constant="35" id="PoQ-RD-ltX"/>
                             <constraint firstItem="WkF-gq-5sQ" firstAttribute="leading" secondItem="z5Q-G9-xef" secondAttribute="leading" constant="20" id="mcE-9j-lw2"/>
                         </constraints>
                     </view>

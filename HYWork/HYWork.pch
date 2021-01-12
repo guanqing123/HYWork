@@ -35,7 +35,8 @@
 //H5基础路径
 #define H5URL @"http://dev.sge.cn/hywork"
 
-#define LNURL @"http://kms.sge.cn?mobile=%@"
+#define LNURL  @"http://kms.sge.cn?mobile=%@"
+#define BBSURL @"http://kms.sge.cn/sns/group/mobile/index.jsp?mobile=%@"
 
 //售后反馈
 #define AfterSale @"/gsaleservice/gserviceList.html"

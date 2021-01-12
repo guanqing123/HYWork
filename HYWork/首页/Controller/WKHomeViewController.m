@@ -21,12 +21,13 @@
 //cell
 #import "WKOATableViewCell.h"
 #import "WKCommonTableViewCell.h"
+#import "WKDefineTableViewCell.h"
 
 //tool
 #import "Utils.h"
 #import "MJExtension.h"
 
-@interface WKHomeViewController ()<UITableViewDataSource,UITableViewDelegate,WKNoticeSectionHeaderViewDelegate>
+@interface WKHomeViewController ()<UITableViewDataSource,UITableViewDelegate,WKNoticeSectionHeaderViewDelegate,WKOATableViewCellDelegate,WKCommonTableViewCellDelegate,WKDefineTableViewCellDelegate>
 
 @property (nonatomic, weak) UITableView  *tableView;
 
@@ -36,24 +37,26 @@
 @property (nonatomic, strong)  NSMutableArray<WKHomeWork *> *oaWorks;
 /** 常用 */
 @property (nonatomic, strong)  NSMutableArray<WKHomeWork *> *commons;
+/** 自定义 */
+@property (nonatomic, strong)  NSMutableArray<WKHomeWork *> *defines;
 
 @end
 
 static NSString *const WKOATableViewCellID = @"WKOATableViewCell";
 static NSString *const WKCommonTableViewCellID = @"WKCommonTableViewCell";
+static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
+
 
 @implementation WKHomeViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-    [self.headerView start];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
-    [self.headerView stop];
 }
 
 - (void)viewDidLoad {
@@ -73,6 +76,23 @@ static NSString *const WKCommonTableViewCellID = @"WKCommonTableViewCell";
 - (void)setupData {
     _oaWorks = [WKHomeWork mj_objectArrayWithFilename:@"oawork.plist"];
     _commons = [WKHomeWork mj_objectArrayWithFilename:@"commons.plist"];
+    
+    _defines = [NSMutableArray array];
+    
+    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"defines.data"];
+    BOOL isSuccess = [NSKeyedArchiver archiveRootObject:_oaWorks toFile:filePath];
+    NSArray *des = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    if ([des count] > 0) {
+        [_defines addObjectsFromArray:des];
+    }
+    
+    WKHomeWork *addCommon = [[WKHomeWork alloc] init];
+    addCommon.gridTitle = @"添加";
+    addCommon.iconImage = @"addDefine";
+    addCommon.pageType = pageTypeNative;
+    addCommon.destVcClass = @"WKFunsViewController";
+    [_defines addObject:addCommon];
+    
 }
 
 #pragma mark - setupHeaderView
@@ -109,6 +129,7 @@ static NSString *const WKCommonTableViewCellID = @"WKCommonTableViewCell";
     
     [tableView registerNib:[UINib nibWithNibName:NSStringFromClass([WKOATableViewCell class]) bundle:nil] forCellReuseIdentifier:WKOATableViewCellID];
     [tableView registerNib:[UINib nibWithNibName:NSStringFromClass([WKCommonTableViewCell class]) bundle:nil] forCellReuseIdentifier:WKCommonTableViewCellID];
+    [tableView registerNib:[UINib nibWithNibName:NSStringFromClass([WKDefineTableViewCell class]) bundle:nil] forCellReuseIdentifier:WKDefineTableViewCellID];
 }
 
 #pragma mark - dataSource
@@ -125,6 +146,8 @@ static NSString *const WKCommonTableViewCellID = @"WKCommonTableViewCell";
         return 120;
     } else if (indexPath.section == 1) {
         return 85 * 2 + 35;
+    } else if (indexPath.section == 2) {
+        return (1 + (_defines.count - 1) / 4) * 85 + 35;
     }
     return 0;
 }
@@ -135,15 +158,64 @@ static NSString *const WKCommonTableViewCellID = @"WKCommonTableViewCell";
     if (indexPath.section == 0) {
         WKOATableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKOATableViewCellID forIndexPath:indexPath];
         cell.oaWorks = _oaWorks;
+        cell.delegate = self;
         cusCell = cell;
     } else if (indexPath.section == 1) {
         WKCommonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKCommonTableViewCellID forIndexPath:indexPath];
         cell.commons = _commons;
+        cell.delegate = self;
+        cusCell = cell;
+    } else if (indexPath.section == 2) {
+        WKDefineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKDefineTableViewCellID forIndexPath:indexPath];
+        cell.defines = _defines;
+        cell.delegate = self;
         cusCell = cell;
     }
     
     return cusCell;
 }
+
+#pragma mark - WKOATableViewCellDelegate
+- (void)oaTableViewCell:(WKOATableViewCell *)tableViewCell didClickCollectionViewItem:(WKHomeWork *)homeWork {
+    [self jump:homeWork];
+}
+
+#pragma mark - WKCommonTableViewCellDelegate
+- (void)commonTableViewCell:(WKCommonTableViewCell *)tableViewCell didClickCollectionViewItem:(WKHomeWork *)homeWork {
+    [self jump:homeWork];
+}
+
+#pragma mark - WKDefineTableViewCellDelegate
+- (void)defineTableViewCell:(WKDefineTableViewCell *)tableViewCell didClickCollectionViewItem:(WKHomeWork *)homeWork {
+    [self jump:homeWork];
+}
+
+- (void)jump:(WKHomeWork *)homeWork {
+    if (homeWork.load) {
+        LoadViewController *loadVc = [LoadViewController shareInstance];
+        if (!loadVc.isLoaded) {
+           loadVc.hidesBottomBarWhenPushed = YES;
+           [self.navigationController pushViewController:loadVc animated:YES];
+           return;
+        }
+    }
+    switch (homeWork.pageType) {
+        case pageTypeNative: {
+            UIViewController *vc = [[NSClassFromString([homeWork destVcClass]) alloc] init];
+            vc.title = homeWork.gridTitle;
+            vc.view.backgroundColor = [UIColor whiteColor];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case pageTypeH5: {
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 
 #pragma mark - delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -179,14 +251,16 @@ static NSString *const WKCommonTableViewCellID = @"WKCommonTableViewCell";
 }
 
 #pragma mark - WKNoticeSectionHeaderViewDelegate
-- (void)headerViewDidClick:(WKNoticeSectionHeaderView *)headerView currentNoticeId:(NSString *)noticeId {
-     LoadViewController *loadController = [LoadViewController shareInstance];
-     if (loadController.isLoaded) {
-         WKNoticeWebViewController *baseVc = [[WKNoticeWebViewController alloc] init];
-         [self.navigationController pushViewController:baseVc animated:YES];
-     } else {
-         [self.navigationController pushViewController:loadController animated:YES];
-     }
+- (void)headerViewDidClick:(WKNoticeSectionHeaderView *)headerView {
+    LoadViewController *loadVc = [LoadViewController shareInstance];
+    if (!loadVc.isLoaded) {
+        loadVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:loadVc animated:YES];
+        return;
+    }
+    WKNoticeWebViewController *noticeVc = [[WKNoticeWebViewController alloc] init];
+    noticeVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:noticeVc animated:YES];
 }
 
 #pragma mark - 屏幕横竖屏设置

@@ -69,6 +69,14 @@ static NSString *const WKWorkCollectionViewCellID = @"WKWorkCollectionViewCell";
     return cell;
 }
 
+#pragma mark - <UICollectionViewDelegate>
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    WKHomeWork  *homeWork =  _oaWorks[indexPath.row];
+    if ([self.delegate respondsToSelector:@selector(oaTableViewCell:didClickCollectionViewItem:)]) {
+        [self.delegate oaTableViewCell:self didClickCollectionViewItem:homeWork];
+    }
+}
+
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(SCREEN_WIDTH / 4, 85);

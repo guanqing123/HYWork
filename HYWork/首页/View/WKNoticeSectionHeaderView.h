@@ -16,18 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 点击headerView
 /// @param headerView 当前view
-/// @param noticeId 通知ID
-- (void)headerViewDidClick:(WKNoticeSectionHeaderView *)headerView currentNoticeId:(NSString *)noticeId;
+- (void)headerViewDidClick:(WKNoticeSectionHeaderView *)headerView;
 
 @end
 
 @interface WKNoticeSectionHeaderView : UIView
 
 @property (nonatomic, weak) id<WKNoticeSectionHeaderViewDelegate>  delegate;
-
-- (void)start;
-
-- (void)stop;
 
 + (instancetype)sectionHeaderView;
 

@@ -8,11 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import "WKHomeWork.h"
+@class WKCommonTableViewCell;
+
+@protocol WKCommonTableViewCellDelegate <NSObject>
+@optional
+
+/// 点击常用item
+/// @param tableViewCell tableViewCell
+/// @param homeWork item
+- (void)commonTableViewCell:(WKCommonTableViewCell *_Nullable)tableViewCell didClickCollectionViewItem:(WKHomeWork *_Nonnull)homeWork;
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WKCommonTableViewCell : UITableViewCell
 
 @property (nonatomic, strong)  NSMutableArray<WKHomeWork *> *commons;
+
+@property (nonatomic, weak) id<WKCommonTableViewCellDelegate>  delegate;
 
 @end
 
