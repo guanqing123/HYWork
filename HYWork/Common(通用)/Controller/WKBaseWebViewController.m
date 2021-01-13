@@ -26,6 +26,13 @@
 
 @implementation WKBaseWebViewController
 
+- (instancetype)initWithDesUrl:(NSString *)desUrl {
+    if (self = [super init]) {
+        _desUrl = desUrl;
+    }
+    return self;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     

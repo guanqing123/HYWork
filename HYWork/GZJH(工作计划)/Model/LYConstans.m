@@ -27,6 +27,8 @@ NSString *rjhBrowseCellAddCommon = @"rjhBrowseCellAddCommon";
 
 NSString *loginOutNotification = @"loginOutNotification";
 
+NSString *refreshDefines = @"refreshDefines";
+
 
 
 

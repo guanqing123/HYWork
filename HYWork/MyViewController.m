@@ -16,8 +16,8 @@
 
 // 任务点检
 #import "WKRenwuViewController.h"
-// 园区
-#import "WKParkViewController.h"
+// 决策分析
+#import "WKJCFXViewController.h"
 // 通讯录
 #import "WKAddressListViewController.h"
 
@@ -248,7 +248,7 @@
     // 目标任务点检
     SettingItem *renwu = [SettingArrowItem itemWithIcon:@"renwu" title:@"目标任务点检" destVcClass:[WKRenwuViewController class] loaded:YES];
     // 园区生活
-    SettingItem *park = [SettingArrowItem itemWithIcon:@"park" title:@"园区生活" destVcClass:[WKParkViewController class] loaded:YES];
+    SettingItem *park = [SettingArrowItem itemWithIcon:@"myjcfx" title:@"决策分析" destVcClass:[WKJCFXViewController class] loaded:YES];
     // 通讯录
     SettingItem *concats = [SettingArrowItem itemWithIcon:@"concats" title:@"通讯录" destVcClass:[WKAddressListViewController class] loaded:YES];
     

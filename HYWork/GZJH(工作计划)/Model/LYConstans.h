@@ -33,3 +33,6 @@ extern NSString *rjhBrowseCellClick;
 extern NSString *rjhBrowseCellAddCommon;
 
 extern NSString *loginOutNotification; // 退出登录
+
+extern NSString *refreshDefines; // 刷新自定义模块
+

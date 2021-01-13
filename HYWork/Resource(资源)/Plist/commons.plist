@@ -80,9 +80,9 @@
 		<key>gridTitle</key>
 		<string>园区生活</string>
 		<key>gridTag</key>
-		<string>新</string>
+		<string></string>
 		<key>gridColor</key>
-		<string>#FF4500</string>
+		<string></string>
 		<key>pageType</key>
 		<integer>1</integer>
 		<key>prefix</key>

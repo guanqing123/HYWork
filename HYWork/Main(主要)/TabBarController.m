@@ -32,7 +32,7 @@
     [self initLearnNavigation];
 //    [self initTxlNavigation];
     [self initHyShop];
-    [self initGnNavigation];
+//    [self initGnNavigation];
     [self initMyNavigation];
     self.viewControllers = _tabs;
     [self initTabBarStatus];
@@ -110,7 +110,9 @@
 - (void)initMyNavigation{
     _myViewController = [[MyViewController alloc] init];
     _myViewController.view.backgroundColor = [UIColor whiteColor];
-    _myViewController.navigationItem.title = @"我 的";
+    UIImage *image = [UIImage imageNamed:@"honyar_logo"];
+    UIImageView *new = [[UIImageView alloc] initWithImage:image];
+    _myViewController.navigationItem.titleView = new;
     NavigationController *myNav = [[NavigationController alloc] initWithRootViewController:_myViewController];
     myNav.tabBarItem.title = @"我 的";
     myNav.tabBarItem.tag = TabBarItemTypeMe;

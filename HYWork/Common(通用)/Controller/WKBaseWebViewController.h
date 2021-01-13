@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 目标路径
 @property (nonatomic, copy) NSString *desUrl;
 
+- (instancetype)initWithDesUrl:(NSString *)desUrl;
+
 @end
 
 NS_ASSUME_NONNULL_END

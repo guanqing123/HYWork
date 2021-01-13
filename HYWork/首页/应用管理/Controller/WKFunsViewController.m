@@ -7,18 +7,23 @@
 //
 
 #import "WKFunsViewController.h"
+#import "LYConstans.h"
 
 // view
 #import "WKFunsItemCell.h"
 #import "WKFunsItemHeaderView.h"
 
-// model
-#import "WKFunsItemGroup.h"
+// tool
+#import "WKFunsTool.h"
 
 static NSString *cellID = @"WKFunsItemCell";
 static NSString *headerViewID = @"WKFunsItemHeaderView";
 
-@interface WKFunsViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface WKFunsViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,WKFunsItemCellDelegate> {
+    NSIndexPath *_originalIndexPath;
+    NSIndexPath *_moveIndexPath;
+    UIView *_snapshotView;
+}
 
 /** collectionView */
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -26,7 +31,7 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
 /** 编辑状态 */
 @property (nonatomic, assign) BOOL isEditing;
 
-@property (nonatomic, strong) NSArray *itemGroups;
+@property (nonatomic, strong) NSMutableArray *itemGroups;
 
 @property (nonatomic, strong) NSArray *allItemModel;
 
@@ -42,10 +47,21 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
     
     // 2.collectionView
     [self setupCollectionView];
+    
+    // 3.loadData
+    [self loadData];
 }
 
 #pragma mark - 设置导航栏
 - (void)setupNav {
+    // title
+    self.title = @"管理我的应用";
+    
+    // 左侧导航
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"30"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    
+    // 右侧导航
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.titleLabel.font = PFR15Font;
     [button setTitle:@"管理" forState:UIControlStateNormal];
@@ -57,10 +73,21 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
     self.navigationItem.rightBarButtonItem = managerItem;
 }
 
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)managerAction:(UIButton *)managerButton {
     managerButton.selected = !managerButton.selected;
     self.isEditing = managerButton.selected;
     [self.collectionView reloadData];
+    
+    if (!self.isEditing) {
+        WKHomeWorkGroup *itemGroup = self.itemGroups[0];
+        [NSKeyedArchiver archiveRootObject:itemGroup.items toFile:DEFINES];
+        // 刷新本地自定义模块
+        [[NSNotificationCenter defaultCenter] postNotificationName:refreshDefines object:nil userInfo:nil];
+    }
 }
 
 - (void)setIsEditing:(BOOL)isEditing {
@@ -81,6 +108,7 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
     _collectionView.backgroundColor = [UIColor whiteColor];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+    _collectionView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:_collectionView];
     [_collectionView registerClass:[WKFunsItemCell class] forCellWithReuseIdentifier:cellID];
     [_collectionView registerClass:[WKFunsItemHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerViewID];
@@ -90,62 +118,51 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
 
 }
 
-- (NSArray *)itemGroups {
+#pragma mark - loadData
+- (NSMutableArray *)itemGroups {
     if (!_itemGroups) {
-        
-        NSArray *datas = @[
-                           @{
-                               @"type" : @"首页快捷入口",
-                               @"items" :[NSMutableArray array]
-                               },
-                           @{
-                               @"type" : @"我的",
-                               @"items" : @[@{@"imageName" : @"我的订阅",@"itemTitle" : @"我的订阅"},
-                                            @{@"imageName" : @"球爆",@"itemTitle" : @"球爆"},]
-                               },
-                           @{
-                               @"type" : @"基础服务",
-                               @"items" : @[@{@"imageName" : @"名人名单",@"itemTitle" : @"名人名单"},
-                                            @{@"imageName" : @"竞彩足球",@"itemTitle" : @"竞彩足球"},
-                                            @{@"imageName" : @"竞彩篮球",@"itemTitle" : @"竞彩篮球"},
-                                            @{@"imageName" : @"足彩",@"itemTitle" : @"足彩"},]
-                               },
-                           @{
-                               @"type" : @"发现新鲜事",
-                               @"items" : @[@{@"imageName" : @"爆单",@"itemTitle" : @"爆单"},
-                                            @{@"imageName" : @"专业分析",@"itemTitle" : @"专业分析"},
-                                            @{@"imageName" : @"最新话题",@"itemTitle" : @"最新话题"},
-                                            @{@"imageName" : @"热门话题",@"itemTitle" : @"热门话题"},]
-                             },
-                           @{
-                               @"type":@"新闻资讯",
-                               @"items" : @[@{@"imageName" : @"热点资讯",@"itemTitle" : @"热点资讯"},
-                                            @{@"imageName" : @"我不是头条",@"itemTitle" : @"我不是头条"},
-                                            @{@"imageName" : @"名人专访",@"itemTitle" : @"名人专访"},
-                                            @{@"imageName" : @"焦点赛事",@"itemTitle" : @"焦点赛事"},
-                                            @{@"imageName" : @"活动专栏",@"itemTitle" : @"活动专栏"},]
-                               },
-                            ];
-        
-        
-        NSMutableArray *array = [NSMutableArray arrayWithCapacity:datas.count];
-        NSMutableArray *allItemModels = [[NSMutableArray alloc] init];
-        for (NSDictionary *dict in datas) {
-            WKFunsItemGroup *group = [[WKFunsItemGroup alloc] initWithDict:dict];
-            if ([group.type isEqualToString:@"首页快捷入口"]) {
-                for (WKFunsItem *item in group.items) {
-                    item.status = StatusMinusSign;
-                }
-            }else {
-                [allItemModels addObjectsFromArray:group.items];
-            }
-            [array addObject:group];
-        }
-        _itemGroups = [array copy];
-        _allItemModel = [allItemModels copy];
+        _itemGroups = [NSMutableArray array];
     }
-    
     return _itemGroups;
+}
+- (void)loadData {
+    [SVProgressHUD show];
+    [WKFunsTool getHomeWork:^(WKHomeWorkResult * _Nonnull result) {
+        [SVProgressHUD dismiss];
+        if (result.code != 200) {
+            [SVProgressHUD showErrorWithStatus:result.message];
+        } else {
+            // 加载全部功能
+            [self.itemGroups addObjectsFromArray:result.data];
+            
+            // 加载本地功能
+            WKHomeWorkGroup *itemGroup = [[WKHomeWorkGroup alloc] init];
+            NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:DEFINES];
+            itemGroup.type = @"首页快捷入口";
+            itemGroup.items = [NSMutableArray array];
+            if ([items count] > 0) {
+                [itemGroup.items addObjectsFromArray:items];
+            }
+            [self.itemGroups insertObject:itemGroup atIndex:0];
+            
+            // 加工数据
+            NSMutableArray *allItemModels = [[NSMutableArray alloc] init];
+            for (WKHomeWorkGroup *group in self.itemGroups) {
+                if ([group.type isEqualToString:@"首页快捷入口"]) {
+                    for (WKHomeWork *item in group.items) {
+                        item.hystatus = HYStatusMinusSign;
+                    }
+                } else {
+                    [allItemModels addObjectsFromArray:group.items];
+                }
+            }
+            _allItemModel = [allItemModels copy];
+            [self.collectionView reloadData];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"请求异常,稍后再试"];
+    }];
 }
 
 #pragma mark - <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -154,34 +171,34 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    WKFunsItemGroup *group = self.itemGroups[section];
+    WKHomeWorkGroup *group = self.itemGroups[section];
     return group.items.count;
 }
+
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     WKFunsItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     cell.delegate = self;
-//    cell.backgroundColor = kRandomColor;
-    WKFunsItemGroup *group = self.itemGroups[indexPath.section];
-    WKFunsItem *itemModel = group.items[indexPath.row];
+    WKHomeWorkGroup *group = self.itemGroups[indexPath.section];
+    WKHomeWork *itemModel = group.items[indexPath.row];
     if (indexPath.section != 0) {
         BOOL isAdded = NO;
-        WKFunsItemGroup *homeGroup = self.itemGroups[0];
-        for (WKFunsItem *homeItemModel in homeGroup.items) {
+        WKHomeWorkGroup *homeGroup = self.itemGroups[0];
+        for (WKHomeWork *homeItemModel in homeGroup.items) {
             
-            if ([homeItemModel.itemTitle isEqualToString:itemModel.itemTitle]) {
+            if ([homeItemModel.gridTitle isEqualToString:itemModel.gridTitle]) {
                 isAdded = YES;
                 break;
             }
         }
         
         if (isAdded) {
-            itemModel.status = StatusCheck;
-        }else {
-            itemModel.status = StatusPlusSign;
+            itemModel.hystatus = HYStatusCheck;
+        } else {
+            itemModel.hystatus = HYStatusPlusSign;
         }
     }
     cell.isEditing = _isEditing;
-    cell.funsItem = group.items[indexPath.row];
+    cell.homeWork = group.items[indexPath.row];
     cell.indexPath = indexPath;
     return cell;
 }
@@ -191,13 +208,158 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
     if (kind == UICollectionElementKindSectionHeader) {
         WKFunsItemHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerViewID forIndexPath:indexPath];
         
-        WKFunsItemGroup *group = self.itemGroups[indexPath.section];
+        WKHomeWorkGroup *group = self.itemGroups[indexPath.section];
         headerView.title = group.type;
 
         return headerView;
     }else {
         return nil;
     }
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    if (section == 0) {
+        return UIEdgeInsetsMake(0, 0, 10, 0);
+    }else {
+        return UIEdgeInsetsMake(0, 0, 1 / [UIScreen mainScreen].scale, 0);
+    }
+}
+
+#pragma mark - longPressAction(长按手势)
+- (void)longPressAction:(UILongPressGestureRecognizer *)recognizer {
+    
+    CGPoint touchPoint = [recognizer locationInView:self.collectionView];
+    _moveIndexPath = [self.collectionView indexPathForItemAtPoint:touchPoint];
+    
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan: {
+            if (_isEditing == NO) {
+                self.isEditing = YES;
+                [self.collectionView reloadData];
+                [self.collectionView layoutIfNeeded];
+            }
+            if (_moveIndexPath.section == 0) {
+                WKFunsItemCell *selectedItemCell = (WKFunsItemCell *)[self.collectionView cellForItemAtIndexPath:_moveIndexPath];
+                _originalIndexPath = [self.collectionView indexPathForItemAtPoint:touchPoint];
+                if (!_originalIndexPath) {
+                    return;
+                }
+                _snapshotView = [selectedItemCell.container snapshotViewAfterScreenUpdates:YES];
+                _snapshotView.center = [recognizer locationInView:self.collectionView];
+                [self.collectionView addSubview:_snapshotView];
+                selectedItemCell.hidden = YES;
+                [UIView animateWithDuration:0.2 animations:^{
+                    _snapshotView.transform = CGAffineTransformMakeScale(1.03, 1.03);
+                    _snapshotView.alpha = 0.98;
+                }];
+            }
+            break;
+        }
+        case UIGestureRecognizerStateChanged: {
+            
+            _snapshotView.center = [recognizer locationInView:self.collectionView];
+            
+            if (_moveIndexPath.section == 0) {
+                if (_moveIndexPath && ![_moveIndexPath isEqual:_originalIndexPath] && _moveIndexPath.section == _originalIndexPath.section) {
+                    WKHomeWorkGroup *homeGroup = self.itemGroups[0];
+                    NSMutableArray *array = homeGroup.items;
+                    NSInteger fromIndex = _originalIndexPath.item;
+                    NSInteger toIndex = _moveIndexPath.item;
+                    if (fromIndex < toIndex) {
+                        for (NSInteger i = fromIndex; i < toIndex; i++) {
+                            [array exchangeObjectAtIndex:i withObjectAtIndex:i + 1];
+                        }
+                    }else{
+                        for (NSInteger i = fromIndex; i > toIndex; i--) {
+                            [array exchangeObjectAtIndex:i withObjectAtIndex:i - 1];
+                        }
+                    }
+                    [self.collectionView moveItemAtIndexPath:_originalIndexPath toIndexPath:_moveIndexPath];
+                    _originalIndexPath = _moveIndexPath;
+                }
+            }
+            
+            break;
+        }
+        case UIGestureRecognizerStateEnded: {
+            WKFunsItemCell *cell = (WKFunsItemCell *)[self.collectionView cellForItemAtIndexPath:_originalIndexPath];
+            cell.hidden = NO;
+            [_snapshotView removeFromSuperview];
+            break;
+        }
+        default:
+            break;
+    }
+    
+}
+
+#pragma mark - WKFunsItemCellDelegate(点击右上角按钮)
+- (void)rightUpperButtonDidTappedWithItemCell:(WKFunsItemCell *)selectedItemCell {
+    WKHomeWork *homeWork = selectedItemCell.homeWork;
+    if (homeWork.hystatus == HYStatusMinusSign) {
+        WKHomeWorkGroup *homeGroup = self.itemGroups[0];
+        [(NSMutableArray *)homeGroup.items removeObject:homeWork];
+        for (WKHomeWork *item in self.allItemModel) {
+            if ([homeWork.gridTitle isEqualToString:item.gridTitle]) {
+                item.hystatus = HYStatusPlusSign;
+                break;
+            }
+        }
+         UIView *snapshotView = [selectedItemCell snapshotViewAfterScreenUpdates:YES];
+         snapshotView.frame = [selectedItemCell convertRect:selectedItemCell.bounds toView:self.view];
+         [self.view addSubview:snapshotView];
+         selectedItemCell.hidden = YES;
+         [UIView animateWithDuration:0.4 animations:^{
+            snapshotView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+         } completion:^(BOOL finished) {
+            [snapshotView removeFromSuperview];
+            selectedItemCell.hidden = NO;
+            [self.collectionView reloadData];
+         }];
+    } else if (homeWork.hystatus == HYStatusPlusSign) {
+        homeWork.hystatus = HYStatusCheck;
+        WKHomeWorkGroup *homeGroup = self.itemGroups[0];
+        WKHomeWork *homeItem = [[WKHomeWork alloc] init];
+        homeItem.iconImage = homeWork.iconImage;
+        homeItem.gridTitle = homeWork.gridTitle;
+        homeItem.pageType = homeWork.pageType;
+        homeItem.prefix = homeWork.prefix;
+        homeItem.destVcClass = homeWork.destVcClass;
+        homeItem.load = homeWork.load;
+        homeItem.hystatus = HYStatusMinusSign;
+        [homeGroup.items addObject:homeItem];
+        
+        UIView *snapshotView = [selectedItemCell snapshotViewAfterScreenUpdates:YES];
+        snapshotView.frame = [selectedItemCell convertRect:selectedItemCell.bounds toView:self.view];
+        [self.view addSubview:snapshotView];
+        
+        [self.collectionView reloadData];
+        [self.collectionView layoutIfNeeded];
+        
+        WKFunsItemCell *lastCell = (WKFunsItemCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:homeGroup.items.count - 1 inSection:0]];
+        lastCell.hidden = YES;
+        CGRect targetFrame = [lastCell convertRect:lastCell.bounds toView:self.view];
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            snapshotView.frame = targetFrame;
+        } completion:^(BOOL finished) {
+            [snapshotView removeFromSuperview];
+            lastCell.hidden = NO;
+        }];
+    }
+}
+
+#pragma mark - 屏幕横竖屏设置
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end

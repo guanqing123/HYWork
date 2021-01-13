@@ -9,6 +9,9 @@
 #import "WKJCFXViewController.h"
 #import "WKJCFXTool.h"
 
+// controller
+#import "LoadViewController.h"
+
 @interface WKJCFXViewController ()
 
 @property (nonatomic, weak) UIWebView  *webView;
@@ -42,7 +45,10 @@
     NSURL *url = [NSURL URLWithString:@"http://218.75.78.166:9081/webroot/decision/url/mobile"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    NSDictionary *param = [NSDictionary dictionaryWithObjects:@[_username,_password] forKeys:@[@"fine_username",@"fine_password"]];
+    LoadViewController *loadVc = [LoadViewController shareInstance];
+    Emp *emp = loadVc.emp;
+    
+    NSDictionary *param = [NSDictionary dictionaryWithObjects:@[emp.ygbm,emp.oamm] forKeys:@[@"fine_username",@"fine_password"]];
     [MBProgressHUD showMessage:@"loading..." toView:self.view];
     [WKJCFXTool jcfxsso:param success:^(id  _Nonnull json) {
         [MBProgressHUD hideHUDForView:self.view];

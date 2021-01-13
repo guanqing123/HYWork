@@ -10,10 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, HYStatus) {
+    HYStatusMinusSign = 1, // 减号
+    HYStatusPlusSign, // 加号
+    HYStatusCheck, // 对勾
+};
+
+typedef NS_ENUM(NSUInteger, PageType){
    pageTypeH5 = 0, // H5页面
    pageTypeNative = 1 // Native
-} PageType;
+};
 
 @interface WKHomeWork : NSObject
 
@@ -33,6 +39,8 @@ typedef enum {
 @property (nonatomic, copy) NSString *destVcClass;
 /** 登录 */
 @property (nonatomic, assign) BOOL load;
+
+@property (nonatomic, assign) HYStatus hystatus;
 
 @end
 

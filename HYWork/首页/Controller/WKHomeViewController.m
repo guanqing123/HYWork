@@ -17,6 +17,7 @@
 #import "WKSliderViewController.h"
 #import "LoadViewController.h"
 #import "WKNoticeWebViewController.h"
+#import "WKBaseWebViewController.h"
 
 //cell
 #import "WKOATableViewCell.h"
@@ -26,6 +27,7 @@
 //tool
 #import "Utils.h"
 #import "MJExtension.h"
+#import "LYConstans.h"
 
 @interface WKHomeViewController ()<UITableViewDataSource,UITableViewDelegate,WKNoticeSectionHeaderViewDelegate,WKOATableViewCellDelegate,WKCommonTableViewCellDelegate,WKDefineTableViewCellDelegate>
 
@@ -70,18 +72,16 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
     
     // 2.headerView
     [self setupHeaderView];
+    
+    // 3.监听通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshDefines) name:refreshDefines object:nil];
 }
 
-#pragma mark - setupData
-- (void)setupData {
-    _oaWorks = [WKHomeWork mj_objectArrayWithFilename:@"oawork.plist"];
-    _commons = [WKHomeWork mj_objectArrayWithFilename:@"commons.plist"];
+#pragma mark - refreshDefines
+- (void)refreshDefines {
+    [_defines removeAllObjects];
     
-    _defines = [NSMutableArray array];
-    
-    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"defines.data"];
-    BOOL isSuccess = [NSKeyedArchiver archiveRootObject:_oaWorks toFile:filePath];
-    NSArray *des = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    NSArray *des = [NSKeyedUnarchiver unarchiveObjectWithFile:DEFINES];
     if ([des count] > 0) {
         [_defines addObjectsFromArray:des];
     }
@@ -93,6 +93,26 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
     addCommon.destVcClass = @"WKFunsViewController";
     [_defines addObject:addCommon];
     
+    [self.tableView reloadData];
+}
+
+#pragma mark - setupData
+- (void)setupData {
+    _oaWorks = [WKHomeWork mj_objectArrayWithFilename:@"oawork.plist"];
+    _commons = [WKHomeWork mj_objectArrayWithFilename:@"commons.plist"];
+    
+    _defines = [NSMutableArray array];
+    NSArray *des = [NSKeyedUnarchiver unarchiveObjectWithFile:DEFINES];
+    if ([des count] > 0) {
+        [_defines addObjectsFromArray:des];
+    }
+    
+    WKHomeWork *addCommon = [[WKHomeWork alloc] init];
+    addCommon.gridTitle = @"添加";
+    addCommon.iconImage = @"addDefine";
+    addCommon.pageType = pageTypeNative;
+    addCommon.destVcClass = @"WKFunsViewController";
+    [_defines addObject:addCommon];
 }
 
 #pragma mark - setupHeaderView
@@ -209,6 +229,9 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
             break;
         }
         case pageTypeH5: {
+            WKBaseWebViewController *webVc = [[WKBaseWebViewController alloc] initWithDesUrl:[NSString stringWithFormat:@"%@%@",homeWork.prefix,homeWork.destVcClass]];
+            webVc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:webVc animated:YES];
             break;
         }
         default:
@@ -261,6 +284,11 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
     WKNoticeWebViewController *noticeVc = [[WKNoticeWebViewController alloc] init];
     noticeVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:noticeVc animated:YES];
+}
+
+#pragma mark 移除观察者
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - 屏幕横竖屏设置

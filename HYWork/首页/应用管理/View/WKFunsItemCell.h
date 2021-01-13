@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WKFunsItem.h"
+#import "WKHomeWork.h"
 @class WKFunsItemCell;
 
 @protocol WKFunsItemCellDelegate <NSObject>
@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIView *container;
 
-@property (nonatomic, strong) WKFunsItem *funsItem;
+@property (nonatomic, strong) WKHomeWork *homeWork;
 
 @property (nonatomic, weak) id <WKFunsItemCellDelegate> delegate;
 

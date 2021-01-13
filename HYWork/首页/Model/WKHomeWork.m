@@ -19,10 +19,10 @@
         self.gridTitle = [decoder decodeObjectForKey:@"gridTitle"];
         self.gridTag = [decoder decodeObjectForKey:@"gridTag"];
         self.gridColor = [decoder decodeObjectForKey:@"gridColor"];
-        self.pageType = [[decoder decodeObjectForKey:@"pageType"] intValue];
+        self.pageType = [decoder decodeIntegerForKey:@"pageType"];
         self.prefix = [decoder decodeObjectForKey:@"prefix"];
         self.destVcClass = [decoder decodeObjectForKey:@"destVcClass"];
-        self.load = [decoder decodeObjectForKey:@"load"];
+        self.load = [decoder decodeBoolForKey:@"load"];
     }
     return self;
 }
@@ -35,10 +35,10 @@
     [encoder encodeObject:self.gridTitle forKey:@"gridTitle"];
     [encoder encodeObject:self.gridTag forKey:@"gridTag"];
     [encoder encodeObject:self.gridColor forKey:@"gridColor"];
-    [encoder encodeObject:@(self.pageType) forKey:@"pageType"];
+    [encoder encodeInteger:self.pageType forKey:@"pageType"];
     [encoder encodeObject:self.prefix forKey:@"prefix"];
     [encoder encodeObject:self.destVcClass forKey:@"destVcClass"];
-    [encoder encodeObject:@(self.load) forKey:@"load"];
+    [encoder encodeBool:self.load forKey:@"load"];
 }
 
 @end

@@ -56,6 +56,12 @@ static NSString *const WKWorkCollectionViewCellID = @"WKWorkCollectionViewCell";
     }];
 }
 
+- (void)setDefines:(NSMutableArray<WKHomeWork *> *)defines {
+    _defines = defines;
+    
+    [self.collectionView reloadData];
+}
+
 #pragma mark - <UICollectionViewDataSource>
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return _defines.count;

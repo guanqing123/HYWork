@@ -35,8 +35,12 @@
 //H5基础路径
 #define H5URL @"http://dev.sge.cn/hywork"
 
+//知识库 / 论坛
 #define LNURL  @"http://kms.sge.cn?mobile=%@"
 #define BBSURL @"http://kms.sge.cn/sns/group/mobile/index.jsp?mobile=%@"
+
+// 自定义模块
+#define DEFINES [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"defines.data"]
 
 //售后反馈
 #define AfterSale @"/gsaleservice/gserviceList.html"

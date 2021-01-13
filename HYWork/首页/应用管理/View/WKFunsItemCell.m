@@ -7,7 +7,12 @@
 //
 
 #import "WKFunsItemCell.h"
-#import "WKFunsItem.h"
+
+//category
+#import "UIColor+DCColorChange.h"
+//tool
+#import "SPSpeedy.h"
+#import "SDWebImage.h"
 
 @interface WKFunsItemCell ()
 
@@ -52,22 +57,30 @@
     return self;
 }
 
-- (void)setFunsItem:(WKFunsItem *)funsItem {
-    _funsItem = funsItem;
+- (void)setHomeWork:(WKHomeWork *)homeWork {
+    _homeWork = homeWork;
     
-    _icon.image = [UIImage imageNamed:funsItem.imageName];
-    _titleLabel.text = funsItem.itemTitle;
-    switch (funsItem.status) {
-        case StatusMinusSign:
-            [_rightUpperButton setImage:[UIImage imageNamed:@"图标_06"] forState:UIControlStateNormal];
+    // 0.图标
+    if ([_homeWork.iconImage length] > 4 && [[_homeWork.iconImage substringToIndex:4] isEqualToString:@"http"]) {
+        [_icon sd_setImageWithURL:[NSURL URLWithString:homeWork.iconImage] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    } else {
+        _icon.image = [UIImage imageNamed:homeWork.iconImage];
+    }
+    
+    // 1.标题
+    _titleLabel.text = homeWork.gridTitle;
+    
+    // 2.角标
+    switch (homeWork.hystatus) {
+        case HYStatusMinusSign:
+            [_rightUpperButton setImage:[UIImage imageNamed:@"minus"] forState:UIControlStateNormal];
             break;
-        case StatusPlusSign:
-            [_rightUpperButton setImage:[UIImage imageNamed:@"图标_10"] forState:UIControlStateNormal];
+        case HYStatusPlusSign:
+            [_rightUpperButton setImage:[UIImage imageNamed:@"plus"] forState:UIControlStateNormal];
             break;
-        case StatusCheck:
-            [_rightUpperButton setImage:[UIImage imageNamed:@"图标_08"] forState:UIControlStateNormal];
+        case HYStatusCheck:
+            [_rightUpperButton setImage:[UIImage imageNamed:@"check"] forState:UIControlStateNormal];
             break;
-            
         default:
             break;
     }
