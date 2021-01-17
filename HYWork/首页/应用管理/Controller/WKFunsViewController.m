@@ -138,7 +138,7 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
             // 加载本地功能
             WKHomeWorkGroup *itemGroup = [[WKHomeWorkGroup alloc] init];
             NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:DEFINES];
-            itemGroup.type = @"首页快捷入口";
+            itemGroup.type = @"首页快捷入口--(此模块长按可以调整顺序)";
             itemGroup.items = [NSMutableArray array];
             if ([items count] > 0) {
                 [itemGroup.items addObjectsFromArray:items];

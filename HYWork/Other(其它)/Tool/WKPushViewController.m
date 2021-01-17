@@ -33,20 +33,12 @@
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"30"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = left;
     
-//    WKWebView *webView = [[WKWebView alloc] init];
-//    webView.frame = CGRectMake(0, HWTopNavH, SCREEN_WIDTH, SCREEN_HEIGHT - HWTopNavH);
     WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     webView.scrollView.showsVerticalScrollIndicator = NO;
     webView.navigationDelegate = self;
     webView.UIDelegate = self;
     _webView = webView;
     [self.view addSubview:_webView];
-    
-//    if (@available(iOS 11.0,*)) {
-//        webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//        webView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-//        webView.scrollView.scrollIndicatorInsets = webView.scrollView.contentInset;
-//    }
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_urlPath]]];
 }
@@ -57,7 +49,6 @@
     }else{
         if (self.webView.loading) {[self.webView stopLoading];}
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-//        [self.navigationController popViewControllerAnimated:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
