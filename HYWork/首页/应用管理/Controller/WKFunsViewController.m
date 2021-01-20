@@ -148,7 +148,7 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
             // 加工数据
             NSMutableArray *allItemModels = [[NSMutableArray alloc] init];
             for (WKHomeWorkGroup *group in self.itemGroups) {
-                if ([group.type isEqualToString:@"首页快捷入口"]) {
+                if ([group.type isEqualToString:@"首页快捷入口--(此模块长按可以调整顺序)"]) {
                     for (WKHomeWork *item in group.items) {
                         item.hystatus = HYStatusMinusSign;
                     }
