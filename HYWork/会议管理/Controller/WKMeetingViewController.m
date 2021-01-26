@@ -9,7 +9,10 @@
 #import "WKMeetingViewController.h"
 #import "LoadViewController.h"
 
-@interface WKMeetingViewController () <WKUIDelegate,WKNavigationDelegate>
+#import "BeforeScanSingleton.h"
+#import "WKBaseWebViewController.h"
+
+@interface WKMeetingViewController () <WKUIDelegate,WKNavigationDelegate,SubLBXScanViewControllerDelegate>
 @property (nonatomic, strong)  WKWebView *webView;
 @property (nonatomic, copy) NSURL *currentUrl;
 @end
@@ -24,7 +27,9 @@
     // 2.返回按钮
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"30"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = left;
-    
+    // 3.扫一扫
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"scan"] style:UIBarButtonItemStyleDone target:self action:@selector(scan)];
+    self.navigationItem.rightBarButtonItem = right;
     
 //    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, HWTopNavH, SCREEN_WIDTH, SCREEN_HEIGHT - HWTopNavH)];
     _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
@@ -53,6 +58,22 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+//扫一扫
+- (void)scan {
+    [[BeforeScanSingleton shareScan] ShowSelectedType:QQStyle WithViewController:self];
+}
+
+#pragma mark -扫一扫代理
+- (void)subLBXScanViewController:(SubLBXScanViewController *)subLBXScanViewController resultStr:(NSString *)result {
+    [SVProgressHUD show];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        WKBaseWebViewController *webVc = [[WKBaseWebViewController alloc] initWithDesUrl:result];
+        webVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:webVc animated:YES];
+    });
 }
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {

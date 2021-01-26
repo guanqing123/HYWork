@@ -21,6 +21,10 @@
 // 通讯录
 #import "WKAddressListViewController.h"
 
+//扫一扫
+#import "BeforeScanSingleton.h"
+#import "WKBaseWebViewController.h"
+
 #import "HelpViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "LoadViewController.h"
@@ -32,7 +36,7 @@
 // 阿里Push
 #import <CloudPushSDK/CloudPushSDK.h>
 
-@interface MyViewController () <LoadViewControllerDelegate,UIAlertViewDelegate>
+@interface MyViewController () <LoadViewControllerDelegate,UIAlertViewDelegate,SubLBXScanViewControllerDelegate>
 /**
  * 显示登录信息
  */
@@ -81,6 +85,32 @@
         self.tableView.estimatedSectionHeaderHeight = 0;
         self.tableView.estimatedSectionFooterHeight = 0;
     }
+    
+    // 2.扫一扫
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"scan"] style:UIBarButtonItemStyleDone target:self action:@selector(scan)];
+    self.navigationItem.leftBarButtonItem = left;
+}
+
+//扫一扫
+- (void)scan {
+    LoadViewController *loadVc = [LoadViewController shareInstance];
+    if (!loadVc.isLoaded) {
+        loadVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:loadVc animated:YES];
+        return;
+    }
+    [[BeforeScanSingleton shareScan] ShowSelectedType:QQStyle WithViewController:self];
+}
+
+#pragma mark -扫一扫代理
+- (void)subLBXScanViewController:(SubLBXScanViewController *)subLBXScanViewController resultStr:(NSString *)result {
+    [SVProgressHUD show];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        WKBaseWebViewController *webVc = [[WKBaseWebViewController alloc] initWithDesUrl:result];
+        webVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:webVc animated:YES];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated {

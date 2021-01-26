@@ -29,6 +29,13 @@
     
     //设置扫码后需要扫码图像
     self.isNeedScanImage = YES;
+    
+    //回退
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"30"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+}
+
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -217,7 +224,6 @@
     }
     [self.navigationController popViewControllerAnimated:YES];
     //[self showNextVCWithScanResult:scanResult];
-   
 }
 
 - (void)popAlertMsgWithScanResult:(NSString*)strResult

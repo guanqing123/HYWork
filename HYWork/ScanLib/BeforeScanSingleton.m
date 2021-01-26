@@ -117,6 +117,7 @@ static BeforeScanSingleton *_beforeScan;
     
     vc.isQQSimulator = YES;
     vc.isVideoZoom = YES;
+    vc.hidesBottomBarWhenPushed = YES;
     [_viewController.navigationController pushViewController:vc animated:YES];
 //    UIWindow *window = [[[UIApplication sharedApplication] windows] firstObject];
 //    [window addSubview:vc.view];
