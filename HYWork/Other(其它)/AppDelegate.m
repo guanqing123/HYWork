@@ -605,4 +605,9 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
     NSLog(@"Receive message title: %@,body: %@. content: %@.", title, body, content);
 }
 
+#pragma mark - UIInterfaceOrientationMask
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+}
+
 @end

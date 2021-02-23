@@ -154,7 +154,8 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
 
 #pragma mark - dataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+//    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -162,11 +163,11 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    /*if (indexPath.section == 0) {
         return 120;
+    } else*/ if (indexPath.section == 0) {
+        return 85 * 2 + 35 + 5;
     } else if (indexPath.section == 1) {
-        return 85 * 2 + 35;
-    } else if (indexPath.section == 2) {
         return (1 + (_defines.count - 1) / 4) * 85 + 35;
     }
     return 0;
@@ -175,17 +176,17 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cusCell = [UITableViewCell new];
     
-    if (indexPath.section == 0) {
+    /*if (indexPath.section == 0) {
         WKOATableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKOATableViewCellID forIndexPath:indexPath];
         cell.oaWorks = _oaWorks;
         cell.delegate = self;
         cusCell = cell;
-    } else if (indexPath.section == 1) {
+    } else */if (indexPath.section == 0) {
         WKCommonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKCommonTableViewCellID forIndexPath:indexPath];
         cell.commons = _commons;
         cell.delegate = self;
         cusCell = cell;
-    } else if (indexPath.section == 2) {
+    } else if (indexPath.section == 1) {
         WKDefineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKDefineTableViewCellID forIndexPath:indexPath];
         cell.defines = _defines;
         cell.delegate = self;
@@ -243,7 +244,7 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
 #pragma mark - delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return 54.0f;
+        return 80.0f;
     }
     return 0.0f;
 }
@@ -259,14 +260,21 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (section == 2) {
+    /*if (section == 2) {
+        return 64.0f;
+    }*/
+    if (section == 1) {
         return 64.0f;
     }
     return 0.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    if (section == 2) {
+    /*if (section == 2) {
+        WKLineFooterView *footerView = [WKLineFooterView footerView];
+        return footerView;
+    }*/
+    if (section == 1) {
         WKLineFooterView *footerView = [WKLineFooterView footerView];
         return footerView;
     }

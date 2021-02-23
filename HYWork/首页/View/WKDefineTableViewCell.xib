@@ -19,6 +19,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JpM-gE-m7h" userLabel="topView">
                         <rect key="frame" x="0.0" y="0.0" width="382" height="35"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGa-bT-M8Q" userLabel="colorView">
+                                <rect key="frame" x="10" y="9" width="5" height="17"/>
+                                <color key="backgroundColor" red="0.41176470588235292" green="0.41176470588235292" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="5" id="qFj-nq-uw9"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自定义" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbQ-zz-nGr">
                                 <rect key="frame" x="20" y="0.0" width="46" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -30,6 +37,9 @@
                         <constraints>
                             <constraint firstItem="kbQ-zz-nGr" firstAttribute="leading" secondItem="JpM-gE-m7h" secondAttribute="leading" constant="20" id="9Zj-mz-ySd"/>
                             <constraint firstAttribute="height" constant="35" id="dUc-n2-vvr"/>
+                            <constraint firstItem="uGa-bT-M8Q" firstAttribute="leading" secondItem="JpM-gE-m7h" secondAttribute="leading" constant="10" id="fgJ-JQ-PhG"/>
+                            <constraint firstAttribute="bottom" secondItem="uGa-bT-M8Q" secondAttribute="bottom" constant="9" id="iLh-6R-ynA"/>
+                            <constraint firstItem="uGa-bT-M8Q" firstAttribute="top" secondItem="JpM-gE-m7h" secondAttribute="top" constant="9" id="lbJ-qJ-tFg"/>
                             <constraint firstAttribute="bottom" secondItem="kbQ-zz-nGr" secondAttribute="bottom" id="oEV-gR-Amh"/>
                             <constraint firstItem="kbQ-zz-nGr" firstAttribute="top" secondItem="JpM-gE-m7h" secondAttribute="top" id="tTB-9f-90X"/>
                         </constraints>

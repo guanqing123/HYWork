@@ -71,9 +71,20 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
     [button addTarget:self action:@selector(managerAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *managerItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = managerItem;
+    
+    //主动触发按钮
+    [button sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)back {
+    // 防止操作了,忘记点右上角完成按钮
+    if (self.isEditing && [self.itemGroups count] > 0) {
+        WKHomeWorkGroup *itemGroup = self.itemGroups[0];
+        [NSKeyedArchiver archiveRootObject:itemGroup.items toFile:DEFINES];
+        // 刷新本地自定义模块
+        [[NSNotificationCenter defaultCenter] postNotificationName:refreshDefines object:nil userInfo:nil];
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -82,7 +93,7 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
     self.isEditing = managerButton.selected;
     [self.collectionView reloadData];
     
-    if (!self.isEditing) {
+    if (!self.isEditing && [self.itemGroups count] > 0) {
         WKHomeWorkGroup *itemGroup = self.itemGroups[0];
         [NSKeyedArchiver archiveRootObject:itemGroup.items toFile:DEFINES];
         // 刷新本地自定义模块

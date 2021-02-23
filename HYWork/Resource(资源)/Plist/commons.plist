@@ -4,6 +4,42 @@
 <array>
 	<dict>
 		<key>iconImage</key>
+		<string>oa</string>
+		<key>gridTitle</key>
+		<string>OA</string>
+		<key>gridTag</key>
+		<string></string>
+		<key>gridColor</key>
+		<string>#515151</string>
+		<key>pageType</key>
+		<integer>1</integer>
+		<key>prefix</key>
+		<string></string>
+		<key>destVcClass</key>
+		<string>OAViewController</string>
+		<key>load</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>iconImage</key>
+		<string>meeting</string>
+		<key>gridTitle</key>
+		<string>会议管理</string>
+		<key>gridTag</key>
+		<string></string>
+		<key>gridColor</key>
+		<string>#515151</string>
+		<key>pageType</key>
+		<integer>1</integer>
+		<key>prefix</key>
+		<string></string>
+		<key>destVcClass</key>
+		<string>WKMeetingViewController</string>
+		<key>load</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>iconImage</key>
 		<string>zaixiankaoqin</string>
 		<key>gridTitle</key>
 		<string>在线考勤</string>

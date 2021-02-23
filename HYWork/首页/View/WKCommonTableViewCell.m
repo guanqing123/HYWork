@@ -14,6 +14,7 @@
 @interface WKCommonTableViewCell()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @property (nonatomic, strong)  UICollectionView *collectionView;
 
@@ -51,7 +52,7 @@ static NSString *const WKWorkCollectionViewCellID = @"WKWorkCollectionViewCell";
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self);
         make.right.mas_equalTo(self);
-        make.bottom.mas_equalTo(self);
+        make.bottom.mas_equalTo(_bottomView.mas_top);
         make.top.mas_equalTo(_topView.mas_bottom);
     }];
 }

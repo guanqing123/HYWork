@@ -10,48 +10,67 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="WKNoticeSectionHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="415" height="54"/>
+            <rect key="frame" x="0.0" y="0.0" width="488" height="75"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9GT-20-7e4" userLabel="topView">
+                    <rect key="frame" x="0.0" y="0.0" width="488" height="35"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KyA-Co-Isz" userLabel="colorView">
+                            <rect key="frame" x="10" y="9" width="5" height="17"/>
+                            <color key="backgroundColor" red="0.0" green="0.61568627450980395" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="5" id="uRj-jg-wRA"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuh-Xe-gmK">
+                            <rect key="frame" x="20" y="0.0" width="30.666666666666671" height="35"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="KyA-Co-Isz" firstAttribute="leading" secondItem="9GT-20-7e4" secondAttribute="leading" constant="10" id="4Ir-Nz-pjX"/>
+                        <constraint firstItem="KyA-Co-Isz" firstAttribute="top" secondItem="9GT-20-7e4" secondAttribute="top" constant="9" id="NEg-2u-qnW"/>
+                        <constraint firstAttribute="height" constant="35" id="eey-Vg-15u"/>
+                        <constraint firstAttribute="bottom" secondItem="KyA-Co-Isz" secondAttribute="bottom" constant="9" id="nkl-fz-nKw"/>
+                        <constraint firstItem="uuh-Xe-gmK" firstAttribute="top" secondItem="9GT-20-7e4" secondAttribute="top" id="r1A-qI-STj"/>
+                        <constraint firstAttribute="bottom" secondItem="uuh-Xe-gmK" secondAttribute="bottom" id="v8T-Xq-geD"/>
+                        <constraint firstItem="uuh-Xe-gmK" firstAttribute="leading" secondItem="9GT-20-7e4" secondAttribute="leading" constant="20" id="zO1-eV-gK1"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dm4-8r-hlp" userLabel="marqueeF">
-                    <rect key="frame" x="39" y="0.0" width="366" height="46"/>
+                    <rect key="frame" x="10" y="35" width="468" height="35"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyz-m7-net" userLabel="bottomView">
-                    <rect key="frame" x="0.0" y="46" width="415" height="8"/>
+                    <rect key="frame" x="0.0" y="70" width="488" height="5"/>
                     <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="8" id="1VX-uZ-adi"/>
+                        <constraint firstAttribute="height" constant="5" id="1VX-uZ-adi"/>
                     </constraints>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xiaolaba" highlightedImage="xiaolaba" translatesAutoresizingMaskIntoConstraints="NO" id="rXc-Uq-f95">
-                    <rect key="frame" x="10" y="11" width="24" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="24" id="Sf5-Ji-gyx"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="gyz-m7-net" secondAttribute="bottom" id="3vf-OS-0r0"/>
-                <constraint firstItem="rXc-Uq-f95" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="8k0-4x-e3s"/>
+                <constraint firstItem="dm4-8r-hlp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Br2-XJ-UFf"/>
+                <constraint firstItem="9GT-20-7e4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GJi-dx-1Ab"/>
                 <constraint firstAttribute="trailing" secondItem="gyz-m7-net" secondAttribute="trailing" id="H45-1e-XR8"/>
                 <constraint firstAttribute="trailing" secondItem="dm4-8r-hlp" secondAttribute="trailing" constant="10" id="Ib9-Q8-Puf"/>
-                <constraint firstItem="dm4-8r-hlp" firstAttribute="leading" secondItem="rXc-Uq-f95" secondAttribute="trailing" constant="5" id="d9U-Zh-fXU"/>
+                <constraint firstItem="dm4-8r-hlp" firstAttribute="top" secondItem="9GT-20-7e4" secondAttribute="bottom" id="Jyt-Wv-Z80"/>
+                <constraint firstAttribute="trailing" secondItem="9GT-20-7e4" secondAttribute="trailing" id="erM-bi-yN9"/>
                 <constraint firstItem="gyz-m7-net" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fYW-By-DXX"/>
+                <constraint firstItem="9GT-20-7e4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lvW-xp-ZuD"/>
                 <constraint firstItem="gyz-m7-net" firstAttribute="top" secondItem="dm4-8r-hlp" secondAttribute="bottom" id="m62-Rf-mX1"/>
-                <constraint firstItem="dm4-8r-hlp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mH1-rK-Ywm"/>
-                <constraint firstItem="rXc-Uq-f95" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="mJu-TU-Gxe"/>
-                <constraint firstItem="gyz-m7-net" firstAttribute="top" secondItem="rXc-Uq-f95" secondAttribute="bottom" constant="11" id="rTd-Wj-t0x"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="marqueeF" destination="dm4-8r-hlp" id="a4g-eu-Wyd"/>
             </connections>
-            <point key="canvasLocation" x="-125" y="40"/>
+            <point key="canvasLocation" x="-72.463768115942031" y="48.505434782608702"/>
         </view>
     </objects>
-    <resources>
-        <image name="xiaolaba" width="128" height="128"/>
-    </resources>
 </document>

@@ -43,7 +43,7 @@
 - (WKNumberScrollView *)numberScrollView {
     if (!_numberScrollView) {
         _numberScrollView = [WKNumberScrollView scrollView];
-        _numberScrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH - 44, self.marqueeF.dc_height);
+        _numberScrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH - 24, self.marqueeF.dc_height);
         _numberScrollView.delegate = self;
     }
     return _numberScrollView;

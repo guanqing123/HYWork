@@ -57,6 +57,7 @@
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>alipay</string>
 		<string>iosamap</string>
 		<string>sinaweibo</string>
 		<string>sinaweibohd</string>
@@ -94,7 +95,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>App需要您的同意,才能访问相机,完成拍照功能</string>
+	<string>App需要您的同意,才能访问相机,完成拍照或扫一扫功能</string>
 	<key>NSContactsUsageDescription</key>
 	<string>App需要您的同意,才能访问通讯录,获取同学录姓名与电话信息</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -112,8 +113,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>

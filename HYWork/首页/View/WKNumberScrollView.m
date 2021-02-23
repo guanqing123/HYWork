@@ -38,9 +38,10 @@
     if (scrollArray.count > 0) {
         for (int i = 0; i < scrollArray.count; i++) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            btn.titleLabel.numberOfLines = 1;
+            btn.titleLabel.numberOfLines = 2;
             btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
+            [btn setImage:[UIImage imageNamed:@"dots"] forState:UIControlStateNormal];
             [btn setTitle:scrollArray[i] forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
