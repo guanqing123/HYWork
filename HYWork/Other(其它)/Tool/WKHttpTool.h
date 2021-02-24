@@ -51,4 +51,8 @@
  */
 + (void)postWithURL:(NSString *)url params:(NSDictionary *)params formDataArray:(NSArray *)formDataArray success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure;
 
+
+/// 皮肤
++ (BOOL)pifu;
+
 @end

@@ -356,11 +356,14 @@
         [selfVc detection];
     };
     
+    //pifu
+    SettingItem *pifu = [SettingSwitchItem itemWithIcon:@"pifu" title:@"朴素风"];
+    
     //关于
     SettingItem *about = [SettingArrowItem itemWithIcon:@"guanyu" title:@"关于" destVcClass:[AboutViewController class] loaded:NO];
     
     SettingGroup *group1 = [[SettingGroup alloc] init];
-    group1.items = @[help,autoLogin, share,about];
+    group1.items = @[help,autoLogin, share, pifu, about];
     [self.data addObject:group1];
 }
 

@@ -97,7 +97,11 @@
     if ([_homeWork.iconImage length] > 4 && [[_homeWork.iconImage substringToIndex:4] isEqualToString:@"http"]) {
         [_gridImageView sd_setImageWithURL:[NSURL URLWithString:homeWork.iconImage]];
     } else {
-        _gridImageView.image = [UIImage imageNamed:homeWork.iconImage];
+        if ([WKHttpTool pifu]) {
+            _gridImageView.image = [UIImage imageNamed:[homeWork.iconImage stringByAppendingString:@"o"]];
+        } else {
+            _gridImageView.image = [UIImage imageNamed:homeWork.iconImage];
+        }
     }
 }
 

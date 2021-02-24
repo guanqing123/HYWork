@@ -77,4 +77,9 @@
     [uploadTask resume];
 }
 
++ (BOOL)pifu {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults boolForKey:@"朴素风"];
+}
+
 @end

@@ -64,7 +64,11 @@
     if ([_homeWork.iconImage length] > 4 && [[_homeWork.iconImage substringToIndex:4] isEqualToString:@"http"]) {
         [_icon sd_setImageWithURL:[NSURL URLWithString:homeWork.iconImage] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     } else {
-        _icon.image = [UIImage imageNamed:homeWork.iconImage];
+        if ([WKHttpTool pifu]) {
+            _icon.image = [UIImage imageNamed:[homeWork.iconImage stringByAppendingString:@"o"]];
+        } else {
+            _icon.image = [UIImage imageNamed:homeWork.iconImage];
+        }
     }
     
     // 1.标题
