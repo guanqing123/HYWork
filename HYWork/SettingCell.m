@@ -47,6 +47,12 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:self.switchView.isOn forKey:self.item.title];
     [defaults synchronize];
+    
+    if ([self.item.title isEqualToString:PS]) {
+        if ([self.delegate respondsToSelector:@selector(tableViewCellRestartApp:)]) {
+            [self.delegate tableViewCellRestartApp:self];
+        }
+    }
 }
 
 + (instancetype)cellWithTableView:(UITableView *)tableView {

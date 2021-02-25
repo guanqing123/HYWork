@@ -357,7 +357,7 @@
     };
     
     //pifu
-    SettingItem *pifu = [SettingSwitchItem itemWithIcon:@"pifu" title:@"朴素风"];
+    SettingItem *pifu = [SettingSwitchItem itemWithIcon:@"pifu" title:PS];
     
     //关于
     SettingItem *about = [SettingArrowItem itemWithIcon:@"guanyu" title:@"关于" destVcClass:[AboutViewController class] loaded:NO];

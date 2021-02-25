@@ -61,21 +61,30 @@
     _homeWork = homeWork;
     
     // 0.图标
+    if ([_homeWork.iconImage isEqualToString:@"https://honyar.oss-cn-hangzhou.aliyuncs.com/hywork/txl.png"]) {
+        _homeWork.iconImage = @"txl";
+    }
     if ([_homeWork.iconImage length] > 4 && [[_homeWork.iconImage substringToIndex:4] isEqualToString:@"http"]) {
-        [_icon sd_setImageWithURL:[NSURL URLWithString:homeWork.iconImage] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        if ([WKHttpTool pifu]) {
+            NSString *prefix = [_homeWork.iconImage substringToIndex:[_homeWork.iconImage rangeOfString:@"." options:NSBackwardsSearch].location];
+            NSString *suffix = [_homeWork.iconImage substringFromIndex:[_homeWork.iconImage rangeOfString:@"." options:NSBackwardsSearch].location];
+            [_icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@o%@", prefix, suffix]]];
+        } else {
+            [_icon sd_setImageWithURL:[NSURL URLWithString:_homeWork.iconImage] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        }
     } else {
         if ([WKHttpTool pifu]) {
-            _icon.image = [UIImage imageNamed:[homeWork.iconImage stringByAppendingString:@"o"]];
+            _icon.image = [UIImage imageNamed:[_homeWork.iconImage stringByAppendingString:@"o"]];
         } else {
-            _icon.image = [UIImage imageNamed:homeWork.iconImage];
+            _icon.image = [UIImage imageNamed:_homeWork.iconImage];
         }
     }
     
     // 1.标题
-    _titleLabel.text = homeWork.gridTitle;
+    _titleLabel.text = _homeWork.gridTitle;
     
     // 2.角标
-    switch (homeWork.hystatus) {
+    switch (_homeWork.hystatus) {
         case HYStatusMinusSign:
             [_rightUpperButton setImage:[UIImage imageNamed:@"minus"] forState:UIControlStateNormal];
             break;

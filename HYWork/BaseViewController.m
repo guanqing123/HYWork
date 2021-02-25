@@ -12,6 +12,11 @@
 #import "SettingSwitchItem.h"
 #import "SettingCell.h"
 #import "LoadViewController.h"
+#import "AppDelegate.h"
+
+@interface BaseViewController()<SettingCellDelegate>
+
+@end
 
 @implementation BaseViewController
 
@@ -51,10 +56,44 @@
     //2.给cell传递模型数据
     SettingGroup *group = self.data[indexPath.section];
     cell.item = group.items[indexPath.row];
+    cell.delegate = self;
     
     //3.返回cell
     return cell;
 }
+
+- (void)tableViewCellRestartApp:(SettingCell *)settingCell {
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"切换风格" message:@"app退出重启才能生效" preferredStyle:UIAlertControllerStyleAlert];
+    
+    WEAKSELF
+    UIAlertAction *rightnow = [UIAlertAction actionWithTitle:@"立即退出" style:UIAlertActionStyleDestructive
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf exitApplication];
+    }];
+    
+    UIAlertAction *cancle =  [UIAlertAction actionWithTitle:@"稍后再试" style:UIAlertActionStyleCancel
+                                                    handler:^(UIAlertAction * _Nonnull action) {}];
+    [alertVc addAction:cancle];
+    [alertVc addAction:rightnow];
+    
+    [self presentViewController:alertVc animated:YES completion:nil];
+}
+
+- (void)exitApplication {
+
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIWindow *window = app.window;
+     // 动画 1
+    [UIView animateWithDuration:1.0f animations:^{
+        window.alpha = 0;
+        window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);
+    } completion:^(BOOL finished) {
+        exit(0);
+    }];
+    //exit(0);
+     
+}
+
 
 #pragma mark - TableView delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

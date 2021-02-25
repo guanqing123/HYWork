@@ -46,7 +46,6 @@
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
             btn.titleLabel.font = PFR13Font;
-            
             if (i != 0) {
                 CATransform3D trans = CATransform3DIdentity;
                 trans = CATransform3DMakeRotation(M_PI_2, 1, 0, 0);

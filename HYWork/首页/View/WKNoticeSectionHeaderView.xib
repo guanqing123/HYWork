@@ -42,8 +42,8 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dm4-8r-hlp" userLabel="marqueeF">
-                    <rect key="frame" x="10" y="35" width="468" height="35"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <rect key="frame" x="10" y="35" width="448" height="35"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyz-m7-net" userLabel="bottomView">
                     <rect key="frame" x="0.0" y="70" width="488" height="5"/>
@@ -52,6 +52,13 @@
                         <constraint firstAttribute="height" constant="5" id="1VX-uZ-adi"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTx-SK-lJk">
+                    <rect key="frame" x="458" y="35" width="30" height="35"/>
+                    <state key="normal" title="Button" image="arright"/>
+                    <connections>
+                        <action selector="moreNotice" destination="iN0-l3-epB" eventType="touchUpInside" id="SGn-GD-Sdz"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -59,18 +66,25 @@
                 <constraint firstItem="dm4-8r-hlp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Br2-XJ-UFf"/>
                 <constraint firstItem="9GT-20-7e4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GJi-dx-1Ab"/>
                 <constraint firstAttribute="trailing" secondItem="gyz-m7-net" secondAttribute="trailing" id="H45-1e-XR8"/>
-                <constraint firstAttribute="trailing" secondItem="dm4-8r-hlp" secondAttribute="trailing" constant="10" id="Ib9-Q8-Puf"/>
+                <constraint firstAttribute="trailing" secondItem="dm4-8r-hlp" secondAttribute="trailing" constant="30" id="Ib9-Q8-Puf"/>
                 <constraint firstItem="dm4-8r-hlp" firstAttribute="top" secondItem="9GT-20-7e4" secondAttribute="bottom" id="Jyt-Wv-Z80"/>
+                <constraint firstItem="cTx-SK-lJk" firstAttribute="top" secondItem="9GT-20-7e4" secondAttribute="bottom" id="Ln7-8O-URd"/>
+                <constraint firstAttribute="trailing" secondItem="cTx-SK-lJk" secondAttribute="trailing" id="bE9-JM-ZqC"/>
                 <constraint firstAttribute="trailing" secondItem="9GT-20-7e4" secondAttribute="trailing" id="erM-bi-yN9"/>
+                <constraint firstItem="cTx-SK-lJk" firstAttribute="leading" secondItem="dm4-8r-hlp" secondAttribute="trailing" id="f7c-eE-he0"/>
                 <constraint firstItem="gyz-m7-net" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fYW-By-DXX"/>
                 <constraint firstItem="9GT-20-7e4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lvW-xp-ZuD"/>
                 <constraint firstItem="gyz-m7-net" firstAttribute="top" secondItem="dm4-8r-hlp" secondAttribute="bottom" id="m62-Rf-mX1"/>
+                <constraint firstItem="gyz-m7-net" firstAttribute="top" secondItem="cTx-SK-lJk" secondAttribute="bottom" id="y9H-uQ-bZN"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="marqueeF" destination="dm4-8r-hlp" id="a4g-eu-Wyd"/>
             </connections>
-            <point key="canvasLocation" x="-72.463768115942031" y="48.505434782608702"/>
+            <point key="canvasLocation" x="-178.2608695652174" y="52.581521739130437"/>
         </view>
     </objects>
+    <resources>
+        <image name="arright" width="20" height="20"/>
+    </resources>
 </document>

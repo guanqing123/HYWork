@@ -135,8 +135,14 @@
     for (int i = 0; i < items.count; i++) {
         UITabBarItem *item = [items objectAtIndex:i];
         //item.badgeValue = [NSString stringWithFormat:@"%d",10];
-        [item setImage:[[UIImage imageNamed:[NSString stringWithFormat:@"tab%d",i+1]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        [item setSelectedImage:[[UIImage imageNamed:[NSString stringWithFormat:@"tab%d-%d",i+1, i+1]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        NSString *image = [NSString stringWithFormat:@"tab%d",i+1];
+        NSString *selectedImage = [NSString stringWithFormat:@"tab%d-%d",i+1, i+1];
+        if (WKHttpTool.pifu) {
+            image = [image stringByAppendingString:@"o"];
+            selectedImage = [selectedImage stringByAppendingString:@"o"];
+        }
+        [item setImage:[[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [item setSelectedImage:[[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     }
     
     //ios12.1 适配

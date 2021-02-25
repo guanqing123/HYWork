@@ -94,13 +94,22 @@
     [SPSpeedy dc_chageControlCircularWith:_tagLabel AndSetCornerRadius:5 SetBorderWidth:1 SetBorderColor:_tagLabel.textColor canMasksToBounds:YES];
     
     if (_homeWork.iconImage.length == 0) return;
+    if ([_homeWork.iconImage isEqualToString:@"https://honyar.oss-cn-hangzhou.aliyuncs.com/hywork/txl.png"]) {
+        _homeWork.iconImage = @"txl";
+    }
     if ([_homeWork.iconImage length] > 4 && [[_homeWork.iconImage substringToIndex:4] isEqualToString:@"http"]) {
-        [_gridImageView sd_setImageWithURL:[NSURL URLWithString:homeWork.iconImage]];
+        if ([WKHttpTool pifu]) {
+            NSString *prefix = [_homeWork.iconImage substringToIndex:[_homeWork.iconImage rangeOfString:@"." options:NSBackwardsSearch].location];
+            NSString *suffix = [_homeWork.iconImage substringFromIndex:[_homeWork.iconImage rangeOfString:@"." options:NSBackwardsSearch].location];
+            [_gridImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@o%@", prefix, suffix]]];
+        } else {
+            [_gridImageView sd_setImageWithURL:[NSURL URLWithString:_homeWork.iconImage]];
+        }
     } else {
         if ([WKHttpTool pifu]) {
-            _gridImageView.image = [UIImage imageNamed:[homeWork.iconImage stringByAppendingString:@"o"]];
+            _gridImageView.image = [UIImage imageNamed:[_homeWork.iconImage stringByAppendingString:@"o"]];
         } else {
-            _gridImageView.image = [UIImage imageNamed:homeWork.iconImage];
+            _gridImageView.image = [UIImage imageNamed:_homeWork.iconImage];
         }
     }
 }

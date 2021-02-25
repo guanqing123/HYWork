@@ -383,7 +383,7 @@
         UITableViewCell *cell = [[UITableViewCell alloc] init];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 60, 60)];
-        imgView.image = [UIImage imageNamed:@"zaixiankaoqin"];
+        imgView.image = [UIImage imageNamed:@"zaixiankaoqino"];
         [cell.contentView addSubview:imgView];
         
         UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(85, 10, 100, 30)];

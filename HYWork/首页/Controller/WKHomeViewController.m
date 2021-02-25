@@ -144,6 +144,7 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.showsVerticalScrollIndicator = NO;
     self.tableView = tableView;
     [self.view addSubview:tableView];
     
@@ -192,6 +193,7 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
         cell.delegate = self;
         cusCell = cell;
     }
+    cusCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cusCell;
 }

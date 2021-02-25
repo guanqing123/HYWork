@@ -134,6 +134,8 @@
 #import <Masonry.h>
 #import "UIView+SPExtension.h"
 
+// 朴素风
+#define PS @"淡雅风"
 #import "WKHttpTool.h"
 #import "SVProgressHUD.h"
 

@@ -24,6 +24,8 @@
 
 @property (nonatomic, assign) BOOL pauseV;
 
+- (IBAction)moreNotice;
+
 @end
 
 @implementation WKNoticeSectionHeaderView
@@ -36,6 +38,9 @@
     [super awakeFromNib];
     
     [self.marqueeF addSubview:self.numberScrollView];
+    [self.numberScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.marqueeF);
+    }];
     
     [self loadData];
 }
@@ -43,13 +48,18 @@
 - (WKNumberScrollView *)numberScrollView {
     if (!_numberScrollView) {
         _numberScrollView = [WKNumberScrollView scrollView];
-        _numberScrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH - 24, self.marqueeF.dc_height);
         _numberScrollView.delegate = self;
     }
     return _numberScrollView;
 }
 
 - (void)numberScrollViewDidButtonClick:(WKNumberScrollView *)numberScrollView {
+    if ([self.delegate respondsToSelector:@selector(headerViewDidClick:)]) {
+        [self.delegate headerViewDidClick:self];
+    }
+}
+
+- (IBAction)moreNotice {
     if ([self.delegate respondsToSelector:@selector(headerViewDidClick:)]) {
         [self.delegate headerViewDidClick:self];
     }

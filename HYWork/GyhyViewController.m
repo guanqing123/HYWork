@@ -15,10 +15,22 @@
 @property (weak, nonatomic) IBOutlet UIView *qygk;
 @property (weak, nonatomic) IBOutlet UIView *qyry;
 @property (weak, nonatomic) IBOutlet UIView *qyzz;
+@property (weak, nonatomic) IBOutlet UIImageView *qygkBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *qyryBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *qyzzBtn;
 
 @end
 
 @implementation GyhyViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([WKHttpTool pifu]) {
+        [self.qygkBtn setImage:[UIImage imageNamed:@"qiyegaikuango"]];
+        [self.qyryBtn setImage:[UIImage imageNamed:@"qiyerongyuo"]];
+        [self.qyzzBtn setImage:[UIImage imageNamed:@"qiyezuzhio"]];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -644,8 +644,8 @@
             timestampString = "482200532.841121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "-setupRightContent"
             landmarkType = "7">
          </BreakpointContent>

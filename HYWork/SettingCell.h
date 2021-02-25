@@ -7,12 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SettingItem;
+@class SettingItem,SettingCell;
+
+@protocol SettingCellDelegate <NSObject>
+@optional
+
+/// 重启app
+/// @param settingCell 当前cell
+- (void)tableViewCellRestartApp:(SettingCell *)settingCell;
+
+@end
 
 @interface SettingCell : UITableViewCell
 
 @property (nonatomic, strong)  SettingItem  *item;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
+
+@property (nonatomic, weak) id<SettingCellDelegate> delegate;
 
 @end
