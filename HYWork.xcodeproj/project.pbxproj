@@ -449,6 +449,7 @@
 		D65A3E062314C33400BEB528 /* WKMonthPlanDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = D65A3E052314C33400BEB528 /* WKMonthPlanDetailController.m */; };
 		D65D3D2021A3E2EC005AFB2C /* WKZlkhViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D65D3D1F21A3E2EC005AFB2C /* WKZlkhViewController.m */; };
 		D65D3D2321A3E635005AFB2C /* WKGckhViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D65D3D2221A3E635005AFB2C /* WKGckhViewController.m */; };
+		D6628DC2263323940061D35B /* order.caf in Resources */ = {isa = PBXBuildFile; fileRef = D6628DC1263323940061D35B /* order.caf */; };
 		D6656EE921A4FE2B001D6318 /* WKQdkh2HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6656EE721A4FE2B001D6318 /* WKQdkh2HeaderView.m */; };
 		D6656EEA21A4FE2B001D6318 /* WKQdkh2HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6656EE821A4FE2B001D6318 /* WKQdkh2HeaderView.xib */; };
 		D6656EEF21A537EE001D6318 /* WKQdkh.m in Sources */ = {isa = PBXBuildFile; fileRef = D6656EEE21A537EE001D6318 /* WKQdkh.m */; };
@@ -732,6 +733,19 @@
 		D6FEA97B1D2A32F90011D685 /* GyhyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FEA9791D2A32F90011D685 /* GyhyViewController.m */; };
 		D6FEA97C1D2A32F90011D685 /* GyhyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6FEA97A1D2A32F90011D685 /* GyhyViewController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D6628DB4263316BE0061D35B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		12F46733E25880A9F6115A06 /* Pods-HYWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYWork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYWork/Pods-HYWork.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1677,6 +1691,7 @@
 		D65D3D1F21A3E2EC005AFB2C /* WKZlkhViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKZlkhViewController.m; sourceTree = "<group>"; };
 		D65D3D2121A3E635005AFB2C /* WKGckhViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKGckhViewController.h; sourceTree = "<group>"; };
 		D65D3D2221A3E635005AFB2C /* WKGckhViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKGckhViewController.m; sourceTree = "<group>"; };
+		D6628DC1263323940061D35B /* order.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = order.caf; sourceTree = "<group>"; };
 		D6656EE621A4FE2B001D6318 /* WKQdkh2HeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKQdkh2HeaderView.h; sourceTree = "<group>"; };
 		D6656EE721A4FE2B001D6318 /* WKQdkh2HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKQdkh2HeaderView.m; sourceTree = "<group>"; };
 		D6656EE821A4FE2B001D6318 /* WKQdkh2HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WKQdkh2HeaderView.xib; sourceTree = "<group>"; };
@@ -2331,6 +2346,7 @@
 		D6032BF61C7D88B80073E306 = {
 			isa = PBXGroup;
 			children = (
+				D6628DC1263323940061D35B /* order.caf */,
 				D69737412355BE6700A08856 /* FineResource.bundle */,
 				D69737402355BE6700A08856 /* FineSoft.framework */,
 				D6EE4DB9233E7FCC00586FBF /* MAMapKit.framework */,
@@ -5470,6 +5486,7 @@
 				D6032BFC1C7D88B80073E306 /* Frameworks */,
 				D6032BFD1C7D88B80073E306 /* Resources */,
 				DE665A0CDE4C0788C0AC25A3 /* [CP] Copy Pods Resources */,
+				D6628DB4263316BE0061D35B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -5526,6 +5543,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6628DC2263323940061D35B /* order.caf in Resources */,
 				D60FFB661ED0403600FF77CC /* Contents.json in Resources */,
 				D60FFB671ED0403600FF77CC /* timeline_card_bottom_background.png in Resources */,
 				D6F591851D1CFA8200CE7279 /* help.html in Resources */,
@@ -6470,7 +6488,7 @@
 					"$(PROJECT_DIR)/HYWork/iCarousel",
 					"$(PROJECT_DIR)/HYWork/Sangfo",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.7.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -6521,7 +6539,7 @@
 					"$(PROJECT_DIR)/HYWork/iCarousel",
 					"$(PROJECT_DIR)/HYWork/Sangfo",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.7.4;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
