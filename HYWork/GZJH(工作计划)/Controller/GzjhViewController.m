@@ -82,13 +82,15 @@
         [self.view addSubview:_zjxsView];
     }
     if (!_isAppeared) {
+        WEAKSELF
         [UIView animateWithDuration:0.5 animations:^{
-            _zjxsView.frame = CGRectMake(0, HWTopNavH, SCREEN_WIDTH, SCREEN_HEIGHT - HWTopNavH);
-            _zjxsView.current = self.current;
+            weakSelf.zjxsView.frame = CGRectMake(0, HWTopNavH, SCREEN_WIDTH, SCREEN_HEIGHT - HWTopNavH);
+            weakSelf.zjxsView.current = self.current;
         }];
     }else{
+        WEAKSELF
         [UIView animateWithDuration:0.5 animations:^{
-            _zjxsView.frame = CGRectMake(0, - (SCREEN_HEIGHT - HWTopNavH), SCREEN_WIDTH, (SCREEN_HEIGHT - HWTopNavH));
+            weakSelf.zjxsView.frame = CGRectMake(0, - (SCREEN_HEIGHT - HWTopNavH), SCREEN_WIDTH, (SCREEN_HEIGHT - HWTopNavH));
         }];
     }
     _isAppeared = !_isAppeared;
@@ -137,7 +139,6 @@
     //初始化最底部的scrollView,装tableView用
     self.backgroundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, HWTopNavH + GzjhMenuHeight, SCREEN_WIDTH, SCREEN_HEIGHT - GzjhMenuHeight - HWTopNavH)];
     //self.backgroundScrollView.backgroundColor = GQColor(244.0f, 244.0f, 244.0f);
-    self.backgroundScrollView.backgroundColor = [UIColor whiteColor];
     self.backgroundScrollView.pagingEnabled = YES;
     self.backgroundScrollView.bounces = NO;
     self.backgroundScrollView.showsHorizontalScrollIndicator = NO;
@@ -145,10 +146,34 @@
     self.backgroundScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * viewCounts, 0);
     [self.view addSubview:self.backgroundScrollView];
     
+    
+    /*[self.backgroundScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [[make leading] trailing].equalTo([self view]);
+
+        MASViewAttribute *top = [self mas_topLayoutGuideBottom];
+        MASViewAttribute *bottom = [self mas_bottomLayoutGuideTop];
+
+        #ifdef __IPHONE_11_0    // 如果有这个宏，说明Xcode版本是9开始
+            if (@available(iOS 11.0, *)) {
+                top = [[self view] mas_safeAreaLayoutGuideTop];
+                bottom = [[self view] mas_safeAreaLayoutGuideBottom];
+            }
+        #endif
+
+        [make top].equalTo(top).offset(GzjhMenuHeight);
+        [make bottom].equalTo(bottom);
+    }];*/
+    
     for (int i = 0; i < viewCounts; i++) {
         UIViewController *listCtrl = self.viewControllers[i];
         listCtrl.view.frame = CGRectMake(SCREEN_WIDTH * i, 0, SCREEN_WIDTH, SCREEN_HEIGHT - GzjhMenuHeight - HWTopNavH);
         [self.backgroundScrollView addSubview:listCtrl.view];
+        
+        /*[listCtrl.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.backgroundScrollView).insets(
+                                                                 UIEdgeInsetsMake(0, SCREEN_WIDTH * i, 0, (viewCounts-i) * SCREEN_WIDTH)
+                                                                 );
+        }];*/
     }
     
     [self.backgroundScrollView setContentOffset:CGPointMake(0, 0) animated:NO];

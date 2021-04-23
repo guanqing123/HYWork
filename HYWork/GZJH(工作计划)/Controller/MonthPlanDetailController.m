@@ -126,7 +126,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    MonthDetailHeaderView *headerView = [MonthDetailHeaderView headerViewWithTableView:tableView        ];
+    MonthDetailHeaderView *headerView = [MonthDetailHeaderView headerViewWithTableView:tableView];
     headerView.monthPlan = self.monthPlan;
     return headerView;
 }

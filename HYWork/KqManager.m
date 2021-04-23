@@ -14,7 +14,7 @@
 
 @implementation KqManager
 
-+ (void)postJsonWithCityCode:(NSString *)cityCode gh:(NSString *)gh success:(void (^)(id))success fail:(void (^)())fail {
++ (void)postJsonWithCityCode:(NSString *)cityCode gh:(NSString *)gh success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:KQ1];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -34,7 +34,7 @@
     }];
 }
 
-+ (void)postJsonWithDid:(NSString *)did gh:(NSString *)gh sign:(NSString *)sign success:(void (^)(id))success fail:(void (^)())fail {
++ (void)postJsonWithDid:(NSString *)did gh:(NSString *)gh sign:(NSString *)sign success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:KQ2];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     

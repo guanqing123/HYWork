@@ -52,7 +52,7 @@
 		<key>prefix</key>
 		<string></string>
 		<key>destVcClass</key>
-		<string>KqViewController</string>
+		<string>WKKQViewController</string>
 		<key>load</key>
 		<true/>
 	</dict>

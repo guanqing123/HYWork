@@ -20,7 +20,8 @@
         view.backgroundColor = [UIColor grayColor];
         [self addSubview:view];
         
-        UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, width, 196)];
+//      UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, width, 196)];
+        UIDatePicker *datePicker = [[UIDatePicker alloc] init];
         datePicker.backgroundColor = [UIColor colorWithRed:238.0/255.0 green:238.0/255.0 blue:238.0/255.0 alpha:1];
         datePicker.datePickerMode = UIDatePickerModeDate;
         _datePicker = datePicker;
@@ -37,8 +38,17 @@
         datePicker.minimumDate = minDate;
         datePicker.maximumDate = maxDate;
         
+        if (@available(iOS 13.4, *)) {
+            _datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+            _datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+        }
+        
         [datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
         [self addSubview:datePicker];
+        
+        [datePicker mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self).insets(UIEdgeInsetsMake(40, 0, 0, 0));
+        }];
         
         UIButton *sureButton = [[UIButton alloc] initWithFrame:CGRectMake(width - 70, 10, 60, 20)];
         [sureButton setTitle:@"确定" forState:UIControlStateNormal];

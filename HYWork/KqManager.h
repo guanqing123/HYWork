@@ -10,10 +10,10 @@
 
 @interface KqManager : NSObject
 //KQ1
-+ (void)postJsonWithCityCode:(NSString *)cityCode gh:(NSString *)gh success:(void(^)(id json))success fail:(void(^)())fail;
++ (void)postJsonWithCityCode:(NSString *)cityCode gh:(NSString *)gh success:(void(^)(id json))success fail:(void(^)(void))fail;
 
 //KQ2
-+ (void)postJsonWithDid:(NSString *)did gh:(NSString *)gh sign:(NSString *)sign success:(void(^)(id json))success fail:(void(^)())fail;
++ (void)postJsonWithDid:(NSString *)did gh:(NSString *)gh sign:(NSString *)sign success:(void(^)(id json))success fail:(void(^)(void))fail;
 
 @end
 

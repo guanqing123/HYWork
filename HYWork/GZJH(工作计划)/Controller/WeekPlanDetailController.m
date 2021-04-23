@@ -39,11 +39,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (@available(iOS 11.0,*)) {
+    /*if (@available(iOS 11.0,*)) {
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         self.tableView.contentInset = UIEdgeInsetsMake(HWTopNavH, 0, 0, 0);
         self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
-    }
+    }*/
     
     // 0.初始化导航栏
     [self initNavigation];
