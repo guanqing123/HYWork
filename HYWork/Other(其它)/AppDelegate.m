@@ -27,6 +27,9 @@
 #import "WeiboSDK.h"
 // 新浪微博SDK需要在项目Build Setting中的Other Linker Flag添加"-ObjC"
 
+//支付
+#import <AlipaySDK/AlipaySDK.h>
+
 // app更新
 #import "ATAppUpdater.h"
 
@@ -44,6 +47,9 @@
 
 // 加密
 #import "DES3EncryptUtil.h"
+
+// 商家版
+#import "WKBusinessViewController.h"
 
 static NSString *const aliyunPushAppKey = @"24706589";
 static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576";
@@ -237,6 +243,7 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
             if ([[header objectForKey:@"succflag"] intValue] == 1) {
                 NSDictionary *data = [json objectForKey:@"data"];
                 Emp *newEmp = [Emp mj_objectWithKeyValues:data];
+                newEmp.mm = emp.mm;
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                 BOOL  flag = [userDefaults boolForKey:@"自动登录"];
                 if (flag) {
@@ -253,19 +260,30 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
                         NSLog(@"帐号 绑定 error = %@",res.error);
                     }
                 }];
-                // 提醒
-                [LoginManager remaindMe:@{@"ygbm": emp.ygbm} success:^(id json) {
-                    if ([[[json objectForKey:@"data"] objectForKey:@"flag"] boolValue]) {
-                        NSString *urlStr = [NSString stringWithFormat:@"%@?ygbm=%@", [[json objectForKey:@"data"] objectForKey:@"url"], emp.ygbm];
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            WKPushViewController *noticePush = [[WKPushViewController alloc] initWithUrlPath:urlStr];
-                            noticePush.title = [[json objectForKey:@"data"] objectForKey:@"title"];
-                            NavigationController *pushNav = [[NavigationController alloc] initWithRootViewController:noticePush];
-                            pushNav.modalPresentationStyle = UIModalPresentationFullScreen;
-                            [self.window.rootViewController presentViewController:pushNav animated:YES completion:nil];
-                        });
-                    }
-                } fail:^{}];
+                
+                if ([[newEmp.ygbm substringToIndex:2] isEqualToString:@"hy"]) {
+                    WKBusinessViewController *webVc = [[WKBusinessViewController alloc] initWithDesUrl:[H5URL stringByAppendingString:Bussiness]];
+                    NavigationController *bussinessNav = [[NavigationController alloc] initWithRootViewController:webVc];
+                    CATransition *transtition = [CATransition animation];
+                    transtition.duration = 0.5;
+                    transtition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+                    [UIApplication sharedApplication].keyWindow.rootViewController = bussinessNav;
+                    [[UIApplication sharedApplication].keyWindow.layer addAnimation:transtition forKey:@"animation"];
+                } else {
+                    // 提醒
+                    [LoginManager remaindMe:@{@"ygbm": emp.ygbm} success:^(id json) {
+                        if ([[[json objectForKey:@"data"] objectForKey:@"flag"] boolValue]) {
+                            NSString *urlStr = [NSString stringWithFormat:@"%@?ygbm=%@", [[json objectForKey:@"data"] objectForKey:@"url"], emp.ygbm];
+                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                WKPushViewController *noticePush = [[WKPushViewController alloc] initWithUrlPath:urlStr];
+                                noticePush.title = [[json objectForKey:@"data"] objectForKey:@"title"];
+                                NavigationController *pushNav = [[NavigationController alloc] initWithRootViewController:noticePush];
+                                pushNav.modalPresentationStyle = UIModalPresentationFullScreen;
+                                [self.window.rootViewController presentViewController:pushNav animated:YES completion:nil];
+                            });
+                        }
+                    } fail:^{}];
+                }
             }
         } fail:^{}];
         /*LoadViewController *loadViewController = [LoadViewController shareInstance];
@@ -608,6 +626,36 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
 #pragma mark - UIInterfaceOrientationMask
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+}
+
+// NOTE: 9.0以后使用新API接口
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
+{
+    if ([url.host isEqualToString:@"safepay"]) {
+        // 支付跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
+        
+        // 授权跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            // 解析 auth code
+            NSString *result = resultDic[@"result"];
+            NSString *authCode = nil;
+            if (result.length>0) {
+                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+                for (NSString *subResult in resultArr) {
+                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+                        authCode = [subResult substringFromIndex:10];
+                        break;
+                    }
+                }
+            }
+            NSLog(@"授权结果 authCode = %@", authCode?:@"");
+        }];
+    }
+    return YES;
 }
 
 @end

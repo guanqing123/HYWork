@@ -45,7 +45,10 @@
 //售后反馈
 #define AfterSale @"/gsaleservice/gserviceList.html"
 //园区
+
 #define ParkLife @"/gpark/gordering/gordering.html"
+//商家版
+#define Bussiness @"/gbusiness/glists/glists.html"
 
 // 测试库
 #define THYURL @"http://218.75.78.166:9105/app/api"

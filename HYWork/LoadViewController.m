@@ -10,6 +10,10 @@
 #import "Utils.h"
 #import "MJExtension.h"
 
+// 切换导航栏
+#import "NavigationController.h"
+#import "WKBusinessViewController.h"
+
 // 阿里Push
 #import <CloudPushSDK/CloudPushSDK.h>
 
@@ -166,6 +170,7 @@ static LoadViewController *loadViewController = nil;
         return;
     }
     [MBProgressHUD showMessage:@"登录中..." toView:self.view];
+    WEAKSELF
     [LoginManager postJSONWithUrl:HYURL gh:gh mm:mm success:^(id json) {
         NSDictionary *header = [json objectForKey:@"header"];
         if ([[header objectForKey:@"succflag"] intValue] > 1) {
@@ -176,8 +181,8 @@ static LoadViewController *loadViewController = nil;
             NSDictionary *data = [json objectForKey:@"data"];
             Emp *emp = [Emp mj_objectWithKeyValues:data];
             emp.mm = mm;
-            _emp = emp;
-            _loading = YES;
+            weakSelf.emp = emp;
+            weakSelf.loading = YES;
             
             NSString *temp = emp.ecologyid;
             NSString *ecologyid = [NSString stringWithFormat:@"%@",temp];
@@ -197,9 +202,20 @@ static LoadViewController *loadViewController = nil;
             }
             self.userTextField.text = @"";
             self.passwordTextField.text = @"";
+            
             [self.navigationController popViewControllerAnimated:YES];
             if ([self.delegate respondsToSelector:@selector(loadViewControllerFinishLogin:)]) {
                 [self.delegate loadViewControllerFinishLogin:self];
+            }
+            
+            if ([[emp.ygbm substringToIndex:2] isEqualToString:@"hy"]) {
+                WKBusinessViewController *webVc = [[WKBusinessViewController alloc] initWithDesUrl:[H5URL stringByAppendingString:Bussiness]];
+                NavigationController *bussinessNav = [[NavigationController alloc] initWithRootViewController:webVc];
+                CATransition *transtition = [CATransition animation];
+                transtition.duration = 0.5;
+                transtition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+                [UIApplication sharedApplication].keyWindow.rootViewController = bussinessNav;
+                [[UIApplication sharedApplication].keyWindow.layer addAnimation:transtition forKey:@"animation"];
             }
         }
     } fail:^{

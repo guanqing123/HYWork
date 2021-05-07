@@ -18,16 +18,19 @@
     self.desUrl = [H5URL stringByAppendingString:ParkLife];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reload"] style:UIBarButtonItemStyleDone target:self action:@selector(refresh)];
+    UIBarButtonItem *close = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStyleDone target:self action:@selector(close)];
+    UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    self.navigationItem.rightBarButtonItems = @[close, flex, refresh];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)refresh {
+    [super reload];
 }
-*/
+
+- (void)close {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

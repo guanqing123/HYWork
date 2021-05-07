@@ -1,22 +1,31 @@
 //
-//  WKBaseWebViewController.m
+//  WKBusinessViewController.m
 //  HYWork
 //
-//  Created by information on 2020/12/3.
-//  Copyright © 2020 hongyan. All rights reserved.
+//  Created by information on 2021/5/7.
+//  Copyright © 2021 hongyan. All rights reserved.
 //
 
-#import "WKBaseWebViewController.h"
+#import "AppDelegate.h"
+
+#import "WKBusinessViewController.h"
+
 #import "LoadViewController.h"
+
+#import "TabBarController.h"
 
 // webview/js bridge
 #import <WebKit/WebKit.h>
 #import "WKWebViewJavascriptBridge.h"
 
-// alipay
-#import <AlipaySDK/AlipaySDK.h>
+//扫一扫
+#import "BeforeScanSingleton.h"
+#import "WKBaseWebViewController.h"
 
-@interface WKBaseWebViewController ()<WKUIDelegate, WKNavigationDelegate>
+// 阿里Push
+#import <CloudPushSDK/CloudPushSDK.h>
+
+@interface WKBusinessViewController ()<WKUIDelegate, WKNavigationDelegate,SubLBXScanViewControllerDelegate>
 @property (nonatomic, strong)  WKWebView *telWebView;
 // webView
 @property (nonatomic, weak) WKWebView  *webView;
@@ -27,25 +36,13 @@
 
 @end
 
-@implementation WKBaseWebViewController
+@implementation WKBusinessViewController
 
 - (instancetype)initWithDesUrl:(NSString *)desUrl {
     if (self = [super init]) {
         _desUrl = desUrl;
     }
     return self;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-//    [self.tabBarController.tabBar setHidden:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-//    [self.tabBarController.tabBar setHidden:NO];
 }
 
 #pragma mark - lifeCicle
@@ -64,10 +61,82 @@
 - (void)setupView {
     // 1.背景色
     self.view.backgroundColor = [UIColor whiteColor];
-    // 2.左
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"30"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+    // 2.扫一扫
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"scan"] style:UIBarButtonItemStyleDone target:self action:@selector(scan)];
     // 3.右
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reload"] style:UIBarButtonItemStyleDone target:self action:@selector(refresh)];
+    UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reload"] style:UIBarButtonItemStyleDone target:self action:@selector(refresh)];
+    UIBarButtonItem *exit = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"exit"] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
+    UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    self.navigationItem.rightBarButtonItems = @[exit, flex, refresh];
+}
+
+- (void)exit {
+    UIAlertController *alertVc = [UIAlertController
+                                  alertControllerWithTitle:@"退出APP将无法收到订单提醒,确定退出?"
+                                    message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    WEAKSELF
+    UIAlertAction *rightnow = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf exitApplication];
+    }];
+    
+    UIAlertAction *cancle =  [UIAlertAction actionWithTitle:@"再考虑一下" style:UIAlertActionStyleCancel
+                                                    handler:^(UIAlertAction * _Nonnull action) {}];
+    [alertVc addAction:cancle];
+    [alertVc addAction:rightnow];
+    
+    [self presentViewController:alertVc animated:YES completion:nil];
+}
+
+- (void)exitApplication {
+    LoadViewController *loadVc = [LoadViewController shareInstance];
+    loadVc.loading = NO;
+    loadVc.emp = nil;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:@"emp"];
+    [userDefaults synchronize];
+    
+    [CloudPushSDK unbindAccount:^(CloudPushCallbackResult *res) {
+        if (res.success) {
+            NSLog(@"解绑成功");
+        }else{
+            NSLog(@"解绑失败 error : %@",res.error);
+        }
+    }];
+    
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIWindow *window = app.window;
+     // 动画 1
+    [UIView animateWithDuration:1.0f animations:^{
+        window.alpha = 0;
+        window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);
+    } completion:^(BOOL finished) {
+        exit(0);
+    }];
+}
+
+//扫一扫
+- (void)scan {
+    LoadViewController *loadVc = [LoadViewController shareInstance];
+    if (!loadVc.isLoaded) {
+        loadVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:loadVc animated:YES];
+        return;
+    }
+    [[BeforeScanSingleton shareScan] ShowSelectedType:QQStyle WithViewController:self];
+}
+
+#pragma mark -扫一扫代理
+- (void)subLBXScanViewController:(SubLBXScanViewController *)subLBXScanViewController resultStr:(NSString *)result {
+    [SVProgressHUD show];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        WKBaseWebViewController *webVc = [[WKBaseWebViewController alloc] initWithDesUrl:result];
+        webVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:webVc animated:YES];
+    });
 }
 
 - (void)back {
@@ -107,10 +176,9 @@
     [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     [webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
     _webView = webView;
-                            //http://dev.sge.cn/hykj/ghome/ghome.html
+
     LoadViewController *loadVC = [LoadViewController shareInstance];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.desUrl]]];
-    NSLog(@"desUrl=%@",self.desUrl);
     [self.view addSubview:webView];
     [self.view addSubview:self.myProgressView];
     
@@ -224,55 +292,45 @@
 
 #pragma mark - WKNavigationDelegate
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    NSURL *URL = navigationAction.request.URL;
-    NSString *scheme = [URL scheme];
-    if ([scheme isEqualToString:@"tel"]) {
-        NSString *resourceSpecifier = [URL resourceSpecifier];
-        NSString *callPhone = [NSString stringWithFormat:@"telprompt:%@", resourceSpecifier];
-        // 防止iOS 10及其之后,拨打电话系统弹出框延迟出现
-        dispatch_async(dispatch_get_main_queue(),^{
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone]];
-        });
+    if ([navigationAction.request.URL.absoluteString hasPrefix:@"https://itunes.apple.com"]) {
+        [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
         decisionHandler(WKNavigationActionPolicyCancel);
-        return;
-    }
-    
-    //新版本的H5拦截支付对老版本的获取订单串和订单支付接口进行合并，推荐使用该接口
-    __weak WKBaseWebViewController* wself = self;
-    BOOL isIntercepted = [[AlipaySDK defaultService] payInterceptorWithUrl:[navigationAction.request.URL absoluteString] fromScheme:@"hywork" callback:^(NSDictionary *resultDic) {
-        // 处理支付结果
-        NSLog(@"%@", resultDic);
-        // isProcessUrlPay 代表 支付宝已经处理该URL
-        if ([resultDic[@"isProcessUrlPay"] boolValue]) {
-            // returnUrl 代表 第三方App需要跳转的成功页URL
-            NSString* urlStr = resultDic[@"returnUrl"];
-            [wself loadWithUrlStr:urlStr];
+    } else if ([navigationAction.request.URL.absoluteString containsString:@"wpa.qq.com"] && [navigationAction.request.URL.absoluteString containsString:@"site=qq"]) {
+        [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else if ([[NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] 'mailto:' OR SELF BEGINSWITH[cd] 'tel:' OR SELF BEGINSWITH[cd] 'telprompt:'"] evaluateWithObject:navigationAction.request.URL.absoluteString]) {
+        
+        if ([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]) {
+            if (@available(iOS 10.0, *)) {
+                [UIApplication.sharedApplication openURL:navigationAction.request.URL options:@{} completionHandler:NULL];
+            } else {
+                [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+            }
         }
-    }];
-    
-    if (isIntercepted) {
-        NSLog(@"xx=%@",[navigationAction.request.URL absoluteString]);
         decisionHandler(WKNavigationActionPolicyCancel);
-        [self.myProgressView setProgress:1.0 animated:YES];
-        [UIView animateWithDuration:0.3f delay:0.3f options:UIViewAnimationOptionCurveEaseOut animations:^{
-            self.myProgressView.alpha = 0.0f;
-         } completion:^(BOOL finished) {
-            [self.myProgressView setProgress:0 animated:NO];
-        }];
-        return;
-    }
-    
-    decisionHandler(WKNavigationActionPolicyAllow);
-}
-
-- (void)loadWithUrlStr:(NSString*)urlStr {
-    if (urlStr.length > 0) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSURLRequest *webRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]
-                                                        cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                                    timeoutInterval:30];
-            [self.webView loadRequest:webRequest];
-        });
+    } else if (![[NSPredicate predicateWithFormat:@"SELF MATCHES[cd] 'https' OR SELF MATCHES[cd] 'http' OR SELF MATCHES[cd] 'file' OR SELF MATCHES[cd] 'about' OR SELF MATCHES[cd] 'post'"] evaluateWithObject:navigationAction.request.URL.scheme]) {
+        if ([navigationAction.request.URL.scheme isEqualToString:@"wvjbscheme"]) {
+            //decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
+        
+        if (@available(iOS 8.0, *)) { // openURL if ios version is low then 8 , app will crash
+            if ([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]) {
+                if (@available(iOS 10.0, *)) {
+                    [UIApplication.sharedApplication openURL:navigationAction.request.URL options:@{} completionHandler:NULL];
+                } else {
+                    [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+                }
+            }
+        }else{
+            if ([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]) {
+                [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+            }
+        }
+        
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else {
+        decisionHandler(WKNavigationActionPolicyAllow);
     }
 }
 

@@ -196,11 +196,11 @@
     WEAKSELF
     [WKHyShopTool getHyShopAddress:[NSDictionary dictionaryWithObject:[LoadViewController shareInstance].emp.mobile forKey:@"telephone"] success:^(id  _Nonnull json) {
         [SVProgressHUD dismiss];
-        _reload = YES;
+        weakSelf.reload = YES;
         [weakSelf.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[json objectForKey:@"data"]]]];
     } failure:^(NSError * _Nonnull error) {
         [SVProgressHUD dismiss];
-        _reload = NO;
+        weakSelf.reload = NO;
         [SVProgressHUD showErrorWithStatus:@"请求失败,请刷新"];
     }];
 }

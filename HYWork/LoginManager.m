@@ -11,7 +11,7 @@
 
 @implementation LoginManager
 
-+ (void)checkVersionWithUrl:(NSString *)url params:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)())fail {
++ (void)checkVersionWithUrl:(NSString *)url params:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:@"SGE00010"];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"trdate",@"trcode",@"appseq"]];
     NSDictionary *dict = [[NSDictionary alloc] initWithObjects:@[headerDict,params] forKeys:@[@"header",@"data"]];
@@ -26,7 +26,7 @@
     }];
 }
 
-+ (void)postJSONWithUrl:(NSString *)url gh:(NSString *)gh mm:(NSString *)mm success:(void (^)(id))success fail:(void (^)())fail {
++ (void)postJSONWithUrl:(NSString *)url gh:(NSString *)gh mm:(NSString *)mm success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:LOGIN];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"trdate",@"trcode",@"appseq"]];
     
