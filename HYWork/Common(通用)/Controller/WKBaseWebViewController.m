@@ -239,7 +239,10 @@
     
     //新版本的H5拦截支付对老版本的获取订单串和订单支付接口进行合并，推荐使用该接口
     __weak WKBaseWebViewController* wself = self;
-    BOOL isIntercepted = [[AlipaySDK defaultService] payInterceptorWithUrl:[navigationAction.request.URL absoluteString] fromScheme:@"hywork" callback:^(NSDictionary *resultDic) {
+    BOOL isIntercepted = [[AlipaySDK defaultService]
+                          payInterceptorWithUrl:[navigationAction.request.URL absoluteString]
+                                                                fromScheme:@"hywork"
+                          callback:^(NSDictionary *resultDic) {
         // 处理支付结果
         NSLog(@"%@", resultDic);
         // isProcessUrlPay 代表 支付宝已经处理该URL

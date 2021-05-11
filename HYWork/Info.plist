@@ -24,12 +24,12 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
-			<string>hywork</string>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>com.hongyan.HYWork</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string></string>
+				<string>hywork</string>
 			</array>
 		</dict>
 		<dict>

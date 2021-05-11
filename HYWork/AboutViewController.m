@@ -19,8 +19,10 @@
     self.navigationItem.leftBarButtonItem = left;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.tableHeaderView = [AboutHeaderView headerView];
-    self.tableView.rowHeight = 30.0f;
+    AboutHeaderView *headerView = [AboutHeaderView headerView];
+    headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 150);
+    self.tableView.tableHeaderView = headerView;
+//    self.tableView.rowHeight = 30.0f;
     
     UILabel *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, SCREEN_HEIGHT - 114.0f, SCREEN_WIDTH, 20.0f)];
     footerView.text = @"©杭州鸿雁电器有限公司    版权所有";
@@ -35,7 +37,14 @@
 
 #pragma mark - tableView dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 4) {
+        return 250.0f;
+    }
+    return 30.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -86,6 +95,16 @@
             textLabel.textColor = [UIColor grayColor];
             [cell.contentView addSubview:textLabel];
             break;
+        }
+        case 4: {
+            UIImageView *appload = [[UIImageView alloc] init];
+            [appload setImage:[UIImage imageNamed:@"appdown"]];
+            [cell.contentView addSubview:appload];
+            
+            [appload mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.center.equalTo(cell.contentView);
+                make.size.mas_equalTo(CGSizeMake(150.0f, 150.0f));
+            }];
         }
         default:
             break;
