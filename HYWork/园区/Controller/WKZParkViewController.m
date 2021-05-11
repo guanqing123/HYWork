@@ -1,52 +1,33 @@
 //
-//  WKBaseWebViewController.m
+//  WKZParkViewController.m
 //  HYWork
 //
-//  Created by information on 2020/12/3.
-//  Copyright © 2020 hongyan. All rights reserved.
+//  Created by information on 2021/5/11.
+//  Copyright © 2021 hongyan. All rights reserved.
 //
 
-#import "WKBaseWebViewController.h"
+#import "WKZParkViewController.h"
 #import "LoadViewController.h"
 
 // webview/js bridge
 #import <WebKit/WebKit.h>
-#import "WKWebViewJavascriptBridge.h"
+#import "WebViewJavascriptBridge.h"
 
 // alipay
 #import <AlipaySDK/AlipaySDK.h>
 
-@interface WKBaseWebViewController ()<WKUIDelegate, WKNavigationDelegate>
-@property (nonatomic, strong)  WKWebView *telWebView;
+@interface WKZParkViewController ()<UIWebViewDelegate>
+@property (nonatomic, strong) UIWebView *telWebView;
 // webView
-@property (nonatomic, weak) WKWebView  *webView;
+@property (nonatomic, weak) UIWebView  *webView;
 /** UI */
 @property (nonatomic, strong) UIProgressView *myProgressView;
 // js bridge
-@property (nonatomic, strong)  WKWebViewJavascriptBridge *bridge;
+@property (nonatomic, strong)  WebViewJavascriptBridge *bridge;
 
 @end
 
-@implementation WKBaseWebViewController
-
-- (instancetype)initWithDesUrl:(NSString *)desUrl {
-    if (self = [super init]) {
-        _desUrl = desUrl;
-    }
-    return self;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-//    [self.tabBarController.tabBar setHidden:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-//    [self.tabBarController.tabBar setHidden:NO];
-}
+@implementation WKZParkViewController
 
 #pragma mark - lifeCicle
 - (void)viewDidLoad {
@@ -88,29 +69,14 @@
 
 #pragma mark - webView
 - (void)setWebView {
-    // 初始化配置对象
-    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-    // 默认是NO，这个值决定了用内嵌HTML5播放视频还是用本地的全屏控制
-    configuration.allowsInlineMediaPlayback = YES;
-    // 自动播放, 不需要用户采取任何手势开启播放
-    if (@available(iOS 10.0, *)) {
-        // WKAudiovisualMediaTypeNone 音视频的播放不需要用户手势触发, 即为自动播放
-        configuration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
-    } else {
-        configuration.requiresUserActionForMediaPlayback = NO;
-    }
-    
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
-//    webView.frame = CGRectMake(0, KJTopNavH, ScreenW, ScreenH - KJTopNavH);
-    webView.UIDelegate = self;
-    webView.navigationDelegate = self;
+    UIWebView *webView = [[UIWebView alloc] init];
+    webView.delegate = self;
     [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     [webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
     _webView = webView;
                             //http://dev.sge.cn/hykj/ghome/ghome.html
     LoadViewController *loadVC = [LoadViewController shareInstance];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.desUrl]]];
-    NSLog(@"desUrl=%@",self.desUrl);
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[H5URL stringByAppendingString:ParkLife]]]];
     [self.view addSubview:webView];
     [self.view addSubview:self.myProgressView];
     
@@ -132,8 +98,7 @@
     }];
 
     
-    [WKWebViewJavascriptBridge enableLogging];
-    _bridge = [WKWebViewJavascriptBridge bridgeForWebView:webView];
+    _bridge = [WebViewJavascriptBridge bridgeForWebView:webView];
     [_bridge setWebViewDelegate:self];
     
     if (@available(iOS 11.0, *)){
@@ -216,53 +181,30 @@
                              }];
         }
     } else if (object == self.webView && [keyPath isEqualToString:@"title"]){
-        self.title = self.webView.title;
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 
 #pragma mark - WKNavigationDelegate
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    NSURL *URL = navigationAction.request.URL;
-    NSString *scheme = [URL scheme];
-    if ([scheme isEqualToString:@"tel"]) {
-        NSString *resourceSpecifier = [URL resourceSpecifier];
-        NSString *callPhone = [NSString stringWithFormat:@"telprompt:%@", resourceSpecifier];
-        // 防止iOS 10及其之后,拨打电话系统弹出框延迟出现
-        dispatch_async(dispatch_get_main_queue(),^{
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone]];
-        });
-        decisionHandler(WKNavigationActionPolicyCancel);
-        return;
-    }
-    
-    //新版本的H5拦截支付对老版本的获取订单串和订单支付接口进行合并，推荐使用该接口
-    __weak WKBaseWebViewController* wself = self;
-    BOOL isIntercepted = [[AlipaySDK defaultService] payInterceptorWithUrl:[navigationAction.request.URL absoluteString] fromScheme:@"hywork" callback:^(NSDictionary *resultDic) {
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    __weak WKZParkViewController* wself = self;
+    BOOL isIntercepted = [[AlipaySDK defaultService] payInterceptorWithUrl:[request.URL absoluteString] fromScheme:@"hywork" callback:^(NSDictionary *result) {
         // 处理支付结果
-        NSLog(@"%@", resultDic);
+        NSLog(@"%@", result);
         // isProcessUrlPay 代表 支付宝已经处理该URL
-        if ([resultDic[@"isProcessUrlPay"] boolValue]) {
+        if ([result[@"isProcessUrlPay"] boolValue]) {
             // returnUrl 代表 第三方App需要跳转的成功页URL
-            NSString* urlStr = resultDic[@"returnUrl"];
+            NSString* urlStr = result[@"returnUrl"];
             [wself loadWithUrlStr:urlStr];
         }
     }];
     
     if (isIntercepted) {
-        NSLog(@"xx=%@",[navigationAction.request.URL absoluteString]);
-        [self.myProgressView setProgress:1.0 animated:YES];
-        [UIView animateWithDuration:0.3f delay:0.3f options:UIViewAnimationOptionCurveEaseOut animations:^{
-            self.myProgressView.alpha = 0.0f;
-         } completion:^(BOOL finished) {
-            [self.myProgressView setProgress:0 animated:NO];
-        }];
-        decisionHandler(WKNavigationActionPolicyCancel);
-        return;
+        return NO;
     }
-    
-    decisionHandler(WKNavigationActionPolicyAllow);
+    return YES;
 }
 
 - (void)loadWithUrlStr:(NSString*)urlStr {
@@ -283,9 +225,9 @@
     return nil;
 }
 
-- (WKWebView *)telWebView {
+- (UIWebView *)telWebView {
     if (_telWebView == nil) {
-        _telWebView = [[WKWebView alloc] init];
+        _telWebView = [[UIWebView alloc] init];
     }
     return _telWebView;
 }

@@ -449,6 +449,7 @@
 		D65D3D2021A3E2EC005AFB2C /* WKZlkhViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D65D3D1F21A3E2EC005AFB2C /* WKZlkhViewController.m */; };
 		D65D3D2321A3E635005AFB2C /* WKGckhViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D65D3D2221A3E635005AFB2C /* WKGckhViewController.m */; };
 		D6628DC2263323940061D35B /* order.caf in Resources */ = {isa = PBXBuildFile; fileRef = D6628DC1263323940061D35B /* order.caf */; };
+		D66471FB264A871400BB3414 /* WKZParkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66471FA264A871300BB3414 /* WKZParkViewController.m */; };
 		D6656EE921A4FE2B001D6318 /* WKQdkh2HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6656EE721A4FE2B001D6318 /* WKQdkh2HeaderView.m */; };
 		D6656EEA21A4FE2B001D6318 /* WKQdkh2HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6656EE821A4FE2B001D6318 /* WKQdkh2HeaderView.xib */; };
 		D6656EEF21A537EE001D6318 /* WKQdkh.m in Sources */ = {isa = PBXBuildFile; fileRef = D6656EEE21A537EE001D6318 /* WKQdkh.m */; };
@@ -1698,6 +1699,8 @@
 		D65D3D2121A3E635005AFB2C /* WKGckhViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKGckhViewController.h; sourceTree = "<group>"; };
 		D65D3D2221A3E635005AFB2C /* WKGckhViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKGckhViewController.m; sourceTree = "<group>"; };
 		D6628DC1263323940061D35B /* order.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = order.caf; sourceTree = "<group>"; };
+		D66471F9264A871300BB3414 /* WKZParkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKZParkViewController.h; sourceTree = "<group>"; };
+		D66471FA264A871300BB3414 /* WKZParkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKZParkViewController.m; sourceTree = "<group>"; };
 		D6656EE621A4FE2B001D6318 /* WKQdkh2HeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKQdkh2HeaderView.h; sourceTree = "<group>"; };
 		D6656EE721A4FE2B001D6318 /* WKQdkh2HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKQdkh2HeaderView.m; sourceTree = "<group>"; };
 		D6656EE821A4FE2B001D6318 /* WKQdkh2HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WKQdkh2HeaderView.xib; sourceTree = "<group>"; };
@@ -4659,6 +4662,8 @@
 			children = (
 				D672A4C9257A0B3600087A99 /* WKParkViewController.h */,
 				D672A4CA257A0B3600087A99 /* WKParkViewController.m */,
+				D66471F9264A871300BB3414 /* WKZParkViewController.h */,
+				D66471FA264A871300BB3414 /* WKZParkViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6097,6 +6102,7 @@
 				D60D29D31E8A52930051B33F /* ZXGlobalHistogramBinarizer.m in Sources */,
 				D6F6E1A71D2E246400CEA50E /* FwcxManager.m in Sources */,
 				D669D8B425AB221E00775723 /* WKSliderResult.m in Sources */,
+				D66471FB264A871400BB3414 /* WKZParkViewController.m in Sources */,
 				D6158C091F25B6EF008B84B2 /* KhkfWebViewController.m in Sources */,
 				D6FABC171D2CE83400F094B1 /* QyryViewController.m in Sources */,
 				D60D2A6B1E8A52930051B33F /* ZXMultiFormatWriter.m in Sources */,
@@ -6507,8 +6513,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8Y6S2469TB;
@@ -6573,7 +6579,7 @@
 					"$(PROJECT_DIR)/HYWork/iCarousel",
 					"$(PROJECT_DIR)/HYWork/Sangfo",
 				);
-				MARKETING_VERSION = 1.7.4;
+				MARKETING_VERSION = 1.7.5;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -6594,7 +6600,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HYWork/HYWork.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 8Y6S2469TB;
@@ -6625,7 +6631,7 @@
 					"$(PROJECT_DIR)/HYWork/iCarousel",
 					"$(PROJECT_DIR)/HYWork/Sangfo",
 				);
-				MARKETING_VERSION = 1.7.4;
+				MARKETING_VERSION = 1.7.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
