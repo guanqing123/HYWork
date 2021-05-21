@@ -311,7 +311,7 @@
 }
 
 #pragma mark - 请求同部门数据
-- (void)requestCommonGroupDataWithBlock:(void (^)())block {
+- (void)requestCommonGroupDataWithBlock:(void (^)(void))block {
     [MBProgressHUD showMessage:@"加载中..." toView:self.view];
     [self refreshAddCommon];
     [MBProgressHUD hideHUDForView:self.view];

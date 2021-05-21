@@ -49,11 +49,12 @@
     [_segmentedControl addTarget:self action:@selector(segmentedControlAction:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = _segmentedControl;
     
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    /*UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [btn setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem = right;
+    self.navigationItem.rightBarButtonItem = right;*/
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh)];
     
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"30"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = left;
@@ -68,7 +69,7 @@
  *
  *  @param btn 按钮
  */
-- (void)refresh:(UIButton *)btn {
+/*- (void)refresh:(UIButton *)btn {
     [btn setBackgroundImage:[UIImage imageNamed:@"unrefresh"] forState:UIControlStateNormal];
     [btn setUserInteractionEnabled:NO];
     NSInteger pageIndex = [_segmentedControl selectedSegmentIndex];
@@ -82,6 +83,14 @@
             [btn setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
             [btn setUserInteractionEnabled:YES];
         }];
+    }
+}*/
+- (void)refresh {
+    NSInteger pageIndex = [_segmentedControl selectedSegmentIndex];
+    if (pageIndex == 0) {
+        [_oneDepVC requestOneDepDataWithBlock:^{}];
+    } else {
+        [_otherDepVC refreshAllEmpsThroughSQLServerWithBlock:^{}];
     }
 }
 

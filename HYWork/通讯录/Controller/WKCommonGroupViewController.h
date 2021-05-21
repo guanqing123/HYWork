@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong)  NSDictionary *commonDict;
 
-- (void)requestCommonGroupDataWithBlock:(void(^)())block;
+- (void)requestCommonGroupDataWithBlock:(void(^)(void))block;
 
 @end
 

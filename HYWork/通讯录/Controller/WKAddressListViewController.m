@@ -63,11 +63,12 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"30"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
     
     // 4.rightItem
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    /*UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [btn setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem = right;
+    self.navigationItem.rightBarButtonItem = right;*/
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh)];
     
     // 5.设置不延伸到导航栏的区域
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -122,20 +123,28 @@
 }
 
 // 刷新右上角人员
-- (void)refresh:(UIButton *)btn {
-    [btn setBackgroundImage:[UIImage imageNamed:@"unrefresh"] forState:UIControlStateNormal];
+/*- (void)refresh:(UIButton *)btn {
+    //[btn setBackgroundImage:[UIImage imageNamed:@"unrefresh"] forState:UIControlStateNormal];
     [btn setUserInteractionEnabled:NO];
     NSInteger pageIndex = [_segmentedControl selectedSegmentIndex];
     if (pageIndex == 0) {
         [_commonVc requestCommonGroupDataWithBlock:^{
-            [btn setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+            //[btn setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
             [btn setUserInteractionEnabled:YES];
         }];
     } else {
         [_allVc requestAllEmpsThroughSQLServerWithBlock:^{
-            [btn setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+            //[btn setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
             [btn setUserInteractionEnabled:YES];
         }];
+    }
+}*/
+- (void)refresh {
+    NSInteger pageIndex = [_segmentedControl selectedSegmentIndex];
+    if (pageIndex == 0) {
+        [_commonVc requestCommonGroupDataWithBlock:^{}];
+    } else {
+        [_allVc requestAllEmpsThroughSQLServerWithBlock:^{}];
     }
 }
 

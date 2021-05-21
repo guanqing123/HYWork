@@ -6579,7 +6579,7 @@
 					"$(PROJECT_DIR)/HYWork/iCarousel",
 					"$(PROJECT_DIR)/HYWork/Sangfo",
 				);
-				MARKETING_VERSION = 1.7.6;
+				MARKETING_VERSION = 1.7.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -6631,7 +6631,7 @@
 					"$(PROJECT_DIR)/HYWork/iCarousel",
 					"$(PROJECT_DIR)/HYWork/Sangfo",
 				);
-				MARKETING_VERSION = 1.7.6;
+				MARKETING_VERSION = 1.7.7;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
