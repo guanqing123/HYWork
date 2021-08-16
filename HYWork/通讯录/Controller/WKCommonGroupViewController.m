@@ -230,9 +230,9 @@
                 [userDefault setObject:data forKey:@"commonEmp"];
                 [userDefault synchronize];
                 
-                _commonDict = [data copy];
-                _tempDict = [_commonDict copy];
-                _sectionArray = [[_commonDict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+                self->_commonDict = [data copy];
+                self->_tempDict = [self->_commonDict copy];
+                self->_sectionArray = [[self->_commonDict allKeys] sortedArrayUsingSelector:@selector(compare:)];
                 [self.tableView reloadData];
                 
                 [self setupIndexView];

@@ -44,7 +44,11 @@
     
     //_webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
 //    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT - 64.0f)];
-    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT - HWTopNavH)];
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+    WKPreferences *preferences = [WKPreferences new];
+    preferences.javaScriptCanOpenWindowsAutomatically = YES;
+    config.preferences = preferences;
+    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT - HWTopNavH) configuration:config];
     
     _webView.scrollView.showsVerticalScrollIndicator = NO;
     _webView.navigationDelegate = self;
@@ -106,15 +110,61 @@
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
     }
-    decisionHandler(WKNavigationActionPolicyAllow);
+    if ([navigationAction.request.URL.absoluteString hasPrefix:@"https://itunes.apple.com"]) {
+        [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else if ([navigationAction.request.URL.absoluteString containsString:@"wpa.qq.com"] && [navigationAction.request.URL.absoluteString containsString:@"site=qq"]) {
+        [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else if ([[NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] 'mailto:' OR SELF BEGINSWITH[cd] 'tel:' OR SELF BEGINSWITH[cd] 'telprompt:'"] evaluateWithObject:navigationAction.request.URL.absoluteString]) {
+        
+        if ([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]) {
+            if (@available(iOS 10.0, *)) {
+                [UIApplication.sharedApplication openURL:navigationAction.request.URL options:@{} completionHandler:NULL];
+            } else {
+                [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+            }
+        }
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else if (![[NSPredicate predicateWithFormat:@"SELF MATCHES[cd] 'https' OR SELF MATCHES[cd] 'http' OR SELF MATCHES[cd] 'file' OR SELF MATCHES[cd] 'about' OR SELF MATCHES[cd] 'post'"] evaluateWithObject:navigationAction.request.URL.scheme]) {
+        if ([navigationAction.request.URL.scheme isEqualToString:@"wvjbscheme"]) {
+            //decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
+        
+        if (@available(iOS 8.0, *)) { // openURL if ios version is low then 8 , app will crash
+            if ([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]) {
+                if (@available(iOS 10.0, *)) {
+                    [UIApplication.sharedApplication openURL:navigationAction.request.URL options:@{} completionHandler:NULL];
+                } else {
+                    [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+                }
+            }
+        }else{
+            if ([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]) {
+                [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+            }
+        }
+        
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else {
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
 }
 
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
-    if (!navigationAction.targetFrame.isMainFrame) {
-    FjViewController *fjVc = [[FjViewController alloc] initWithRequest:navigationAction.request Configuration:configuration];
-   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:fjVc  ];
-    [self presentViewController:nav animated:YES completion:nil];
+    if (navigationAction.targetFrame == nil || !navigationAction.targetFrame.isMainFrame) {
+        FjViewController *fjVc = [[FjViewController alloc] initWithRequest:navigationAction.request Configuration:configuration];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:fjVc];
+        [self presentViewController:nav animated:YES completion:nil];
     }
+//    if (navigationAction.request.URL) {
+//           NSURL *url = navigationAction.request.URL;
+//           NSString *urlPath = url.absoluteString;
+//           if ([urlPath rangeOfString:@"https://"].location != NSNotFound || [urlPath rangeOfString:@"http://"].location != NSNotFound) {
+//               [[UIApplication sharedApplication] openURL:url];
+//           }
+//       }
     return nil;
 }
 

@@ -8,6 +8,7 @@
 
 #import "WKBaseWebViewController.h"
 #import "LoadViewController.h"
+#import "FjViewController.h"
 
 // webview/js bridge
 #import <WebKit/WebKit.h>
@@ -16,7 +17,10 @@
 // alipay
 #import <AlipaySDK/AlipaySDK.h>
 
-@interface WKBaseWebViewController ()<WKUIDelegate, WKNavigationDelegate>
+// scan
+#import "BeforeScanSingleton.h"
+
+@interface WKBaseWebViewController ()<WKUIDelegate, WKNavigationDelegate,SubLBXScanViewControllerDelegate>
 @property (nonatomic, strong)  WKWebView *telWebView;
 // webView
 @property (nonatomic, weak) WKWebView  *webView;
@@ -24,6 +28,8 @@
 @property (nonatomic, strong) UIProgressView *myProgressView;
 // js bridge
 @property (nonatomic, strong)  WKWebViewJavascriptBridge *bridge;
+
+@property (nonatomic, copy) WVJBResponseCallback scanCallback;
 
 @end
 
@@ -99,6 +105,10 @@
     } else {
         configuration.requiresUserActionForMediaPlayback = NO;
     }
+    // window.open
+    WKPreferences *preferences = [WKPreferences new];
+    preferences.javaScriptCanOpenWindowsAutomatically = YES;
+    configuration.preferences = preferences;
     
     WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
 //    webView.frame = CGRectMake(0, KJTopNavH, ScreenW, ScreenH - KJTopNavH);
@@ -110,7 +120,6 @@
                             //http://dev.sge.cn/hykj/ghome/ghome.html
     LoadViewController *loadVC = [LoadViewController shareInstance];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.desUrl]]];
-    NSLog(@"desUrl=%@",self.desUrl);
     [self.view addSubview:webView];
     [self.view addSubview:self.myProgressView];
     
@@ -157,6 +166,21 @@
     [_bridge registerHandler:@"goLogin" handler:^(id data, WVJBResponseCallback responseCallback) {
         [weakSelf showAlertVc];
     }];
+    
+    // 3.扫一扫
+    [_bridge registerHandler:@"scan" handler:^(id data, WVJBResponseCallback responseCallback) {
+        [weakSelf scan];
+        weakSelf.scanCallback = responseCallback;
+    }];
+}
+
+#pragma mark - 扫一扫
+- (void)scan {
+    [[BeforeScanSingleton shareScan] ShowSelectedType:QQStyle WithViewController:self];
+}
+
+- (void)subLBXScanViewController:(SubLBXScanViewController *)subLBXScanViewController resultStr:(NSString *)result {
+    self.scanCallback(@{@"result": result});
 }
 
 #pragma mark - showAlertVc
@@ -224,17 +248,55 @@
 
 #pragma mark - WKNavigationDelegate
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    NSURL *URL = navigationAction.request.URL;
-    NSString *scheme = [URL scheme];
-    if ([scheme isEqualToString:@"tel"]) {
-        NSString *resourceSpecifier = [URL resourceSpecifier];
-        NSString *callPhone = [NSString stringWithFormat:@"telprompt:%@", resourceSpecifier];
-        // 防止iOS 10及其之后,拨打电话系统弹出框延迟出现
-        dispatch_async(dispatch_get_main_queue(),^{
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone]];
-        });
+//    NSURL *URL = navigationAction.request.URL;
+//    NSString *scheme = [URL scheme];
+//    if ([scheme isEqualToString:@"tel"]) {
+//        NSString *resourceSpecifier = [URL resourceSpecifier];
+//        NSString *callPhone = [NSString stringWithFormat:@"telprompt:%@", resourceSpecifier];
+//        // 防止iOS 10及其之后,拨打电话系统弹出框延迟出现
+//        dispatch_async(dispatch_get_main_queue(),^{
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone]];
+//        });
+//        decisionHandler(WKNavigationActionPolicyCancel);
+//        return;
+//    }
+    if ([navigationAction.request.URL.absoluteString hasPrefix:@"https://itunes.apple.com"]) {
+        [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
         decisionHandler(WKNavigationActionPolicyCancel);
-        return;
+    } else if ([navigationAction.request.URL.absoluteString containsString:@"wpa.qq.com"] && [navigationAction.request.URL.absoluteString containsString:@"site=qq"]) {
+        [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else if ([[NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] 'mailto:' OR SELF BEGINSWITH[cd] 'tel:' OR SELF BEGINSWITH[cd] 'telprompt:'"] evaluateWithObject:navigationAction.request.URL.absoluteString]) {
+        
+        if ([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]) {
+            if (@available(iOS 10.0, *)) {
+                [UIApplication.sharedApplication openURL:navigationAction.request.URL options:@{} completionHandler:NULL];
+            } else {
+                [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+            }
+        }
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else if (![[NSPredicate predicateWithFormat:@"SELF MATCHES[cd] 'https' OR SELF MATCHES[cd] 'http' OR SELF MATCHES[cd] 'file' OR SELF MATCHES[cd] 'about' OR SELF MATCHES[cd] 'post'"] evaluateWithObject:navigationAction.request.URL.scheme]) {
+        if ([navigationAction.request.URL.scheme isEqualToString:@"wvjbscheme"]) {
+            //decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
+        
+        if (@available(iOS 8.0, *)) { // openURL if ios version is low then 8 , app will crash
+            if ([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]) {
+                if (@available(iOS 10.0, *)) {
+                    [UIApplication.sharedApplication openURL:navigationAction.request.URL options:@{} completionHandler:NULL];
+                } else {
+                    [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+                }
+            }
+        }else{
+            if ([[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL]) {
+                [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+            }
+        }
+        
+        decisionHandler(WKNavigationActionPolicyCancel);
     }
     
     //新版本的H5拦截支付对老版本的获取订单串和订单支付接口进行合并，推荐使用该接口
@@ -254,7 +316,6 @@
     }];
     
     if (isIntercepted) {
-        NSLog(@"xx=%@",[navigationAction.request.URL absoluteString]);
         [self.myProgressView setProgress:1.0 animated:YES];
         [UIView animateWithDuration:0.3f delay:0.3f options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.myProgressView.alpha = 0.0f;
@@ -280,8 +341,11 @@
 }
 
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
-    if (!navigationAction.targetFrame.isMainFrame) {
-        [webView loadRequest:navigationAction.request];
+    if (navigationAction.targetFrame == nil || !navigationAction.targetFrame.isMainFrame) {
+//        [webView loadRequest:navigationAction.request];
+        FjViewController *fjVc = [[FjViewController alloc] initWithRequest:navigationAction.request Configuration:configuration];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:fjVc];
+        [self presentViewController:nav animated:YES completion:nil];
     }
     return nil;
 }
@@ -291,6 +355,46 @@
         _telWebView = [[WKWebView alloc] init];
     }
     return _telWebView;
+}
+
+//此方法作为js的alert方法接口的实现，默认弹出窗口应该只有提示信息及一个确认按钮，当然可以添加更多按钮以及其他内容，但是并不会起到什么作用
+//点击确认按钮的相应事件需要执行completionHandler，这样js才能继续执行 参数 message为  js 方法 alert(<message>) 中的<message>
+-(void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler();
+    }])];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+//作为js中confirm接口的实现，需要有提示信息以及两个相应事件， 确认及取消，并且在completionHandler中回传相应结果，确认返回YES， 取消返回NO
+//参数 message为  js 方法 confirm(<message>) 中的<message>
+- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completionHandler{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(NO);
+    }])];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(YES);
+    }])];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+//作为js中prompt接口的实现，默认需要有一个输入框一个按钮，点击确认按钮回传输入值
+//当然可以添加多个按钮以及多个输入框，不过completionHandler只有一个参数，如果有多个输入框，需要将多个输入框中的值通过某种方式拼接成一个字符串回传，js接收到之后再做处理
+
+//参数 prompt 为 prompt(<message>, <defaultValue>);中的<message>
+//参数defaultText 为 prompt(<message>, <defaultValue>);中的 <defaultValue>
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable))completionHandler{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:prompt message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.text = defaultText;
+    }];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(alertController.textFields[0].text?:@"");
+    }])];
+
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark 移除观察者
