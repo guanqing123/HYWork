@@ -728,7 +728,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0B691A07-6B4C-4609-8C49-A507E7CC22B4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HYWork/KqViewController.m"
@@ -750,8 +750,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "445"
-            endingLineNumber = "445"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
             landmarkName = "-getCurrentLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -766,8 +766,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "529"
-            endingLineNumber = "529"
+            startingLineNumber = "549"
+            endingLineNumber = "549"
             landmarkName = "-loadFences:regeocode:"
             landmarkType = "7">
          </BreakpointContent>
@@ -782,8 +782,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "557"
-            endingLineNumber = "557"
+            startingLineNumber = "577"
+            endingLineNumber = "577"
             landmarkName = "-addGeoFenceCircleRegion:"
             landmarkType = "7">
          </BreakpointContent>
@@ -798,8 +798,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "594"
-            endingLineNumber = "594"
+            startingLineNumber = "614"
+            endingLineNumber = "614"
             landmarkName = "-amapGeoFenceManager:didAddRegionForMonitoringFinished:customID:error:"
             landmarkType = "7">
          </BreakpointContent>
@@ -814,8 +814,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "605"
-            endingLineNumber = "605"
+            startingLineNumber = "625"
+            endingLineNumber = "625"
             landmarkName = "-amapGeoFenceManager:didGeoFencesStatusChangedForRegion:customID:error:"
             landmarkType = "7">
          </BreakpointContent>
@@ -830,8 +830,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "672"
-            endingLineNumber = "672"
+            startingLineNumber = "692"
+            endingLineNumber = "692"
             landmarkName = "-mapView:didUpdateUserLocation:updatingLocation:"
             landmarkType = "7">
          </BreakpointContent>
@@ -846,8 +846,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "565"
-            endingLineNumber = "565"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
             landmarkName = "-addGeoFenceCircleRegion:"
             landmarkType = "7">
          </BreakpointContent>
@@ -862,8 +862,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "-updateLoc"
             landmarkType = "7">
          </BreakpointContent>
@@ -878,8 +878,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "-refreshLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -894,8 +894,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "-refreshLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -910,8 +910,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "-updateLoc"
             landmarkType = "7">
          </BreakpointContent>
@@ -958,8 +958,8 @@
             filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
+            startingLineNumber = "456"
+            endingLineNumber = "456"
             landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1425,6 +1425,374 @@
             startingLineNumber = "183"
             endingLineNumber = "183"
             landmarkName = "-subLBXScanViewController:resultStr:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10B0D5DC-D646-41A2-9BDC-0C6325DD94CC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5D1CDDE-FA15-4DB7-9922-74BB89F5B2DB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "555"
+            endingLineNumber = "555"
+            landmarkName = "-loadFences:regeocode:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "33BC6B6F-797E-416F-9E6B-EBC1508DEFC8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "-kqAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC4C60D6-F089-4F7B-87FF-5AEF0791A564"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "-signIn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ECDFA525-A41C-4314-9CE5-8BF3F6C2C350"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
+            landmarkName = "-kqAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB1D7F01-D5B6-48B7-ACB7-3845B160EB14"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "-kqAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA0E2CF3-11C5-48D3-B09A-1283D3D987DB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "-kqAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A574B05C-A2EE-46AA-BBCC-0B95BB548037"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
+            landmarkName = "-kqAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "57B17C61-15A1-40BB-A759-22D619C225EE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "-kqAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17586D28-FADC-426E-8B80-E875E9886307"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/&#x65b0;&#x7248;&#x8003;&#x52e4;/Controller/WKKQViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
+            landmarkName = "-kqAction:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "17586D28-FADC-426E-8B80-E875E9886307 - 45e86c414921844c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WKKQViewController kqAction:]"
+                  moduleName = "HYWork"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/information/Desktop/guanqing/%E9%A1%B9%E7%9B%AE/%E9%B8%BF%E9%9B%81%E4%BA%91%E5%95%86/HYYS/1.5.8/HYWork/HYWork/%E6%96%B0%E7%89%88%E8%80%83%E5%8B%A4/Controller/WKKQViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "275"
+                  endingLineNumber = "275"
+                  offsetFromSymbolStart = "90">
+               </Location>
+               <Location
+                  uuid = "17586D28-FADC-426E-8B80-E875E9886307 - dc61cf94140026e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__31-[WKKQViewController kqAction:]_block_invoke"
+                  moduleName = "HYWork"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/information/Desktop/guanqing/%E9%A1%B9%E7%9B%AE/%E9%B8%BF%E9%9B%81%E4%BA%91%E5%95%86/HYYS/1.5.8/HYWork/HYWork/%E6%96%B0%E7%89%88%E8%80%83%E5%8B%A4/Controller/WKKQViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "276"
+                  endingLineNumber = "276"
+                  offsetFromSymbolStart = "47">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "240440A0-0371-4B93-AE8D-E56D05930021"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SVProgressHUD/SVProgressHUD/SVProgressHUD.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "+showInfoWithStatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8955EF22-CAF7-4356-99F6-2CD69CE334EF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/KHKF(&#x5ba2;&#x6237;&#x5f00;&#x53d1;)/Controller/WKQdkhViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
+            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "47F3CC9A-0108-4A91-ADC3-7974E1E940FE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/KHKF(&#x5ba2;&#x6237;&#x5f00;&#x53d1;)/Controller/WKQdkhViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
+            landmarkName = "-yb_numberOfCellsInImageBrowser:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50F0A2A2-6E5F-4103-BC24-C509D7206683"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/KHKF(&#x5ba2;&#x6237;&#x5f00;&#x53d1;)/Controller/WKQdkhViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "491"
+            endingLineNumber = "491"
+            landmarkName = "-yb_imageBrowser:dataForCellAtIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5477F42C-6C6D-468A-97E3-790780AF0820"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/RJH(&#x62dc;&#x8bbf;&#x8db3;&#x8ff9;)/Controller/RjhTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
+            landmarkName = "-browse"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E826A30A-C29A-49F0-8397-ADC9AD7AAF17"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/RJH(&#x62dc;&#x8bbf;&#x8db3;&#x8ff9;)/Controller/RjhWritePlanViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "-planWriteTableCellDidClickBpcSearch:bpcType:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84D8DD81-24CE-485C-9BEA-E2BA18E2EBA3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/RJH(&#x62dc;&#x8bbf;&#x8db3;&#x8ff9;)/Controller/RjhWritePlanViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "-loadProjectList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "57FD8470-1DA2-400D-8D14-5806F69EA52B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/RJH(&#x62dc;&#x8bbf;&#x8db3;&#x8ff9;)/Controller/WKXmSearchViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "-searchXmWithText:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "57FD8470-1DA2-400D-8D14-5806F69EA52B - 74fb1a4ba2ee1631"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WKXmSearchViewController searchXmWithText:]"
+                  moduleName = "HYWork"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/information/Desktop/guanqing/%E9%A1%B9%E7%9B%AE/%E9%B8%BF%E9%9B%81%E4%BA%91%E5%95%86/HYYS/1.5.8/HYWork/HYWork/RJH(%E6%8B%9C%E8%AE%BF%E8%B6%B3%E8%BF%B9)/Controller/WKXmSearchViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "146">
+               </Location>
+               <Location
+                  uuid = "57FD8470-1DA2-400D-8D14-5806F69EA52B - 74fb1a4ba2ee1631"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WKXmSearchViewController searchXmWithText:]"
+                  moduleName = "HYWork"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/information/Desktop/guanqing/%E9%A1%B9%E7%9B%AE/%E9%B8%BF%E9%9B%81%E4%BA%91%E5%95%86/HYYS/1.5.8/HYWork/HYWork/RJH(%E6%8B%9C%E8%AE%BF%E8%B6%B3%E8%BF%B9)/Controller/WKXmSearchViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "166">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E71A0CA-87C8-4CD0-9C28-D36D6817E2AE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HYWork/RJH(&#x62dc;&#x8bbf;&#x8db3;&#x8ff9;)/Controller/RjhTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "511"
+            endingLineNumber = "511"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

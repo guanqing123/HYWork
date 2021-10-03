@@ -15,6 +15,7 @@ pod 'TZImagePickerController'
 #图片浏览器替换 2021.1.8
 #pod 'XLPhotoBrowser+CoderXL'
 pod 'YBImageBrowser'
+pod 'YYImage', :git => 'https://github.com/QiuYeHong90/YYImage.git'
 
 pod 'DGActivityIndicatorView', '~> 2.1.1'
 pod 'MJExtension', '~> 3.0.13'

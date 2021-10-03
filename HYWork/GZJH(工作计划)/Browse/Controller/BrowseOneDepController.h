@@ -15,6 +15,6 @@
 @property (nonatomic, strong)  NSDictionary *citiesDic;
 @property (nonatomic, strong)  NSDictionary *tempDict;
 
-- (void)requestOneDepDataWithBlock:(void(^)())block;
+- (void)requestOneDepDataWithBlock:(void(^)(void))block;
 
 @end

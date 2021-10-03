@@ -1543,7 +1543,11 @@
 
 #pragma mark - 工程项目
 - (void)projectBtnClick {
-    if (_selectPickerView == nil) {
+    if ([self.delegate respondsToSelector:@selector(planWriteTableCellDidClickXmSearch:)]) {
+        [self.delegate planWriteTableCellDidClickXmSearch:self];
+    }
+    /* 2021.10.3
+     if (_selectPickerView == nil) {
         _selectPickerView = [[SelectPickerView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 236.0f, SCREEN_WIDTH, 236.0f)];
         _selectPickerView.tag = 5;
         _selectPickerView.delegate = self;
@@ -1557,7 +1561,7 @@
         [self.cover.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self.cover addSubview:_selectPickerView];
     }
-    [self.superview.superview addSubview:self.cover];
+    [self.superview.superview addSubview:self.cover];*/
 }
 
 #pragma mark - MultiSelectPickerViewDelegate

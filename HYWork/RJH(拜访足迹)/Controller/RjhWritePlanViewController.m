@@ -15,6 +15,9 @@
 #import "MBProgressHUD+MJ.h"
 #import "MJExtension.h"
 
+// 检索项目
+#import "WKXmSearchViewController.h"
+
 #import "RjhSignInTableViewController.h"
 #import "KhSearchViewController.h"
 
@@ -26,7 +29,7 @@
 #define SYSTEMVERSION   [UIDevice currentDevice].systemVersion
 #define iOS9OrLater ([SYSTEMVERSION floatValue] >= 9.0)
 
-@interface RjhWritePlanViewController ()<PlanWriteTableCellDelegate,RjhBpcSearchViewControllerDelegate,RjhOperatorSearchViewControllerDelegate,KhSearchViewControllerDelegate>
+@interface RjhWritePlanViewController ()<PlanWriteTableCellDelegate,RjhBpcSearchViewControllerDelegate,RjhOperatorSearchViewControllerDelegate,KhSearchViewControllerDelegate,WKXmSearchViewControllerDelegate>
 {
     RXAddressiOS9 * _objct9;
     RXAddressiOS10 * _objct10;
@@ -167,7 +170,7 @@
     WKWorkTypeParam *param = [WKWorkTypeParam param:workType];
     [RjhManager getWorkType:param success:^(NSArray *work) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        _selectData = work;
+        self->_selectData = work;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
     } fail:^{
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -181,7 +184,7 @@
     param.userid = [LoadViewController shareInstance].emp.ygbm;
 //    param.userid = @"05208";
     [RjhManager getProjectList:param success:^(NSArray *projectList) {
-        _projectList = projectList;
+        self->_projectList = projectList;
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:9 inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
     } fail:^{
     }];
@@ -281,6 +284,21 @@
         default:
             break;
     }
+}
+
+- (void)planWriteTableCellDidClickXmSearch:(PlanWriteTableCell *)planWriteCell {
+    WKXmSearchViewController *xmSearchVc = [[WKXmSearchViewController alloc] init];
+    xmSearchVc.delegate = self;
+    xmSearchVc.xmArray = self.projectList;
+    [self.navigationController pushViewController:xmSearchVc animated:YES];
+}
+
+- (void)xmSearchViewDidSelectXm:(WKXmSearchViewController *)xmSearchVc {
+    if (xmSearchVc.hasCreate) {
+        [self loadProjectList];
+    }
+    self.plan.projectid = xmSearchVc.selectPR.projectid;
+    [self.tableView reloadData];
 }
 
 - (void)planWriteTableCellDidClickTrack:(PlanWriteTableCell *)planWriteCell {

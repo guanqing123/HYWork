@@ -56,7 +56,11 @@
     if ([self.delegate respondsToSelector:@selector(khkfWebViewControllerDidBackItem:)]) {
         [self.delegate khkfWebViewControllerDidBackItem:self];
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([self.webView canGoBack]) {
+        [self.webView goBack];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 /** 设置webView */

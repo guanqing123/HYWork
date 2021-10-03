@@ -265,10 +265,10 @@ static NSString * const reuseIdentifier = @"TZTestCell";
             imagePickerVc.allowPickingOriginalPhoto = YES;
             imagePickerVc.isSelectOriginalPhoto = YES;
             [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-                _selectedPhotos = [NSMutableArray arrayWithArray:photos];
-                _selectedAssets = [NSMutableArray arrayWithArray:assets];
+                self->_selectedPhotos = [NSMutableArray arrayWithArray:photos];
+                self->_selectedAssets = [NSMutableArray arrayWithArray:assets];
                 [self.collectionView reloadData];
-                self.collectionView.contentSize = CGSizeMake(0, ((_selectedPhotos.count + 2) / 3 ) * (_margin + _itemWH));
+                self.collectionView.contentSize = CGSizeMake(0, ((self->_selectedPhotos.count + 2) / 3 ) * (self->_margin + self->_itemWH));
             }];
             [self presentViewController:imagePickerVc animated:YES completion:nil];
         }

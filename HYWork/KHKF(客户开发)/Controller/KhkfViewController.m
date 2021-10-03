@@ -83,12 +83,12 @@
     if (!_isAppeared) {
         [UIView animateWithDuration:0.5 animations:^{
 //            _khSearchView.frame = CGRectMake(0, HWTopNavH, SCREEN_WIDTH, 80.0f);
-            _khSearchView.alpha = 1.0;
+            self->_khSearchView.alpha = 1.0;
         }];
     }else {
         [UIView animateWithDuration:0.5 animations:^{
 //            _khSearchView.frame = CGRectMake(0, HWTopNavH - 80.0f, SCREEN_WIDTH, 80.0f);
-            _khSearchView.alpha = 0;
+            self->_khSearchView.alpha = 0;
         }];
     }
     _isAppeared = !_isAppeared;
@@ -155,7 +155,7 @@
             if (totalPage > 1) {
                 [self setupFooterRefresh];
             }
-            _page_number++;
+            self->_page_number++;
         }
         [self.tableView.mj_header endRefreshing];
     } fail:^{
@@ -185,8 +185,8 @@
             [self.qzBpcArray addObjectsFromArray:tempArray];
             [self.tableView reloadData];
             int totalPage = [[data objectForKey:@"totalPage"] intValue];
-            _page_number ++;
-            if (_page_number > totalPage) {
+            self->_page_number ++;
+            if (self->_page_number > totalPage) {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }else{
                 [self.tableView.mj_footer endRefreshing];

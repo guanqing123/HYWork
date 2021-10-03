@@ -90,7 +90,7 @@
             if (qdkh == nil) {
                 [MBProgressHUD showError:@"加载失败" toView:self.view];
             }else{
-                _qdkh = qdkh;
+                self->_qdkh = qdkh;
                 NSString *fj1Path = [NSString stringWithFormat:@"http://218.75.78.166:9106/ftp/download?ftpPath=wenj/fxs&fileName=%@",qdkh.fj1];
                 NSData *fj1Data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fj1Path]];
                 UIImage *fj1Image = [UIImage imageWithData:fj1Data];
@@ -180,7 +180,7 @@
             [MBProgressHUD showError:@"保存失败" toView:weakSelf.view];
         }else{
             weakSelf.qdkh.fj1 = photoResult.saveName;
-            [KhkfManager savePhoto:dict imageArray:_inSelectedPhotos success:^(WKPhotoResult *photoResult) {
+            [KhkfManager savePhoto:dict imageArray:self->_inSelectedPhotos success:^(WKPhotoResult *photoResult) {
                 
                 if (photoResult == nil) {
                     [MBProgressHUD hideHUDForView:weakSelf.view];
@@ -625,7 +625,7 @@
         imagePickerVc.showSelectBtn = YES;
         [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
             [self.outSelectedPhotos addObjectsFromArray:photos];
-            [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:section]];
+            [self->_collectionView reloadSections:[NSIndexSet indexSetWithIndex:section]];
         }];
         [self presentViewController:imagePickerVc animated:YES completion:nil];
         
@@ -641,7 +641,7 @@
         imagePickerVc.showSelectBtn = YES;
         [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
             [self.inSelectedPhotos addObjectsFromArray:photos];
-            [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:section]];
+            [self->_collectionView reloadSections:[NSIndexSet indexSetWithIndex:section]];
         }];
         [self presentViewController:imagePickerVc animated:YES completion:nil];
     }

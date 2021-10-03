@@ -502,6 +502,7 @@
 		D66C58EA25AE905C0072B28A /* WKFunsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D66C58E925AE905C0072B28A /* WKFunsTool.m */; };
 		D66C58F025AED0A60072B28A /* WKHomeWorkGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D66C58EF25AED0A60072B28A /* WKHomeWorkGroup.m */; };
 		D66C58F325AED1520072B28A /* WKHomeWorkResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D66C58F225AED1520072B28A /* WKHomeWorkResult.m */; };
+		D66C768D2709BE4000D18323 /* WKXmSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66C768C2709BE4000D18323 /* WKXmSearchViewController.m */; };
 		D66C774425AC5CFE00B530B0 /* WKOATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D66C774225AC5CFE00B530B0 /* WKOATableViewCell.m */; };
 		D66C774525AC5CFE00B530B0 /* WKOATableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66C774325AC5CFE00B530B0 /* WKOATableViewCell.xib */; };
 		D66C774B25AC72FD00B530B0 /* WKWorkCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D66C774A25AC72FD00B530B0 /* WKWorkCollectionViewCell.m */; };
@@ -1795,6 +1796,8 @@
 		D66C58EF25AED0A60072B28A /* WKHomeWorkGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKHomeWorkGroup.m; sourceTree = "<group>"; };
 		D66C58F125AED1520072B28A /* WKHomeWorkResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKHomeWorkResult.h; sourceTree = "<group>"; };
 		D66C58F225AED1520072B28A /* WKHomeWorkResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKHomeWorkResult.m; sourceTree = "<group>"; };
+		D66C768B2709BE4000D18323 /* WKXmSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKXmSearchViewController.h; sourceTree = "<group>"; };
+		D66C768C2709BE4000D18323 /* WKXmSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKXmSearchViewController.m; sourceTree = "<group>"; };
 		D66C774125AC5CFE00B530B0 /* WKOATableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKOATableViewCell.h; sourceTree = "<group>"; };
 		D66C774225AC5CFE00B530B0 /* WKOATableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKOATableViewCell.m; sourceTree = "<group>"; };
 		D66C774325AC5CFE00B530B0 /* WKOATableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WKOATableViewCell.xib; sourceTree = "<group>"; };
@@ -3554,6 +3557,8 @@
 				D60AFE481EEEDA550050F173 /* RjhCommentViewController.m */,
 				D64C0E6D1EF2843C0018A38C /* RjhTrailViewController.h */,
 				D64C0E6E1EF2843C0018A38C /* RjhTrailViewController.m */,
+				D66C768B2709BE4000D18323 /* WKXmSearchViewController.h */,
+				D66C768C2709BE4000D18323 /* WKXmSearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6302,6 +6307,7 @@
 				D60D2A291E8A52930051B33F /* ZXITFReader.m in Sources */,
 				D634F83A1CF6A57E00B0D6DB /* UIColor+Extension.m in Sources */,
 				D627372D2315194F00145A47 /* WKFromMonthController.m in Sources */,
+				D66C768D2709BE4000D18323 /* WKXmSearchViewController.m in Sources */,
 				D6530A3F1CAD729800183265 /* KqViewCell.m in Sources */,
 				D62FF9352195288500D7D983 /* SelectPickerView.m in Sources */,
 				D60D29D91E8A52930051B33F /* ZXBinarizer.m in Sources */,
@@ -6579,7 +6585,7 @@
 					"$(PROJECT_DIR)/HYWork/iCarousel",
 					"$(PROJECT_DIR)/HYWork/Sangfo",
 				);
-				MARKETING_VERSION = 1.7.8;
+				MARKETING_VERSION = 1.7.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -6631,7 +6637,7 @@
 					"$(PROJECT_DIR)/HYWork/iCarousel",
 					"$(PROJECT_DIR)/HYWork/Sangfo",
 				);
-				MARKETING_VERSION = 1.7.8;
+				MARKETING_VERSION = 1.7.9;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",

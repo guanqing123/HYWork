@@ -15,42 +15,42 @@
 #import "WKProjectResult.h"
 
 typedef void(^SuccessBlock)(id json);
-typedef void(^FailBlock)();
+typedef void(^FailBlock)(void);
 
 @interface RjhManager : NSObject
 
 /** 获取签到总次数 */
-+ (void)postJosnWithUserId:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)())fail;
++ (void)postJosnWithUserId:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)(void))fail;
 
 /** 签到并上传图片 */
-+ (void)postJsonWithParameters:(NSDictionary *)params signInImage:(UIImage *)image success:(void(^)(id json))success fail:(void(^)())fail;
++ (void)postJsonWithParameters:(NSDictionary *)params signInImage:(UIImage *)image success:(void(^)(id json))success fail:(void(^)(void))fail;
 
 /** 获取日计划列表 */
-+ (void)getRjhPlanListWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)())fail;
++ (void)getRjhPlanListWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)(void))fail;
 
 /** 上传照片 */
-+ (void)postJsonWithParameters:(NSDictionary *)params imageArray:(NSArray *)imageArray success:(void (^)(id json))success fail:(void (^)())fail;
++ (void)postJsonWithParameters:(NSDictionary *)params imageArray:(NSArray *)imageArray success:(void (^)(id json))success fail:(void (^)(void))fail;
 
 /** 删除日志 */
-+ (void)deleteRjhPlanWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)())fail;
++ (void)deleteRjhPlanWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)(void))fail;
 
 /** 客户检索 */
-+ (void)getBpcListWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)())fail;
++ (void)getBpcListWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)(void))fail;
 
 /** 保存/编辑日志 */
-+ (void)saveRjhPlanWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)())fail;
++ (void)saveRjhPlanWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)(void))fail;
 
 /** 获取职级关系 */
 + (void)getZjgxWithParams:(NSDictionary *)params success:(SuccessBlock)success failure:(FailBlock)fail;
 
 /** 保存评论 */
-+ (void)saveCommentWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)())fail;
++ (void)saveCommentWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)(void))fail;
 
 /** 删除评论 */
-+ (void)deleteCommentWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)())fail;
++ (void)deleteCommentWithParameters:(NSDictionary *)params success:(void(^)(id json))success fail:(void(^)(void))fail;
 
 /** 获取 工作项/客户工作类别/客户具体工作项 */
-+ (void)getWorkType:(WKWorkTypeParam *)workTypeParam success:(void(^)(NSArray *work))success fail:(void(^)())fail;
++ (void)getWorkType:(WKWorkTypeParam *)workTypeParam success:(void(^)(NSArray *work))success fail:(void(^)(void))fail;
 
 
 /**
@@ -60,6 +60,6 @@ typedef void(^FailBlock)();
  @param success 成功回调
  @param fail 失败回调
  */
-+ (void)getProjectList:(WKProjectParam *)projectParam success:(void(^)(NSArray *projectList))success fail:(void(^)())fail;
++ (void)getProjectList:(WKProjectParam *)projectParam success:(void(^)(NSArray *projectList))success fail:(void(^)(void))fail;
 
 @end

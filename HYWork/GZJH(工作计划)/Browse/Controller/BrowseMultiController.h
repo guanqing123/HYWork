@@ -32,7 +32,7 @@
 
 @property (nonatomic, weak) id<BrowseMultiControllerDelegate>  delegate;
 
-- (void)refreshAllEmpsThroughSQLServerWithBlock:(void(^)())block;
+- (void)refreshAllEmpsThroughSQLServerWithBlock:(void(^)(void))block;
 
 - (void)fillXbrStr:(NSString *)xbrStr xbrmcStr:(NSString *)xbrmcStr;
 

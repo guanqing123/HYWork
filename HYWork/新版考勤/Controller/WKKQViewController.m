@@ -35,7 +35,7 @@
 
 
 @interface WKKQViewController ()<MAMapViewDelegate, AMapLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,AMapGeoFenceManagerDelegate,UIAlertViewDelegate>
-// 地图
+// 地图x
 @property (nonatomic, strong) MAMapView *mapView;
 
 // 定位
@@ -256,18 +256,38 @@ static NSString *const WKFouthTableViewCellID = @"WKFouthTableViewCell";
     if ((_kqResData.devices.count <= 2) && [_kqResData.devices containsObject:uuid]) {
         [self kqAction:@"false"];
     }
-    if ((_kqResData.devices.count == 2) && ![_kqResData.devices containsObject:uuid]) {
-        [SVProgressHUD showErrorWithStatus:@"此手机未绑定,无法考勤"];
+    if ((_kqResData.devices.count >= 2) && ![_kqResData.devices containsObject:uuid]) {
+        [SVProgressHUD showErrorWithStatus:@"考勤设备已达上限,此手机未绑定,无法考勤"];
     }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0)return;
+    /**
+     https://www.cnblogs.com/PaulpauL/p/14768347.html
+     SVProgressHUD 是强大的toast工具，但有些情况下会失效。个人遇到的情况是从相册选择照片，返回到上一级页面时，SVProgressHUD就会失效。
+
+     解决方法是更改SVProgressHUD默认配置：
+
+     [SVProgressHUD setMaxSupportedWindowLevel:NSIntegerMax];
+
+     [SVProgressHUD setContainerView:[UIApplication sharedApplication].delegate.window];
+
+     导致该问题的原因是：
+
+     SVProgressHUD文件中有一个frontWindow对象，负责承载toast内容。而该对象需要满足以下条件才会不为空：
+     遍历UIApplication.sharedApplication.windows，其中window的screen是UIScreen.mainScreen&window可见&level介于UIWindowLevelNormal和maxSupportedWindowLevel（默认2000）之间&window.isKeyWindow时该window才会赋值给frontWindow。
+
+     所以，才有上面的两行代码设置，第一行是设置level为最大整数，第二行是取delegate的window，[UIApplication sharedApplication].delegate.window不会为nil。
+     */
+    [SVProgressHUD setMaxSupportedWindowLevel:NSIntegerMax];
+    [SVProgressHUD setContainerView:[UIApplication sharedApplication].delegate.window];
     [self kqAction:@"true"];
 }
 
 #pragma mark - 考勤功能
 - (void)kqAction:(NSString *)sign {
+    
     [SVProgressHUD showInfoWithStatus:@"考勤中..."];
     WEAKSELF
     [KqManager postJsonWithDid:self.uuid gh:[LoadViewController shareInstance].emp.ygbm sign:sign success:^(id json) {

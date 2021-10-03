@@ -55,7 +55,11 @@
 - (void)back {
     if (self.webView.loading) {[self.webView stopLoading];}
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([self.webView canGoBack]) {
+        [self.webView goBack];
+    } else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 /** 设置 webView */

@@ -87,7 +87,7 @@
 }
 
 #pragma mark - 请求同部门数据
-- (void)requestOneDepDataWithBlock:(void (^)())block {
+- (void)requestOneDepDataWithBlock:(void (^)(void))block {
     if (self.gh == nil) {
         return;
     }
@@ -106,9 +106,9 @@
             [userDefault setObject:data forKey:@"oneEmp"];
             [userDefault synchronize];
             
-            _citiesDic = [data copy];
-            _tempDict = [_citiesDic copy];
-            _sectionArray = [[_tempDict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+            self->_citiesDic = [data copy];
+            self->_tempDict = [self->_citiesDic copy];
+            self->_sectionArray = [[self->_tempDict allKeys] sortedArrayUsingSelector:@selector(compare:)];
             
             [self.tableView reloadData];
             

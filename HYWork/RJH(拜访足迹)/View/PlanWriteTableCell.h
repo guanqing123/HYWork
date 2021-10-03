@@ -50,6 +50,8 @@
 - (void)planWriteTableCellDidClickBpcSearch:(PlanWriteTableCell *)planWriteCell bpcType:(BpcType)bpcType;
 /** cell点击客户电话 */
 - (void)planWriteTableCellDidClickTelSearch:(PlanWriteTableCell *)planWriteCell;
+/** cell点击工程项目 */
+- (void)planWriteTableCellDidClickXmSearch:(PlanWriteTableCell *)planWriteCell;
 /** cell点击足迹按钮 */
 - (void)planWriteTableCellDidClickTrack:(PlanWriteTableCell *)planWriteCell;
 @end

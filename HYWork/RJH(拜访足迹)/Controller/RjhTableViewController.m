@@ -472,12 +472,12 @@
     }
     if (!_isAppeared) {
         [UIView animateWithDuration:0.5 animations:^{
-            _zjxsView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAV_BAR_HEIGHT);
-            _zjxsView.current = self.current;
+            self->_zjxsView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAV_BAR_HEIGHT);
+            self->_zjxsView.current = self.current;
         }];
     }else{
         [UIView animateWithDuration:0.5 animations:^{
-            _zjxsView.frame = CGRectMake(0, NAV_BAR_HEIGHT - SCREEN_HEIGHT, SCREEN_WIDTH,SCREEN_HEIGHT - NAV_BAR_HEIGHT);
+            self->_zjxsView.frame = CGRectMake(0, NAV_BAR_HEIGHT - SCREEN_HEIGHT, SCREEN_WIDTH,SCREEN_HEIGHT - NAV_BAR_HEIGHT);
         }];
     }
     _isAppeared = !_isAppeared;

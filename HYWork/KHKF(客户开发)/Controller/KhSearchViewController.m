@@ -14,12 +14,22 @@
 #import "Utils.h"
 #import "MJExtension.h"
 #import "BpcSearchTableCell.h"
-#import "KhkfWebViewController.h"
 #import "AddButton.h"
 #import "MBProgressHUD+MJ.h"
 #import "BpcSearchHeaderView.h"
 
-@interface  KhSearchViewController()<UITableViewDataSource,UITableViewDelegate,KhSearchViewDelegate,KhkfWebViewControllerDelegate>
+#import "CustomActionSheet.h"
+//渠道客户
+#import "WKQdkhViewController.h"
+//经销客户
+#import "KhkfWebViewController.h"
+//战略客户
+#import "WKZlkhViewController.h"
+//工程客户
+#import "WKGckhViewController.h"
+
+
+@interface  KhSearchViewController()<UITableViewDataSource,UITableViewDelegate,KhSearchViewDelegate,KhkfWebViewControllerDelegate,WKQdkhViewControllerDelegate,CustomActionSheetDelagate>
 @property (nonatomic, assign) BOOL isAppeared;
 
 @property (nonatomic, weak)  UITableView *tableView;
@@ -78,12 +88,12 @@
     if (!_isAppeared) {
         [UIView animateWithDuration:1 animations:^{
             //_khSearchView.frame = CGRectMake(0, 64.0f, SCREEN_WIDTH, 80.0f);
-            _khSearchView.hidden = NO;
+            self->_khSearchView.hidden = NO;
         }];
     }else {
         [UIView animateWithDuration:1 animations:^{
 //            _khSearchView.frame = CGRectMake(0, -16.0f, SCREEN_WIDTH, 80.0f);
-            _khSearchView.hidden = YES;
+            self->_khSearchView.hidden = YES;
         }];
     }
     _isAppeared = !_isAppeared;
@@ -143,7 +153,7 @@
             if (totalPage > 1) {
                 [self setupFooterRefresh];
             }
-            _page_number++;
+            self->_page_number++;
         }
         [self.tableView.mj_header endRefreshing];
     } fail:^{
@@ -172,8 +182,8 @@
             [self.qzBpcArray addObjectsFromArray:tempArray];
             [self.tableView reloadData];
             int totalPage = [[data objectForKey:@"totalPage"] intValue];
-            _page_number ++;
-            if (_page_number > totalPage) {
+            self->_page_number ++;
+            if (self->_page_number > totalPage) {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }else{
                 [self.tableView.mj_footer endRefreshing];
@@ -218,10 +228,59 @@
     if (_isAppeared) {
         [self shanxuan];
     }
-    KhkfWebViewController *webVc = [[KhkfWebViewController alloc] initWithXh:@"" ywy:self.ywy];
+    /*KhkfWebViewController *webVc = [[KhkfWebViewController alloc] initWithXh:@"" ywy:self.ywy];
     webVc.view.backgroundColor = [UIColor whiteColor];
     webVc.delegate = self;
-    [self.navigationController pushViewController:webVc animated:YES];
+    [self.navigationController pushViewController:webVc animated:YES];*/
+    CustomActionSheet *sheet = [[CustomActionSheet alloc] initWithTitle:@"请选择操作" otherButtonTitles:@[@"渠道客户(分销商)",@"经销客户新增",@"战略客户新增",@"工程客户新增"]];
+    sheet.delegate = self;
+    [sheet show];
+}
+
+#pragma mark - CustomActionSheetDelagate
+- (void)sheet:(CustomActionSheet *)sheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (_isAppeared) {
+        [self shanxuan];
+    }
+    switch (buttonIndex) {
+        case 0: {//渠道客户 05
+            WKQdkhViewController *qdkhVc = [[WKQdkhViewController alloc] init];
+            qdkhVc.delegate = self;
+            qdkhVc.bzxh = @"";
+            [self.navigationController pushViewController:qdkhVc animated:YES];
+            break;
+        }
+        case 1: {
+            //经销客户 01
+            KhkfWebViewController *webVc = [[KhkfWebViewController alloc] initWithXh:@"0" ywy:self.ywy];
+            webVc.view.backgroundColor = [UIColor whiteColor];
+            webVc.delegate = self;
+            [self.navigationController pushViewController:webVc animated:YES];
+            break;
+        }
+        case 2: {
+            //战略客户 5
+            WKZlkhViewController *zlkhVc = [[WKZlkhViewController alloc] initWithXh:@"0" ywy:self.ywy];
+            zlkhVc.view.backgroundColor = [UIColor whiteColor];
+            [self.navigationController pushViewController:zlkhVc animated:YES];
+            break;
+        }
+        case 3: {
+            //工程客户
+            WKGckhViewController *gckhVc = [[WKGckhViewController alloc] initWithXh:@"0" ywy:self.ywy];
+            gckhVc.view.backgroundColor = [UIColor whiteColor];
+            [self.navigationController pushViewController:gckhVc animated:YES];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+#pragma mark - WKQdkhViewControllerDelegate
+- (void)qdkhViewControllerFinishSave:(WKQdkhViewController *)qdkhVc {
+    [self shanxuan];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 #pragma mark - khSearchViewDelegate

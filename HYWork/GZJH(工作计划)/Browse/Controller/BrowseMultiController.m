@@ -142,7 +142,7 @@
     }
 }
 
-- (void)refreshAllEmpsThroughSQLServerWithBlock:(void (^)())block{
+- (void)refreshAllEmpsThroughSQLServerWithBlock:(void (^)(void))block{
     [MBProgressHUD showMessage:@"加载中..." toView:self.view];
     [_ylyView removeFromSuperview];
     
@@ -159,11 +159,11 @@
             [userDefault setObject:data forKey:@"allEmp"];
             [userDefault synchronize];
             
-            _citiesDic = data;
+            self->_citiesDic = data;
             
-            _tempDict = [_citiesDic copy];
+            self->_tempDict = [self->_citiesDic copy];
             
-            _sectionArray = [[_tempDict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+            self->_sectionArray = [[self->_tempDict allKeys] sortedArrayUsingSelector:@selector(compare:)];
             [self.tableView reloadData];
             
             [self initIndexView];

@@ -15,7 +15,7 @@
 @implementation RjhManager
 
 /** 获取签到总次数 */
-+ (void)postJosnWithUserId:(NSDictionary *)params success:(void (^)(id json))success fail:(void (^)())fail{
++ (void)postJosnWithUserId:(NSDictionary *)params success:(void (^)(id json))success fail:(void (^)(void))fail{
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:signCount];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -33,7 +33,7 @@
 }
 
 /** 签到并上传图片 */
-+ (void)postJsonWithParameters:(NSDictionary *)params signInImage:(UIImage *)image success:(void (^)(id))success fail:(void (^)())fail{
++ (void)postJsonWithParameters:(NSDictionary *)params signInImage:(UIImage *)image success:(void (^)(id))success fail:(void (^)(void))fail{
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:signSavePage];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -56,7 +56,7 @@
 }
 
 /** 图片上传 */
-+ (void)postJsonWithParameters:(NSDictionary *)params imageArray:(NSArray *)imageArray success:(void (^)(id))success fail:(void (^)())fail {
++ (void)postJsonWithParameters:(NSDictionary *)params imageArray:(NSArray *)imageArray success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:signSavePage];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -84,7 +84,7 @@
 }
 
 /** 获取日计划列表 */
-+ (void)getRjhPlanListWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)())fail {
++ (void)getRjhPlanListWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:rjhList];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -102,7 +102,7 @@
 }
 
 /** 删除日志 */
-+ (void)deleteRjhPlanWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)())fail {
++ (void)deleteRjhPlanWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:rjhDelete];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -120,7 +120,7 @@
 }
 
 /** 客户检索 */
-+ (void)getBpcListWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)())fail {
++ (void)getBpcListWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:bpcSearch];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -138,7 +138,7 @@
 }
 
 /** 保存/编辑日志 */
-+ (void)saveRjhPlanWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)())fail {
++ (void)saveRjhPlanWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:signSavePage];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -175,7 +175,7 @@
 }
 
 /** 保存/编辑日志 */
-+ (void)saveCommentWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)())fail {
++ (void)saveCommentWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:saveComment];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -193,7 +193,7 @@
 }
 
 /** 删除评论 */
-+ (void)deleteCommentWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)())fail {
++ (void)deleteCommentWithParameters:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)(void))fail {
     RequestHeader *header = [[RequestHeader alloc] initWithTrcode:deleteComment];
     NSDictionary *headerDict = [header dictionaryWithValuesForKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -210,7 +210,7 @@
     }];
 }
 
-+ (void)getWorkType:(WKWorkTypeParam *)workTypeParam success:(void (^)(NSArray *))success fail:(void (^)())fail{
++ (void)getWorkType:(WKWorkTypeParam *)workTypeParam success:(void (^)(NSArray *))success fail:(void (^)(void))fail{
  
     NSDictionary *headerDict = [NSDictionary dictionaryWithObjects:@[workTypeParam.appseq,workTypeParam.trcode,workTypeParam.trdate] forKeys:@[@"appseq",@"trcode",@"trdate"]];
     
@@ -232,7 +232,7 @@
     }];
 }
 
-+ (void)getProjectList:(WKProjectParam *)projectParam success:(void (^)(NSArray *))success fail:(void (^)())fail {
++ (void)getProjectList:(WKProjectParam *)projectParam success:(void (^)(NSArray *))success fail:(void (^)(void))fail {
     
     NSDictionary *headerDict = [NSDictionary dictionaryWithObjects:@[projectParam.appseq,projectParam.trcode,projectParam.trdate] forKeys:@[@"appseq",@"trcode",@"trdate"]];
     
