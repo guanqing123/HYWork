@@ -107,9 +107,16 @@
     [SVProgressHUD show];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
-        WKBaseWebViewController *webVc = [[WKBaseWebViewController alloc] initWithDesUrl:result];
-        webVc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:webVc animated:YES];
+        if ([result hasPrefix:@"http"] || [result hasPrefix:@"https"]) {
+            WKBaseWebViewController *webVc = [[WKBaseWebViewController alloc] initWithDesUrl:result];
+            webVc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:webVc animated:YES];
+        } else {
+            UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"扫码结果" message:result preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:NULL];
+            [alertVc addAction:okAction];
+            [self presentViewController:alertVc animated:YES completion:nil];
+        }
     });
 }
 
