@@ -108,6 +108,8 @@
 	<string>App需要您的同意,才能访问相机,完成拍照或扫一扫功能</string>
 	<key>NSContactsUsageDescription</key>
 	<string>App需要您的同意,才能访问通讯录,获取同学录姓名与电话信息</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App需要您的同意,才能访问您当前的定位,判断是否在考勤范围内,实现考勤</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>App需要您的同意,才能访问您当前的定位,判断是否在考勤范围内,实现考勤</string>
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
@@ -115,7 +117,9 @@
 		<key>AMapLocationScene</key>
 		<string>App 需要一次精确定位权限才可以访问您的定位,实现考勤</string>
 	</dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<key>NSLocationUsageDescription</key>
+	<string>App需要您的同意,才能访问您当前的定位,判断是否在考勤范围内,实现考勤</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App需要您的同意,才能访问您当前的定位,判断是否在考勤范围内,实现考勤</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App需要您的同意,才能访问相册,获取照片信息</string>

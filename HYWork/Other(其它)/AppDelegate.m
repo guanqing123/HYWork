@@ -42,6 +42,9 @@
 // iOS 10 notification
 #import <UserNotifications/UserNotifications.h>
 
+// 定位
+#import <CoreLocation/CoreLocation.h>
+
 // token
 #import "MJExtension.h"
 
@@ -58,6 +61,7 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
 {
     // iOS 10通知中心
     UNUserNotificationCenter *_notificationCenter;
+    CLLocationManager *_locationManager;
 }
 @end
 
@@ -144,6 +148,77 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)requestWhenInUseAuthorization {
+    if (![self getUserLocationAuth]) {
+        _locationManager = [[CLLocationManager alloc] init];
+        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [_locationManager requestWhenInUseAuthorization];
+        }
+    } else { //开启的
+        //需要删除本地字符串
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults removeObjectForKey:@"isPositing"];
+        [userDefaults synchronize];
+    }
+}
+
+- (void)openLocaitonSetting {
+    //读取本地数据
+    NSString *isPositing = [[NSUserDefaults standardUserDefaults] valueForKey:@"isPositing"];
+    if (isPositing == nil) { //提示
+        
+        //1.创建UIAlertVc
+        UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"为了更好的体验,请到设置->隐私->定位服务中开启!【鸿雁云商】定位服务,以便定位考勤！" preferredStyle:UIAlertControllerStyleAlert];
+        
+        //2.按钮
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }];
+        
+        UIAlertAction *refuse = [UIAlertAction actionWithTitle:@"残忍拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){}];
+        
+        UIAlertAction *forever = [UIAlertAction actionWithTitle:@"永不提示" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //存入本地
+            NSString *isPosition = @"永不提示";
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:isPosition forKey:@"isPositing"];
+        }];
+        
+        //3.添加动作
+        [alertVc addAction:refuse];
+        [alertVc addAction:forever];
+        [alertVc addAction:confirm];
+        
+        //4.显示弹框
+        [self.window.rootViewController presentViewController:alertVc animated:YES completion:nil];
+    }
+}
+
+- (BOOL)getUserLocationAuth {
+    BOOL result = NO;
+    switch ([CLLocationManager authorizationStatus]) {
+        case kCLAuthorizationStatusNotDetermined:  //用户没有选择是否要使用定位服务(弹框没选择,或者根本没有弹框)
+            break;
+        case kCLAuthorizationStatusRestricted: //定位服务授权状态受限,可能由于活动限制了定位服务,并且用户不能改变当前的权限,这个状态有可能不是用户拒绝的,但是也有可能是用户拒绝的
+            break;
+        case kCLAuthorizationStatusDenied: //用户在设置中关闭定位功能,或者用户明确的在弹框之后选择禁止定位
+            [self openLocaitonSetting]; //请求权限
+            break;
+        case kCLAuthorizationStatusAuthorizedAlways:
+            result = YES;
+            break;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            result = YES;
+            break;
+        default:
+            break;
+    }
+    return result;
 }
 
 /**
@@ -305,6 +380,9 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
     _tabBarViewController.delegate = self;
     self.window.rootViewController = _tabBarViewController;
     [self.window makeKeyAndVisible];
+    
+    //定位
+    [self requestWhenInUseAuthorization];
     
     return YES;
 }
