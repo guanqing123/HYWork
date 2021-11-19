@@ -47,7 +47,7 @@
     }];
 }
 
-+ (void)remaindMe:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)())fail {
++ (void)remaindMe:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)(void))fail {
     
     NSString *urlStr = @"http://dev.sge.cn/hyapp/yszk/isShow";
     
@@ -57,6 +57,17 @@
         fail();
     }];
     
+}
+
++ (void)crashLog:(NSDictionary *)params success:(void (^)(id))success fail:(void (^)(void))fail {
+    
+    NSString *urlStr = @"http://dev.sge.cn/hyapp/crash/save/log";
+    
+    [WKHttpTool postWithUrl:urlStr param:params success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        fail();
+    }];
 }
 
 @end

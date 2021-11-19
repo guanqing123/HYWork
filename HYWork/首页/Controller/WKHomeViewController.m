@@ -105,6 +105,11 @@ static NSString *const WKDefineTableViewCellID = @"WKDefineTableViewCell";
     NSArray *des = [NSKeyedUnarchiver unarchiveObjectWithFile:DEFINES];
     if ([des count] > 0) {
         [_defines addObjectsFromArray:des];
+    } else {
+        NSMutableArray<WKHomeWork *> *def = [WKHomeWork mj_objectArrayWithFilename:@"default.plist"];
+        [_defines addObjectsFromArray:def];
+        
+        [NSKeyedArchiver archiveRootObject:def toFile:DEFINES];
     }
     
     WKHomeWork *addCommon = [[WKHomeWork alloc] init];

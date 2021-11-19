@@ -39,6 +39,7 @@ PODS:
     - mob_sharesdk/ShareSDK
     - MOBFoundation (>= 3.2.9)
   - MOBFoundation (3.2.24)
+  - PLCrashReporter (1.7.2)
   - SDCycleScrollView (1.82):
     - SDWebImage (>= 5.0.0)
   - SDWebImage (5.9.5):
@@ -71,6 +72,7 @@ DEPENDENCIES:
   - mob_sharesdk/ShareSDKPlatforms/SinaWeibo
   - mob_sharesdk/ShareSDKPlatforms/WeChat
   - mob_sharesdk/ShareSDKUI
+  - PLCrashReporter
   - SDCycleScrollView (>= 1.82)
   - SSZipArchive
   - SVProgressHUD
@@ -95,6 +97,7 @@ SPEC REPOS:
     - MJExtension
     - mob_sharesdk
     - MOBFoundation
+    - PLCrashReporter
     - SDCycleScrollView
     - SDWebImage
     - SSZipArchive
@@ -126,6 +129,7 @@ SPEC CHECKSUMS:
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   mob_sharesdk: 0e4039a6a6be6fb5f107f1803e4d90ab7fbe92c3
   MOBFoundation: 934ee1a43aed452d51942b416bc3dc4d0813ac82
+  PLCrashReporter: aab2bb5301bdc461a2006d657004fbcd748813b8
   SDCycleScrollView: a0d74c3384caa72bdfc81470bdbc8c14b3e1fbcf
   SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
@@ -134,6 +138,6 @@ SPEC CHECKSUMS:
   YBImageBrowser: 7ecc8bf33ffa5f3b94c397c29b4f3638dd37f527
   YYImage: 20ec986d18a8d0ad421619d166a9e628097e2433
 
-PODFILE CHECKSUM: 1e08d686933df9c38bb3ac5a107869c785b37edf
+PODFILE CHECKSUM: 3eba2d4a23e4ca01edcf08ade2fc0c399a90443e
 
 COCOAPODS: 1.9.3

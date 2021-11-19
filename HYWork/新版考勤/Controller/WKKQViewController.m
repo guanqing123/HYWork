@@ -99,11 +99,13 @@ static NSString *const WKFouthTableViewCellID = @"WKFouthTableViewCell";
     if (_kqBean == nil) {
         WKKQBean *kqBean = [[WKKQBean alloc] init];
         kqBean.wzStr = @"正在定位...";
+        kqBean.kqtx = NO;
         kqBean.kqBtnStr = @"kqBtnN";
         kqBean.kqBtnClick = NO;
         kqBean.refreshBtnStr = @"shuaxindinweiH";
         kqBean.refreshBtnClick = NO;
         kqBean.loginName = [LoadViewController shareInstance].emp.ygxm;
+        
         kqBean.signInTime = [[NSUserDefaults standardUserDefaults] stringForKey:@"signInTime"];
         _kqBean = kqBean;
     }
@@ -218,6 +220,10 @@ static NSString *const WKFouthTableViewCellID = @"WKFouthTableViewCell";
     if (indexPath.row == 0) {
         WKFirstTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKFirstTableViewCellID forIndexPath:indexPath];
         cell.kqBean = self.kqBean;
+        WEAKSELF
+        cell.remindBlock = ^(int kqtx) {
+            [weakSelf remindSetting:kqtx];
+        };
         cusCell = cell;
     }else if (indexPath.row == 1) {
         WKSecondTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKSecondTableViewCellID forIndexPath:indexPath];
@@ -245,6 +251,15 @@ static NSString *const WKFouthTableViewCellID = @"WKFouthTableViewCell";
         cusCell = cell;
     }
     return cusCell;
+}
+
+- (void)remindSetting:(int)kqtx {
+    NSDictionary *param = @{@"ygbm":[LoadViewController shareInstance].emp.ygbm, @"kqtx": @(kqtx)};
+    [WKKQTool remindKqtx:param success:^(id  _Nonnull json) {
+        [SVProgressHUD showSuccessWithStatus:@"设置成功"];
+    } failure:^(NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:@"设置失败"];
+    }];
 }
 
 - (void)signIn {
@@ -556,6 +571,7 @@ static NSString *const WKFouthTableViewCellID = @"WKFouthTableViewCell";
                 weakSelf.kqResData = kqResData;
                 [weakSelf addGeoFenceCircleRegion:location];
                 self.kqBean.count = kqResData.checkInTimes;
+                self.kqBean.kqtx = kqResData.kqtx;
                 //局部刷新
                 [self.tableView reloadData];
             }

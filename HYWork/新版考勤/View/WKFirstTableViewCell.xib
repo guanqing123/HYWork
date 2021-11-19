@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -49,28 +50,60 @@
                             <constraint firstAttribute="height" constant="1" id="kjl-2R-VXZ"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJp-Sv-0RU" userLabel="kqtxView">
+                        <rect key="frame" x="195" y="10" width="170" height="30"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ttt-9h-cve">
+                                <rect key="frame" x="111" y="-0.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="remindMe:" destination="KGk-i7-Jjw" eventType="valueChanged" id="T9v-HD-1KV"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="考勤提醒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upD-GE-PtT" userLabel="remindMe">
+                                <rect key="frame" x="44.5" y="6" width="61.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.61568627450980395" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="upD-GE-PtT" firstAttribute="centerY" secondItem="TJp-Sv-0RU" secondAttribute="centerY" id="9jx-Jg-h5D"/>
+                            <constraint firstItem="Ttt-9h-cve" firstAttribute="centerY" secondItem="TJp-Sv-0RU" secondAttribute="centerY" id="Pn9-bB-YiQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Ttt-9h-cve" secondAttribute="trailing" constant="10" id="bMx-0u-KRg"/>
+                            <constraint firstItem="Ttt-9h-cve" firstAttribute="leading" secondItem="upD-GE-PtT" secondAttribute="trailing" constant="5" id="iZO-cj-pcg"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="uLT-ct-qPE" secondAttribute="trailing" constant="10" id="3te-IC-kMh"/>
                     <constraint firstItem="rkM-zI-1tZ" firstAttribute="leading" secondItem="0mM-ZA-hQO" secondAttribute="trailing" constant="10" id="Muh-7a-Y6V"/>
                     <constraint firstItem="0mM-ZA-hQO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Mvm-Iw-ZBf"/>
+                    <constraint firstItem="TJp-Sv-0RU" firstAttribute="leading" secondItem="rkM-zI-1tZ" secondAttribute="trailing" constant="10" id="Xfq-ey-xoI"/>
                     <constraint firstItem="pCu-5E-Awj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="YUw-tT-adK"/>
+                    <constraint firstAttribute="trailing" secondItem="TJp-Sv-0RU" secondAttribute="trailing" constant="10" id="Zkv-TP-m8Z"/>
+                    <constraint firstItem="TJp-Sv-0RU" firstAttribute="top" secondItem="rkM-zI-1tZ" secondAttribute="top" id="aCv-39-fb5"/>
                     <constraint firstAttribute="bottom" secondItem="pCu-5E-Awj" secondAttribute="bottom" id="dnE-hR-dAJ"/>
                     <constraint firstAttribute="trailing" secondItem="pCu-5E-Awj" secondAttribute="trailing" constant="15" id="eX1-T4-ZcJ"/>
                     <constraint firstItem="rkM-zI-1tZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="lnz-oS-9mj"/>
                     <constraint firstItem="0mM-ZA-hQO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="oWn-XA-BVY"/>
+                    <constraint firstItem="TJp-Sv-0RU" firstAttribute="bottom" secondItem="rkM-zI-1tZ" secondAttribute="bottom" id="ofr-lr-eHc"/>
                     <constraint firstItem="uLT-ct-qPE" firstAttribute="leading" secondItem="0mM-ZA-hQO" secondAttribute="trailing" constant="10" id="p9U-Fg-Pf9"/>
                     <constraint firstItem="uLT-ct-qPE" firstAttribute="top" secondItem="rkM-zI-1tZ" secondAttribute="bottom" id="v3h-RX-oFB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="kqtxSwitch" destination="Ttt-9h-cve" id="f3K-li-qub"/>
                 <outlet property="nameLabel" destination="rkM-zI-1tZ" id="ooN-Oz-g42"/>
                 <outlet property="signInLabel" destination="uLT-ct-qPE" id="Xuv-mM-yUD"/>
             </connections>
-            <point key="canvasLocation" x="-254.34782608695653" y="42.857142857142854"/>
+            <point key="canvasLocation" x="-1295" y="76"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="zaixiankaoqino" width="40" height="40"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -54,6 +54,10 @@
 // 商家版
 #import "WKBusinessViewController.h"
 
+// 日志闪退
+#import <CrashReporter/CrashReporter.h>
+#import <CrashReporter/PLCrashReportTextFormatter.h>
+
 static NSString *const aliyunPushAppKey = @"24706589";
 static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576";
 
@@ -311,8 +315,6 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
     if (userData) {
         Emp *emp = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
         loadVc.emp = emp;
-        if (emp.mm == nil)
-            return YES;
         [LoginManager postJSONWithUrl:HYURL gh:emp.ygbm mm:emp.mm success:^(id json) {
             NSDictionary *header = [json objectForKey:@"header"];
             if ([[header objectForKey:@"succflag"] intValue] == 1) {
@@ -384,7 +386,59 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
     //定位
     [self requestWhenInUseAuthorization];
     
+    //闪退日志
+    PLCrashReporterConfig *config = [[PLCrashReporterConfig alloc] initWithSignalHandlerType: PLCrashReporterSignalHandlerTypeBSD
+                                                                       symbolicationStrategy: PLCrashReporterSymbolicationStrategyAll];
+    PLCrashReporter *crashReporter = [[PLCrashReporter alloc] initWithConfiguration: config];
+    NSError *error;
+    // Check if we previously crashed
+    if ([crashReporter hasPendingCrashReport]) {
+        [self handleCrashReport:crashReporter];
+    }
+
+    // Enable the Crash Reporter.
+    if (![crashReporter enableCrashReporterAndReturnError: &error]) {
+        NSLog(@"Warning: Could not enable crash reporter: %@", error);
+    }
+    
     return YES;
+}
+
+- (void)handleCrashReport:(PLCrashReporter *)crashReporter {
+    NSError *error;
+
+    // Try loading the crash report.
+    NSData *data = [crashReporter loadPendingCrashReportDataAndReturnError: &error];
+    if (data == nil) {
+        NSLog(@"Failed to load crash report data: %@", error);
+        return;
+    }
+
+    // Retrieving crash reporter data.
+    PLCrashReport *report = [[PLCrashReport alloc] initWithData: data error: &error];
+    if (report == nil) {
+        NSLog(@"Failed to parse crash report: %@", error);
+        return;
+    }
+
+    // We could send the report from here, but we'll just print out some debugging info instead.
+    NSString *text = [PLCrashReportTextFormatter stringValueForCrashReport: report withTextFormat: PLCrashReportTextFormatiOS];
+    LoadViewController *loadVc = [LoadViewController shareInstance];
+    NSString *ygbm = @"";
+    if (loadVc.emp) {
+        ygbm = loadVc.emp.ygbm;
+    }else{
+        ygbm = @"IOS";
+    }
+    NSDictionary *params = @{@"ygbm":ygbm,@"platform":@"hywork",@"message":text};
+    [LoginManager crashLog:params success:^(id json) {
+        NSLog(@"json = %@", json);
+    } fail:^{
+        NSLog(@"闪退日志上传失败");
+    }];
+
+    // Purge the report.
+    [crashReporter purgePendingCrashReport];
 }
 
 #pragma mark - SDK Init

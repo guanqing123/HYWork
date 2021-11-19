@@ -47,4 +47,7 @@ pod 'mob_sharesdk/ShareSDKExtension'
 #无线轮播 2021.1.8
 pod 'SDCycleScrollView','>= 1.82'
 
+#闪退日志搜集
+pod 'PLCrashReporter'
+
 end

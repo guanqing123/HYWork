@@ -499,6 +499,8 @@
 		D66AC4042578CD510052F6C0 /* WKBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66AC4032578CD510052F6C0 /* WKBaseWebViewController.m */; };
 		D66AC4092578D4F70052F6C0 /* WKAfterSaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D66AC4082578D4F70052F6C0 /* WKAfterSaleViewController.m */; };
 		D66B88D0261DF0410048F7C4 /* WKKQBean.m in Sources */ = {isa = PBXBuildFile; fileRef = D66B88CF261DF0410048F7C4 /* WKKQBean.m */; };
+		D66C000D27474573007FC468 /* default.json in Resources */ = {isa = PBXBuildFile; fileRef = D66C000C27474573007FC468 /* default.json */; };
+		D66C001127474752007FC468 /* default.plist in Resources */ = {isa = PBXBuildFile; fileRef = D66C001027474752007FC468 /* default.plist */; };
 		D66C58EA25AE905C0072B28A /* WKFunsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D66C58E925AE905C0072B28A /* WKFunsTool.m */; };
 		D66C58F025AED0A60072B28A /* WKHomeWorkGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D66C58EF25AED0A60072B28A /* WKHomeWorkGroup.m */; };
 		D66C58F325AED1520072B28A /* WKHomeWorkResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D66C58F225AED1520072B28A /* WKHomeWorkResult.m */; };
@@ -1790,6 +1792,8 @@
 		D66AC4082578D4F70052F6C0 /* WKAfterSaleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKAfterSaleViewController.m; sourceTree = "<group>"; };
 		D66B88CE261DF0410048F7C4 /* WKKQBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKKQBean.h; sourceTree = "<group>"; };
 		D66B88CF261DF0410048F7C4 /* WKKQBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKKQBean.m; sourceTree = "<group>"; };
+		D66C000C27474573007FC468 /* default.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = default.json; sourceTree = "<group>"; };
+		D66C001027474752007FC468 /* default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = default.plist; sourceTree = "<group>"; };
 		D66C58E825AE905C0072B28A /* WKFunsTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKFunsTool.h; sourceTree = "<group>"; };
 		D66C58E925AE905C0072B28A /* WKFunsTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKFunsTool.m; sourceTree = "<group>"; };
 		D66C58EE25AED0A60072B28A /* WKHomeWorkGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKHomeWorkGroup.h; sourceTree = "<group>"; };
@@ -2418,6 +2422,7 @@
 		D6032C021C7D88B80073E306 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D66C000C27474573007FC468 /* default.json */,
 				D6F5919D1D1D292700CE7279 /* gns.json */,
 				D6F591831D1CFA7200CE7279 /* help */,
 				D6D4AFA61CB761F50018C190 /* images */,
@@ -4595,6 +4600,7 @@
 		D66C777125AC8AD100B530B0 /* Plist */ = {
 			isa = PBXGroup;
 			children = (
+				D66C001027474752007FC468 /* default.plist */,
 				D66C777225AC8B0300B530B0 /* oawork.plist */,
 				D66C777925AC97F900B530B0 /* commons.plist */,
 			);
@@ -5644,10 +5650,12 @@
 				D6F6E1A01D2DEE6400CEA50E /* FwcxViewController.xib in Resources */,
 				D6E171FA1D18D8DB0077A59C /* AboutHeaderView.xib in Resources */,
 				D6F6E1BC1D2E5E5A00CEA50E /* CjwtCell.xib in Resources */,
+				D66C001127474752007FC468 /* default.plist in Resources */,
 				D60FFB681ED0403600FF77CC /* timeline_card_bottom_background@2x.png in Resources */,
 				D6F6E1A31D2DFB7000CEA50E /* check2.png in Resources */,
 				D669D8D025AB476800775723 /* WKNoticeSectionHeaderView.xib in Resources */,
 				D6FD3EF12643E15100B77991 /* AlipaySDK.bundle in Resources */,
+				D66C000D27474573007FC468 /* default.json in Resources */,
 				D60DE8651D1A3F350006E079 /* mapapi.bundle in Resources */,
 				D6032C121C7D88B80073E306 /* LaunchScreen.storyboard in Resources */,
 				D6F591981D1D171400CE7279 /* sz.jpeg in Resources */,
@@ -6585,7 +6593,7 @@
 					"$(PROJECT_DIR)/HYWork/iCarousel",
 					"$(PROJECT_DIR)/HYWork/Sangfo",
 				);
-				MARKETING_VERSION = 1.8.3;
+				MARKETING_VERSION = 1.8.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -6637,7 +6645,7 @@
 					"$(PROJECT_DIR)/HYWork/iCarousel",
 					"$(PROJECT_DIR)/HYWork/Sangfo",
 				);
-				MARKETING_VERSION = 1.8.3;
+				MARKETING_VERSION = 1.8.4;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",

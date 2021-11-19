@@ -12,6 +12,8 @@
 
 @property (nonatomic, assign, getter=isHasFence) BOOL hasFence;
 
+@property (nonatomic, assign) BOOL kqtx;
+
 /**
  *  打卡次数
  */

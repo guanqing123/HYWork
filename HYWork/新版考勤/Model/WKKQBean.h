@@ -30,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 考勤次数
 @property (nonatomic, assign) int count;
 
+// 考勤提醒
+@property (nonatomic, assign) BOOL kqtx;
+
 // 登陆名
 @property (nonatomic, copy) NSString *loginName;
 

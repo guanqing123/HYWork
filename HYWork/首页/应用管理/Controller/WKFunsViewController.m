@@ -81,6 +81,7 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
     if (self.isEditing && [self.itemGroups count] > 0) {
         WKHomeWorkGroup *itemGroup = self.itemGroups[0];
         [NSKeyedArchiver archiveRootObject:itemGroup.items toFile:DEFINES];
+        
         // 刷新本地自定义模块
         [[NSNotificationCenter defaultCenter] postNotificationName:refreshDefines object:nil userInfo:nil];
     }
@@ -96,6 +97,7 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
     if (!self.isEditing && [self.itemGroups count] > 0) {
         WKHomeWorkGroup *itemGroup = self.itemGroups[0];
         [NSKeyedArchiver archiveRootObject:itemGroup.items toFile:DEFINES];
+        
         // 刷新本地自定义模块
         [[NSNotificationCenter defaultCenter] postNotificationName:refreshDefines object:nil userInfo:nil];
     }
@@ -167,7 +169,7 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
                     [allItemModels addObjectsFromArray:group.items];
                 }
             }
-            _allItemModel = [allItemModels copy];
+            self->_allItemModel = [allItemModels copy];
             [self.collectionView reloadData];
         }
     } failure:^(NSError * _Nonnull error) {
@@ -260,8 +262,8 @@ static NSString *headerViewID = @"WKFunsItemHeaderView";
                 [self.collectionView addSubview:_snapshotView];
                 selectedItemCell.hidden = YES;
                 [UIView animateWithDuration:0.2 animations:^{
-                    _snapshotView.transform = CGAffineTransformMakeScale(1.03, 1.03);
-                    _snapshotView.alpha = 0.98;
+                    self->_snapshotView.transform = CGAffineTransformMakeScale(1.03, 1.03);
+                    self->_snapshotView.alpha = 0.98;
                 }];
             }
             break;

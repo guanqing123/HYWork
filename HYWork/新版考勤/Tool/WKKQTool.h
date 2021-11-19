@@ -18,6 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param failure 失败回调
 + (void)postVirtualLocation:(NSDictionary *)vlDict success:(void(^)(id json))success failure:(void(^)(NSError *error))failure;
 
+
+/// 考勤提醒
+/// @param kqtxDict 请求参数
+/// @param success 成功回调
+/// @param failure 失败回调
++ (void)remindKqtx:(NSDictionary *)kqtxDict success:(void(^)(id json))success failure:(void(^)(NSError *error))failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

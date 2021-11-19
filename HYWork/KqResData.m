@@ -16,6 +16,7 @@
         self.hasFence = [dict[@"hasFence"] boolValue];
         self.checkInTimes = [dict[@"checkInTimes"] intValue];
         self.hasDevice = [dict[@"hasDevice"] boolValue];
+        self.kqtx = [dict[@"kqtx"] boolValue];
         NSArray *dictArray = dict[@"fence"];
         if (![dictArray isKindOfClass:[NSNull class]]) {
             NSMutableArray *regionArray = [NSMutableArray array];

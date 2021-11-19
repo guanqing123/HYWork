@@ -1,0 +1,82 @@
+[
+    {
+        "load": true,
+        "pageType": 1,
+        "prefix": "",
+        "gridColor": "",
+        "destVcClass": "WKJCFXViewController",
+        "iconImage": "juecefenxi",
+        "gridTag": "",
+        "gridTitle": "决策分析"
+    },
+    {
+        "load": true,
+        "pageType": 1,
+        "prefix": "",
+        "gridColor": "",
+        "destVcClass": "BxViewController",
+        "iconImage": "baoxiao",
+        "gridTag": "",
+        "gridTitle": "报销"
+    },
+    {
+        "load": true,
+        "pageType": 1,
+        "prefix": "",
+        "gridColor": "",
+        "destVcClass": "WKAddressListViewController",
+        "iconImage": "https://honyar.oss-cn-hangzhou.aliyuncs.com/hywork/txl.png",
+        "gridTag": "",
+        "gridTitle": "通讯录"
+    },
+    {
+        "load": true,
+        "pageType": 1,
+        "prefix": "",
+        "gridColor": "",
+        "destVcClass": "RjhTableViewController",
+        "iconImage": "xierizi",
+        "gridTag": "",
+        "gridTitle": "拜访足迹"
+    },
+    {
+        "load": true,
+        "pageType": 1,
+        "prefix": "",
+        "gridColor": "",
+        "destVcClass": "KhkfViewController",
+        "iconImage": "kehukaifa",
+        "gridTag": "",
+        "gridTitle": "客户开发"
+    },
+    {
+        "load": true,
+        "pageType": 1,
+        "prefix": "",
+        "gridColor": "",
+        "destVcClass": "KhhfViewController",
+        "iconImage": "kehuhuifang",
+        "gridTag": "",
+        "gridTitle": "客户回访"
+    },
+    {
+        "load": true,
+        "pageType": 1,
+        "prefix": "",
+        "gridColor": "",
+        "destVcClass": "WKYszkViewController",
+        "iconImage": "yingshouguanli",
+        "gridTag": "",
+        "gridTitle": "应收管理"
+    },
+    {
+        "load": true,
+        "pageType": 1,
+        "prefix": "",
+        "gridColor": "",
+        "destVcClass": "WKAfterSaleViewController",
+        "iconImage": "shouhoufankui",
+        "gridTag": "",
+        "gridTitle": "售后服务"
+    }
+]
