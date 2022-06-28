@@ -156,6 +156,7 @@
     if (navigationAction.targetFrame == nil || !navigationAction.targetFrame.isMainFrame) {
         FjViewController *fjVc = [[FjViewController alloc] initWithRequest:navigationAction.request Configuration:configuration];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:fjVc];
+        nav.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:nav animated:YES completion:nil];
     }
 //    if (navigationAction.request.URL) {

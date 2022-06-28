@@ -279,7 +279,7 @@ typedef enum {
 /** 客户类型 */
 - (NSMutableArray *)khlxSource {
     if (_khlxSource == nil) {
-        _khlxSource = [NSMutableArray arrayWithObjects:@"经销客户",@"分销商",@"战略客户" ,nil];
+        _khlxSource = [NSMutableArray arrayWithObjects:@"经销客户",@"分销商",@"战略客户",@"工程渠道客户" ,nil];
     }
     return _khlxSource;
 }
@@ -289,7 +289,8 @@ typedef enum {
         NSDictionary *dict1 = [NSDictionary dictionaryWithObjects:@[@"经销客户",@"01"] forKeys:@[@"khlxName",@"khlx"]];
         NSDictionary *dict2 = [NSDictionary dictionaryWithObjects:@[@"分销商",@"05"] forKeys:@[@"khlxName",@"khlx"]];
         NSDictionary *dict3 = [NSDictionary dictionaryWithObjects:@[@"战略客户",@"5"] forKeys:@[@"khlxName",@"khlx"]];
-        _khlxArray = [NSArray arrayWithObjects:dict1, dict2, dict3,nil];
+        NSDictionary *dict4 = [NSDictionary dictionaryWithObjects:@[@"工程渠道客户",@"01"] forKeys:@[@"khlxName",@"khlx"]];
+        _khlxArray = [NSArray arrayWithObjects:dict1, dict2, dict3,dict4,nil];
     }
     return _khlxArray;
 }

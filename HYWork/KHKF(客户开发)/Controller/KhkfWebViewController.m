@@ -40,6 +40,9 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"30"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = leftItem;
     
+    UIBarButtonItem *close = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStyleDone target:self action:@selector(close)];
+    self.navigationItem.rightBarButtonItem = close;
+    
     self.title = @"客户信息";
     
     // 设置view不要延伸
@@ -48,6 +51,10 @@
         self.extendedLayoutIncludesOpaqueBars = NO;
         self.modalPresentationCapturesStatusBarAppearance = NO;
     }
+}
+
+- (void)close {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)back {

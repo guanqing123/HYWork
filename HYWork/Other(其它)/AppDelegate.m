@@ -430,7 +430,7 @@ static NSString *const aliyunPushAppSecret = @"e885b335ad26fd25483e8f7e378f0576"
     }else{
         ygbm = @"IOS";
     }
-    NSDictionary *params = @{@"ygbm":ygbm,@"platform":@"hywork",@"message":text};
+    NSDictionary *params = @{@"ygbm":ygbm,@"platform":@"hywork",@"message":text,@"os":@"ios"};
     [LoginManager crashLog:params success:^(id json) {
         NSLog(@"json = %@", json);
     } fail:^{

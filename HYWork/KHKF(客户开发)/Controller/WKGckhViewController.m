@@ -42,7 +42,7 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"30"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = leftItem;
     
-    self.title = @"战略客户开发";
+    self.title = @"项目报备";
     
     // 设置view不要延伸
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)) {

@@ -232,7 +232,7 @@
     webVc.view.backgroundColor = [UIColor whiteColor];
     webVc.delegate = self;
     [self.navigationController pushViewController:webVc animated:YES];*/
-    CustomActionSheet *sheet = [[CustomActionSheet alloc] initWithTitle:@"请选择操作" otherButtonTitles:@[@"渠道客户(分销商)",@"经销客户新增",@"战略客户新增",@"工程客户新增"]];
+    CustomActionSheet *sheet = [[CustomActionSheet alloc] initWithTitle:@"请选择操作" otherButtonTitles:@[@"渠道客户(分销商)",@"经销客户新增",@"战略客户新增",@"工程渠道客户新增",@"项目报备新增"]];
     sheet.delegate = self;
     [sheet show];
 }
@@ -266,7 +266,15 @@
             break;
         }
         case 3: {
-            //工程客户
+            //工程渠道客户新增
+            KhkfWebViewController *webVc = [[KhkfWebViewController alloc] initWithXh:@"0" ywy:self.ywy];
+            webVc.view.backgroundColor = [UIColor whiteColor];
+            webVc.delegate = self;
+            [self.navigationController pushViewController:webVc animated:YES];
+            break;
+        }
+        case 4: {
+            //项目报备新增
             WKGckhViewController *gckhVc = [[WKGckhViewController alloc] initWithXh:@"0" ywy:self.ywy];
             gckhVc.view.backgroundColor = [UIColor whiteColor];
             [self.navigationController pushViewController:gckhVc animated:YES];
