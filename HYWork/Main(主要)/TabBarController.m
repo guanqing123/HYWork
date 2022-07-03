@@ -129,6 +129,15 @@
      */
     self.tabBar.tintColor = [UIColor colorWithRed:0.0f/255.0f green:157.0f/255.0f blue:133.0f/255.0f alpha:1];
     NSArray *items = self.tabBar.items;
+    
+    //iOS15 适配Tabbar 顶部黑色分割线不显示
+    if (@available(iOS 15.0, *)) {
+        UITabBarAppearance * appearance = [[UITabBarAppearance alloc] init];
+        appearance.backgroundColor = UIColor.whiteColor;
+        [UITabBar appearance].scrollEdgeAppearance = appearance;
+        [UITabBar appearance].standardAppearance = appearance;
+    }
+    
     /**
      *  UIImageRenderingModeAlwaysOriginal:这个枚举值是声明这张图片要按照原来的样子显示,不需要渲染成其他颜色
      */

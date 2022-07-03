@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong)  NSDictionary *commonDict;
 
-- (void)requestAllEmpsThroughSQLServerWithBlock:(void(^)())block;
+- (void)requestAllEmpsThroughSQLServerWithBlock:(void(^)(void))block;
 
 @end
 

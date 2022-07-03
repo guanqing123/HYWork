@@ -78,6 +78,11 @@ static LoadViewController *loadViewController = nil;
     
     _tableView = tableView;
     [self.view addSubview:tableView];
+    
+    //ios15 的 UITableView又新增了一个新属性：sectionHeaderTopPadding
+    if (@available(iOS 15.0, *)) {
+        _tableView.sectionHeaderTopPadding = 0;
+    }
 }
 
 - (void)back {

@@ -66,6 +66,19 @@
     
     [navBar setTranslucent:YES];
     [navBar setBarTintColor:[UIColor colorWithRed:0.0f/255.0f green:157.0f/255.0f blue:133.0f/255.0f alpha:1]];
+    
+    // 适配ios15导航栏黑色
+    if (@available(iOS 13.0, *)) {
+        UINavigationBarAppearance *apperence = [[UINavigationBarAppearance alloc] init];
+        //添加背景色
+        apperence.backgroundColor=themeColor;
+        apperence.shadowImage = [[UIImage alloc] init];
+        apperence.shadowColor = nil;
+        //设置字体颜色
+        [apperence setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+        navBar.standardAppearance = apperence;
+        navBar.scrollEdgeAppearance = apperence;
+    }
 }
 
 

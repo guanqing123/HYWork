@@ -49,6 +49,11 @@
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
+    
+    //ios15 的 UITableView又新增了一个新属性：sectionHeaderTopPadding
+    if (@available(iOS 15.0, *)) {
+        _tableView.sectionHeaderTopPadding = 0;
+    }
 }
 
 - (void)initUI {
@@ -203,7 +208,7 @@
         }else{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             NSDictionary *dict = [json objectForKey:@"data"];
-            _empDetail = [EmpDetail empDetailWithDict:dict];
+            self->_empDetail = [EmpDetail empDetailWithDict:dict];
             [self.tableView reloadData];
         }
     } Fail:^{
